@@ -1,0 +1,86 @@
+[
+  {
+    "pattern": "Redirect output to file",
+    "windows": "cmd > file.txt",
+    "linux": "cmd > file.txt",
+    "desc": "Overwrite file with standard output"
+  },
+  {
+    "pattern": "Append output to file",
+    "windows": "cmd >> file.txt",
+    "linux": "cmd >> file.txt",
+    "desc": "Append standard output to end of file"
+  },
+  {
+    "pattern": "Pipe output",
+    "windows": "cmd1 | cmd2",
+    "linux": "cmd1 | cmd2",
+    "desc": "Feed standard output of cmd1 as standard input to cmd2"
+  },
+  {
+    "pattern": "Chain on success",
+    "windows": "cmd1 && cmd2",
+    "linux": "cmd1 && cmd2",
+    "desc": "Run cmd2 only if cmd1 exits with code 0"
+  },
+  {
+    "pattern": "Chain on failure",
+    "windows": "cmd1 || cmd2",
+    "linux": "cmd1 || cmd2",
+    "desc": "Run cmd2 only if cmd1 exits with non-zero code"
+  },
+  {
+    "pattern": "Wildcards",
+    "windows": "*.txt",
+    "linux": "*.txt",
+    "desc": "Match any sequence of characters in filenames"
+  },
+  {
+    "pattern": "Background process",
+    "windows": "Start-Process -NoNewWindow ...",
+    "linux": "cmd &",
+    "desc": "Run process asynchronously in background without blocking shell"
+  },
+  {
+    "pattern": "Command substitution",
+    "windows": "$(cmd)",
+    "linux": "$(cmd)",
+    "desc": "Substitute output of inner command into outer command string"
+  },
+  {
+    "pattern": "Variables",
+    "windows": "$var = value | %VAR%",
+    "linux": "var=value | $VAR",
+    "desc": "Define and evaluate environment or shell variables"
+  },
+  {
+    "pattern": "Loops",
+    "windows": "foreach ($x in $list) { ... }",
+    "linux": "for x in list; do ...; done",
+    "desc": "Iterate through sequences and collections"
+  },
+  {
+    "pattern": "Conditionals",
+    "windows": "if ($x -eq 1) { ... }",
+    "linux": "if [ $x -eq 1 ]; then ...; fi",
+    "desc": "Branch execution based on conditional comparisons"
+  },
+  {
+    "pattern": "Error redirection",
+    "windows": "cmd 2> err.log",
+    "linux": "cmd 2> err.log",
+    "desc": "Redirect standard error stream to a separate file"
+  },
+  {
+    "pattern": "Combine stdout and stderr",
+    "windows": "cmd *>&1",
+    "linux": "cmd 2>&1",
+    "desc": "Merge error output directly into standard output stream"
+  },
+  {
+    "pattern": "Suppress output",
+    "windows": "cmd | Out-Null",
+    "linux": "cmd > /dev/null 2>&1",
+    "desc": "Silently discard all output streams"
+  }
+]

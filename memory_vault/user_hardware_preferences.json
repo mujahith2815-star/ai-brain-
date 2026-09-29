@@ -1,0 +1,8 @@
+{
+  "COM99": {
+    "board": "Arduino Uno",
+    "name": "Arduino Uno (User-Assigned)",
+    "toolchain": "arduino-cli",
+    "baud_rate": 9600
+  }
+}

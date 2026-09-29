@@ -1,0 +1,20 @@
+{
+  "real_name": "M.Mohammed Mujahith",
+  "favorite_microcontrollers": [
+    "ESP32",
+    "Arduino"
+  ],
+  "project_history": [
+    {
+      "name": "Smart_Sensor",
+      "timestamp": "2026-09-05",
+      "type": "firmware/hardware"
+    },
+    {
+      "name": "ESP32_Smart_Gateway",
+      "timestamp": "2026-09-06",
+      "type": "IoT"
+    }
+  ],
+  "active_persona": "JARVIS"
+}

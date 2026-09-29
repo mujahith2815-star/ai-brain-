@@ -1,0 +1,62 @@
+[
+  {
+    "device_id": "DEV_PC_01",
+    "name": "Master PC Workstation",
+    "category": "PC_WORKSTATION",
+    "ip_or_mac": "127.0.0.1",
+    "is_online": true,
+    "power_state": "ON",
+    "battery_pct": null,
+    "active_application": "P.H.A.S.S Sphere Sovereign v7.0",
+    "last_command_executed": "None",
+    "last_seen": "2026-09-18T07:16:33.236039+00:00"
+  },
+  {
+    "device_id": "DEV_LAPTOP_02",
+    "name": "Operator Ultrabook Laptop",
+    "category": "REMOTE_LAPTOP",
+    "ip_or_mac": "192.168.1.105",
+    "is_online": true,
+    "power_state": "ON",
+    "battery_pct": 88.0,
+    "active_application": "VS Code Remote",
+    "last_command_executed": "None",
+    "last_seen": "2026-09-18T07:16:33.236039+00:00"
+  },
+  {
+    "device_id": "DEV_TV_03",
+    "name": "Living Room 4K Smart TV",
+    "category": "SMART_TV",
+    "ip_or_mac": "192.168.1.120",
+    "is_online": true,
+    "power_state": "ON",
+    "battery_pct": null,
+    "active_application": "YouTube 4K",
+    "last_command_executed": "None",
+    "last_seen": "2026-09-18T07:16:33.236039+00:00"
+  },
+  {
+    "device_id": "DEV_PHONE_04",
+    "name": "Primary Smartphone",
+    "category": "SMARTPHONE",
+    "ip_or_mac": "192.168.1.145",
+    "is_online": true,
+    "power_state": "ON",
+    "battery_pct": 76.0,
+    "active_application": "P.H.A.S.S Companion Mesh",
+    "last_command_executed": "None",
+    "last_seen": "2026-09-18T07:16:33.236039+00:00"
+  },
+  {
+    "device_id": "DEV_WATCH_05",
+    "name": "Smartwatch Ultra",
+    "category": "SMARTWATCH",
+    "ip_or_mac": "AA:BB:CC:DD:EE:01",
+    "is_online": true,
+    "power_state": "ON",
+    "battery_pct": 92.0,
+    "active_application": "Haptic Biometrics Standby",
+    "last_command_executed": "None",
+    "last_seen": "2026-09-18T07:16:33.236039+00:00"
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "theme": "Cyberpunk Holographic",
+  "palette": {
+    "bg": "#0a0a1a",
+    "primary": "#00f0ff",
+    "accent": "#7b2ffc",
+    "surface": "#12122b"
+  },
+  "components": [
+    "ItemTable",
+    "MetricCards",
+    "AddInventoryModal",
+    "TelemetryBar"
+  ],
+  "responsive_breakpoints": {
+    "mobile": 480,
+    "tablet": 768,
+    "desktop": 1200
+  }
+}

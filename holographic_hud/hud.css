@@ -1,0 +1,18 @@
+body { margin: 0; overflow: hidden; background: #030712; font-family: 'Courier New', monospace; color: #00f2ff; }
+#canvas-container { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; }
+.hud-overlay { position: relative; z-index: 10; pointer-events: none; height: 100vh; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; padding: 24px; }
+.hud-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid rgba(0, 242, 255, 0.4); padding-bottom: 12px; }
+.hud-logo { font-size: 24px; font-weight: bold; letter-spacing: 3px; text-shadow: 0 0 10px #00f2ff; }
+.pulse-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #00f2ff; box-shadow: 0 0 8px #00f2ff; margin-right: 8px; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 1; } 100% { opacity: 0.3; } }
+.hud-metrics { display: flex; gap: 20px; }
+.hud-card { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(8px); border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 8px; padding: 16px; min-width: 180px; box-shadow: 0 0 15px rgba(0, 242, 255, 0.1); }
+.hud-card h4 { margin: 0 0 6px 0; font-size: 12px; color: #94a3b8; letter-spacing: 1px; }
+.metric-val { font-size: 26px; font-weight: bold; color: #38bdf8; text-shadow: 0 0 8px #38bdf8; }
+.sub-label { font-size: 11px; color: #64748b; margin-top: 4px; }
+.hud-footer { text-align: center; border-top: 1px solid rgba(0, 242, 255, 0.2); padding-top: 12px; }
+#voice-spectrum { display: flex; justify-content: center; gap: 6px; height: 30px; align-items: flex-end; margin-bottom: 8px; }
+.bar { width: 6px; height: 10px; background: #00f2ff; border-radius: 3px; animation: bounce 0.8s infinite ease-in-out alternate; }
+.bar:nth-child(2) { animation-delay: 0.1s; } .bar:nth-child(3) { animation-delay: 0.2s; } .bar:nth-child(4) { animation-delay: 0.3s; }
+.bar:nth-child(5) { animation-delay: 0.4s; } .bar:nth-child(6) { animation-delay: 0.3s; } .bar:nth-child(7) { animation-delay: 0.2s; }
+@keyframes bounce { 0% { height: 6px; } 100% { height: 28px; } }

@@ -1,0 +1,967 @@
+[
+  {
+    "name": "git status",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "Show the working tree status",
+    "syntax": "git status [-s] [--branch]",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git status"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "git",
+      "vcs",
+      "repo"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "git log",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "Show commit logs",
+    "syntax": "git log [--oneline] [-n <count>] [--graph]",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git log"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "git",
+      "history",
+      "commits"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "git diff",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "Show changes between commits, commit and working tree, etc",
+    "syntax": "git diff [--staged] [file]",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git diff"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "git",
+      "changes",
+      "patch"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "git add",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "Add file contents to the staging index",
+    "syntax": "git add [-A | . | <path>]",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git add"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "git",
+      "stage"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "git commit",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "Record changes to the repository",
+    "syntax": "git commit -m \"<message>\" [-a]",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git commit"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "git",
+      "commit",
+      "save"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "git push",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "Update remote refs along with associated objects",
+    "syntax": "git push [remote] [branch] [--force-with-lease]",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git push"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "git",
+      "upload",
+      "sync"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "git pull",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "Fetch from and integrate with another repository or a local branch",
+    "syntax": "git pull [remote] [branch] [--rebase]",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git pull"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "git",
+      "download",
+      "sync"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "git fetch",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "Download objects and refs from another repository",
+    "syntax": "git fetch [--all] [remote]",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git fetch"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "git",
+      "download"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "git branch",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "List, create, or delete branches",
+    "syntax": "git branch [-a] [-d <name>] [<new-branch>]",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git branch"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "git",
+      "branch"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "git checkout",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "Switch branches or restore working tree files",
+    "syntax": "git checkout [-b <new-branch>] [<branch> | <file>]",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git checkout"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "git",
+      "switch"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "git switch",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "Switch branches in a repository",
+    "syntax": "git switch [-c <new-branch>] <branch>",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git switch"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "git",
+      "branch"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "git merge",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "Join two or more development histories together",
+    "syntax": "git merge [--no-ff] <branch>",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git merge"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "git",
+      "integrate"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "git clone",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "Clone a repository into a new directory",
+    "syntax": "git clone [--depth <n>] <repo-url> [dir]",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git clone"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "git",
+      "download",
+      "repo"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "git stash",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "Stash the changes in a dirty working directory away",
+    "syntax": "git stash [push | pop | list | drop]",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git stash"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "git",
+      "temp",
+      "save"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "git reset",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "Reset current HEAD to the specified state",
+    "syntax": "git reset [--soft | --mixed | --hard] [<commit>]",
+    "examples": [
+      {
+        "cmd": "git",
+        "desc": "Run git reset"
+      }
+    ],
+    "safety": "moderate",
+    "tags": [
+      "git",
+      "undo",
+      "rewind"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "python",
+    "shell": "cross-platform",
+    "category": "development",
+    "description": "Python programming language interpreter",
+    "syntax": "python [-m <module>] [-c '<code'>] [<script.py>]",
+    "examples": [
+      {
+        "cmd": "python",
+        "desc": "Run python"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "python",
+      "script",
+      "code"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "pip",
+    "shell": "cross-platform",
+    "category": "development",
+    "description": "The package installer for Python",
+    "syntax": "pip [install | list | uninstall | show | freeze] [<package>]",
+    "examples": [
+      {
+        "cmd": "pip",
+        "desc": "Run pip"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "python",
+      "package",
+      "install"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "pytest",
+    "shell": "cross-platform",
+    "category": "development",
+    "description": "Mature full-featured Python testing tool",
+    "syntax": "pytest [-v] [-k <filter>] [--tb=short] [<test_dir>]",
+    "examples": [
+      {
+        "cmd": "pytest",
+        "desc": "Run pytest"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "python",
+      "test",
+      "unit"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "venv",
+    "shell": "cross-platform",
+    "category": "development",
+    "description": "Creation of virtual environments in Python",
+    "syntax": "python -m venv <env_dir>",
+    "examples": [
+      {
+        "cmd": "python",
+        "desc": "Run venv"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "python",
+      "virtualenv",
+      "env"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "black",
+    "shell": "cross-platform",
+    "category": "development",
+    "description": "The uncompromising Python code formatter",
+    "syntax": "black [--check] [--diff] <path>",
+    "examples": [
+      {
+        "cmd": "black",
+        "desc": "Run black"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "python",
+      "format",
+      "style"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "flake8",
+    "shell": "cross-platform",
+    "category": "development",
+    "description": "Modular source code checker for Python",
+    "syntax": "flake8 [--max-line-length=<n>] <path>",
+    "examples": [
+      {
+        "cmd": "flake8",
+        "desc": "Run flake8"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "python",
+      "lint",
+      "pep8"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "mypy",
+    "shell": "cross-platform",
+    "category": "development",
+    "description": "Optional static typing for Python",
+    "syntax": "mypy [--strict] <path>",
+    "examples": [
+      {
+        "cmd": "mypy",
+        "desc": "Run mypy"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "python",
+      "types",
+      "checker"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ruff",
+    "shell": "cross-platform",
+    "category": "development",
+    "description": "Extremely fast Python linter and code formatter",
+    "syntax": "ruff [check | format] <path>",
+    "examples": [
+      {
+        "cmd": "ruff",
+        "desc": "Run ruff"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "python",
+      "lint",
+      "fast"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "node",
+    "shell": "cross-platform",
+    "category": "development",
+    "description": "JavaScript runtime built on Chrome's V8 engine",
+    "syntax": "node [-e '<code'>] [<script.js>]",
+    "examples": [
+      {
+        "cmd": "node",
+        "desc": "Run node"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "js",
+      "javascript",
+      "runtime"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "npm",
+    "shell": "cross-platform",
+    "category": "development",
+    "description": "JavaScript package manager",
+    "syntax": "npm [install | run | test | init | list] [<package>]",
+    "examples": [
+      {
+        "cmd": "npm",
+        "desc": "Run npm"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "js",
+      "node",
+      "packages"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "npx",
+    "shell": "cross-platform",
+    "category": "development",
+    "description": "Execute npm package binaries without installing globally",
+    "syntax": "npx <package> [args]",
+    "examples": [
+      {
+        "cmd": "npx",
+        "desc": "Run npx"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "js",
+      "node",
+      "exec"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "yarn",
+    "shell": "cross-platform",
+    "category": "development",
+    "description": "Fast, reliable, and secure dependency management for Node",
+    "syntax": "yarn [add | install | run | remove] [<package>]",
+    "examples": [
+      {
+        "cmd": "yarn",
+        "desc": "Run yarn"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "js",
+      "node",
+      "yarn"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "pnpm",
+    "shell": "cross-platform",
+    "category": "development",
+    "description": "Fast, disk space efficient package manager",
+    "syntax": "pnpm [add | install | run] [<package>]",
+    "examples": [
+      {
+        "cmd": "pnpm",
+        "desc": "Run pnpm"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "js",
+      "node",
+      "pnpm"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "bun",
+    "shell": "cross-platform",
+    "category": "development",
+    "description": "Incredibly fast JavaScript all-in-one runtime & toolkit",
+    "syntax": "bun [run | test | install | add] [<args>]",
+    "examples": [
+      {
+        "cmd": "bun",
+        "desc": "Run bun"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "js",
+      "bun",
+      "fast"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "docker build",
+    "shell": "cross-platform",
+    "category": "containers",
+    "description": "Build an image from a Dockerfile",
+    "syntax": "docker build -t <tag> [-f <dockerfile>] <context>",
+    "examples": [
+      {
+        "cmd": "docker",
+        "desc": "Run docker build"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "docker",
+      "image",
+      "build"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "docker run",
+    "shell": "cross-platform",
+    "category": "containers",
+    "description": "Create and run a new container from an image",
+    "syntax": "docker run [-d] [-p host:container] [--name <name>] [-v host:container] <image>",
+    "examples": [
+      {
+        "cmd": "docker",
+        "desc": "Run docker run"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "docker",
+      "container",
+      "start"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "docker ps",
+    "shell": "cross-platform",
+    "category": "containers",
+    "description": "List running containers",
+    "syntax": "docker ps [-a]",
+    "examples": [
+      {
+        "cmd": "docker",
+        "desc": "Run docker ps"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "docker",
+      "containers",
+      "list"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "docker images",
+    "shell": "cross-platform",
+    "category": "containers",
+    "description": "List images available locally",
+    "syntax": "docker images [-a]",
+    "examples": [
+      {
+        "cmd": "docker",
+        "desc": "Run docker images"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "docker",
+      "images",
+      "list"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "docker logs",
+    "shell": "cross-platform",
+    "category": "containers",
+    "description": "Fetch the logs of a container",
+    "syntax": "docker logs [-f] [--tail <n>] <container>",
+    "examples": [
+      {
+        "cmd": "docker",
+        "desc": "Run docker logs"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "docker",
+      "logs"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "docker exec",
+    "shell": "cross-platform",
+    "category": "containers",
+    "description": "Execute a command in a running container",
+    "syntax": "docker exec -it <container> <command>",
+    "examples": [
+      {
+        "cmd": "docker",
+        "desc": "Run docker exec"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "docker",
+      "shell",
+      "exec"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "docker stop",
+    "shell": "cross-platform",
+    "category": "containers",
+    "description": "Stop one or more running containers",
+    "syntax": "docker stop <container...>",
+    "examples": [
+      {
+        "cmd": "docker",
+        "desc": "Run docker stop"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "docker",
+      "stop"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "docker rm",
+    "shell": "cross-platform",
+    "category": "containers",
+    "description": "Remove one or more containers",
+    "syntax": "docker rm [-f] <container...>",
+    "examples": [
+      {
+        "cmd": "docker",
+        "desc": "Run docker rm"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "docker",
+      "delete"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "docker compose",
+    "shell": "cross-platform",
+    "category": "containers",
+    "description": "Define and run multi-container Docker applications",
+    "syntax": "docker compose [up | down | build | ps | logs] [-d]",
+    "examples": [
+      {
+        "cmd": "docker",
+        "desc": "Run docker compose"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "docker",
+      "orchestration"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ffmpeg",
+    "shell": "cross-platform",
+    "category": "media",
+    "description": "Hyper fast audio and video encoder and converter",
+    "syntax": "ffmpeg -i <input> [options] <output>",
+    "examples": [
+      {
+        "cmd": "ffmpeg",
+        "desc": "Run ffmpeg"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "video",
+      "audio",
+      "convert"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ffprobe",
+    "shell": "cross-platform",
+    "category": "media",
+    "description": "Multimedia stream analyzer",
+    "syntax": "ffprobe -v error -show_format -show_streams <media_file>",
+    "examples": [
+      {
+        "cmd": "ffprobe",
+        "desc": "Run ffprobe"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "video",
+      "audio",
+      "metadata"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "make",
+    "shell": "cross-platform",
+    "category": "build",
+    "description": "GNU make utility to maintain groups of programs",
+    "syntax": "make [-j <jobs>] [-f <makefile>] [<target>]",
+    "examples": [
+      {
+        "cmd": "make",
+        "desc": "Run make"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "build",
+      "compile"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "cmake",
+    "shell": "cross-platform",
+    "category": "build",
+    "description": "Cross-platform build system generator",
+    "syntax": "cmake [-B <build_dir>] [-S <source_dir>] [--build <build_dir>]",
+    "examples": [
+      {
+        "cmd": "cmake",
+        "desc": "Run cmake"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "build",
+      "c++"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "gcc",
+    "shell": "cross-platform",
+    "category": "build",
+    "description": "GNU project C and C++ compiler",
+    "syntax": "gcc [-o <output>] [-Wall] [-O2] <source.c>",
+    "examples": [
+      {
+        "cmd": "gcc",
+        "desc": "Run gcc"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "compiler",
+      "c"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "g++",
+    "shell": "cross-platform",
+    "category": "build",
+    "description": "GNU project C++ compiler",
+    "syntax": "g++ [-std=c++17] [-o <output>] <source.cpp>",
+    "examples": [
+      {
+        "cmd": "g++",
+        "desc": "Run g++"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "compiler",
+      "c++"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "kubectl",
+    "shell": "cross-platform",
+    "category": "cloud",
+    "description": "Kubernetes command line tool for cluster control",
+    "syntax": "kubectl [get | describe | apply | delete | logs | exec] <resource>",
+    "examples": [
+      {
+        "cmd": "kubectl",
+        "desc": "Run kubectl"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "k8s",
+      "kubernetes",
+      "cloud"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "terraform",
+    "shell": "cross-platform",
+    "category": "cloud",
+    "description": "Infrastructure as Code tool to build and version cloud resources",
+    "syntax": "terraform [init | plan | apply | destroy]",
+    "examples": [
+      {
+        "cmd": "terraform",
+        "desc": "Run terraform"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "iac",
+      "cloud",
+      "infra"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ansible",
+    "shell": "cross-platform",
+    "category": "cloud",
+    "description": "Automate deployment and configuration across systems",
+    "syntax": "ansible [-m <module>] [-a <args>] <hosts>",
+    "examples": [
+      {
+        "cmd": "ansible",
+        "desc": "Run ansible"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "devops",
+      "automation"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "gh",
+    "shell": "cross-platform",
+    "category": "vcs",
+    "description": "GitHub's official command line tool",
+    "syntax": "gh [repo | pr | issue | release | auth] <subcommand>",
+    "examples": [
+      {
+        "cmd": "gh",
+        "desc": "Run gh"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "github",
+      "pr",
+      "repo"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "aws",
+    "shell": "cross-platform",
+    "category": "cloud",
+    "description": "Unified tool to manage your AWS services",
+    "syntax": "aws <service> <command> [options]",
+    "examples": [
+      {
+        "cmd": "aws",
+        "desc": "Run aws"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "cloud",
+      "amazon",
+      "aws"
+    ],
+    "source": "core"
+  }
+]

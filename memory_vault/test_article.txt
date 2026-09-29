@@ -1,0 +1,1 @@
+Quantum computing leverages superposition and entanglement to solve hard computational problems.

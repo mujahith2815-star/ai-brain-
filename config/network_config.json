@@ -1,0 +1,16 @@
+{
+  "websocket_host": "0.0.0.0",
+  "websocket_port": 8765,
+  "mqtt_host": "0.0.0.0",
+  "mqtt_port": 1883,
+  "auth_token": "phass_omni_secret_token_2026",
+  "wifi_ssid": "HomeNetwork_2.4G",
+  "wifi_password": "secure_wifi_password",
+  "broker_ip": "192.168.1.100",
+  "allowed_clients": [
+    "phone",
+    "laptop",
+    "esp32",
+    "pico"
+  ]
+}

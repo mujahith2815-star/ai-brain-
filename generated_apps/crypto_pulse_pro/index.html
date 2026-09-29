@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>P.H.A.S.S CryptoPulse Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="app-header">
+        <h1>⚡ P.H.A.S.S CryptoPulse Pro</h1>
+        <p>Real-Time Decentralized Market Intelligence & Asset Analytics</p>
+    </header>
+    <main class="grid-container">
+        <div class="card stat-card" id="btc-card">
+            <h3>Bitcoin (BTC)</h3>
+            <div class="price" id="btc-price">$67,450.00</div>
+            <div class="badge positive">+4.82% (24h)</div>
+        </div>
+        <div class="card stat-card" id="eth-card">
+            <h3>Ethereum (ETH)</h3>
+            <div class="price" id="eth-price">$3,520.00</div>
+            <div class="badge positive">+3.15% (24h)</div>
+        </div>
+        <div class="card stat-card" id="sol-card">
+            <h3>Solana (SOL)</h3>
+            <div class="price" id="sol-price">$185.40</div>
+            <div class="badge positive">+7.90% (24h)</div>
+        </div>
+        <div class="card chart-card">
+            <h3>Market Price Velocity (Real-Time)</h3>
+            <canvas id="marketChart"></canvas>
+        </div>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

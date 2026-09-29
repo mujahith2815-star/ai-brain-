@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P.H.A.S.S Sphere — Robot Intelligence Control Center</title>
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top App Bar -->
+  <header class="app-header">
+    <div class="brand-badge">
+      <div class="sphere-logo"></div>
+      <div>
+        <div class="brand-title" style="font-family: 'Orbitron', sans-serif;">P.H.A.S.S SPHERE</div>
+        <div class="brand-subtitle">Autonomous Physical AI Platform · ORB-7-ALPHA</div>
+      </div>
+    </div>
+
+    <div class="header-telemetry">
+      <div id="connection-badge" class="status-pill">
+        <span class="status-dot"></span> LINK ACTIVE
+      </div>
+      <div>BATTERY: <span id="hud-battery" style="color:var(--cyan-neon); font-weight:700;">88.5%</span> (<span id="hud-battery-voltage">24.2V</span>)</div>
+      <div>CORE TEMP: <span id="hud-internal-temp" style="color:var(--text-main);">34.2°C</span></div>
+      <div>CPU LOAD: <span id="hud-cpu" style="color:var(--text-main);">18.5%</span></div>
+    </div>
+  </header>
+
+  <!-- Main 3-Column Control Center Grid -->
+  <main class="control-grid">
+
+    <!-- LEFT COLUMN: AI Cognitive Core & Active Goals -->
+    <section class="left-col">
+
+      <!-- AI Status HUD -->
+      <div class="cyber-panel" style="flex: 0 0 auto;">
+        <div class="panel-header">
+          <div class="panel-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Cognitive Core HUD
+          </div>
+          <span id="hud-ai-status" class="status-pill" style="font-size:10px;">ACTIVE</span>
+        </div>
+        <div class="panel-body">
+          <div class="hud-card">
+            <div class="hud-label">Cognitive Loop State</div>
+            <div id="hud-state" class="hud-value highlight">STANDBY</div>
+          </div>
+
+          <div class="hud-card">
+            <div class="hud-label">Current High-Level Goal</div>
+            <div id="hud-goal" class="hud-value" style="font-size:13px;">Standby / Monitoring</div>
+            <div class="progress-bar-bg">
+              <div id="hud-progress-bar" class="progress-bar-fill" style="width: 100%;"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-top:4px; font-size:10px; color:var(--text-dim);">
+              <span>Progress</span>
+              <span id="hud-progress-text">100%</span>
+            </div>
+          </div>
+
+          <div class="hud-card">
+            <div class="hud-label">Current Subtask Operation</div>
+            <div id="hud-task" class="hud-value" style="font-size:12px; color:var(--cyan-neon);">Passive Environmental Monitoring</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <div class="hud-card" style="margin-bottom:0;">
+              <div class="hud-label">Confidence</div>
+              <div id="hud-confidence" class="hud-value highlight">94%</div>
+            </div>
+            <div class="hud-card" style="margin-bottom:0;">
+              <div class="hud-label">Discharge Cell Temp</div>
+              <div id="hud-battery-temp" class="hud-value">28.4°C</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Goal Hierarchy Tree -->
+      <div class="cyber-panel" style="flex: 1;">
+        <div class="panel-header">
+          <div class="panel-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Goal & Subtask Plan
+          </div>
+        </div>
+        <div id="goals-container" class="panel-body">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- CENTER COLUMN: 3D Spherical Simulation & Arena -->
+    <section class="center-col cyber-panel">
+
+      <!-- WebGL Three.js Canvas -->
+      <div id="canvas-container"></div>
+
+      <!-- Overlay Quick Action Buttons -->
+      <div class="overlay-controls">
+        <button id="btn-action-diagnose" class="cyber-btn">⚙ DIAGNOSE SYSTEM</button>
+        <button id="btn-action-scan" class="cyber-btn">👁 SCAN ENVIRONMENT</button>
+        <button id="btn-action-dock" class="cyber-btn">⚡ DOCK & RECHARGE</button>
+        <button id="btn-spawn-hazard" class="cyber-btn">+ SPAWN HAZARD</button>
+        <button id="btn-emergency-stop" class="cyber-btn danger">⛔ EMERGENCY STOP</button>
+        <button id="btn-resume-system" class="cyber-btn">▶ RESUME</button>
+      </div>
+
+      <!-- Radar Telemetry Overlay -->
+      <div class="radar-overlay">
+        <div style="color:var(--cyan-neon); font-weight:700;">ORB-7 CHASSIS TELEMETRY</div>
+        <div id="radar-pos">X: 0.00 | Y: 0.00 | H: 0.0°</div>
+        <div id="radar-lidar-min">Min Clearance: 1.20m</div>
+        <div style="color:var(--text-dim); font-size:10px;">Kinematics: 3-Wheel Omni Drive (WASD enabled)</div>
+      </div>
+
+    </section>
+
+    <!-- RIGHT COLUMN: Interaction, Memory, Learning, Logs -->
+    <section class="right-col">
+
+      <!-- Multi-Tab Panel -->
+      <div class="cyber-panel" style="flex: 1;">
+        <div class="tab-nav">
+          <button class="tab-btn active" data-tab="overview">Chat HUD</button>
+          <button class="tab-btn" data-tab="memory">Memory</button>
+          <button class="tab-btn" data-tab="learning">Learning & Eval</button>
+          <button class="tab-btn" data-tab="tools">Tools (RBAC)</button>
+        </div>
+
+        <!-- TAB 1: Chat HUD -->
+        <div id="tab-content-overview" class="panel-body" style="padding:0; display:flex; flex-direction:column; height:calc(100% - 42px);">
+          <div class="chat-container" style="flex:1;">
+            <div id="chat-messages" class="chat-messages">
+              <div class="msg-bubble phass">
+                <strong>P.H.A.S.S SPHERE:</strong> System initialized. Omni-wheel chassis, 360° LiDAR, and multi-tier memory are online. Send a directive or choose an action.
+              </div>
+            </div>
+            <div style="padding: 6px 10px; background: rgba(0,0,0,0.3); display:flex; justify-content:space-between; align-items:center; font-size:11px;">
+              <div style="display:flex; gap:6px;">
+                <span style="color:var(--text-dim);">Feedback:</span>
+                <button id="btn-fb-positive" class="cyber-btn" style="padding:2px 8px; font-size:10px;">👍 Good Job</button>
+                <button id="btn-fb-correction" class="cyber-btn" style="padding:2px 8px; font-size:10px;">✏ Correct AI</button>
+              </div>
+              <div style="display:flex; gap:6px; align-items:center;">
+                <label style="color:var(--cyan-neon); font-size:10px; cursor:pointer; display:flex; align-items:center; gap:4px;">
+                  <input type="checkbox" id="toggle-tts" checked> 🔊 Speech Voice
+                </label>
+              </div>
+            </div>
+            <div class="chat-input-bar">
+              <button id="btn-voice-input" class="cyber-btn" title="Click to Speak (STT)">🎙 MIC</button>
+              <input id="directive-input" type="text" class="chat-input" placeholder="Type natural language command or speak...">
+              <button id="btn-send-directive" class="cyber-btn">SEND</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: Memory Inspector -->
+        <div id="tab-content-memory" class="panel-body" style="display:none;">
+          <div style="font-size:11px; color:var(--text-dim); margin-bottom:8px;">Multi-Tier Persistent Knowledge & Spatial Anchors</div>
+          <div id="memory-list-view">
+            <!-- Populated via API -->
+          </div>
+        </div>
+
+        <!-- TAB 3: Learning & Evaluation Metrics -->
+        <div id="tab-content-learning" class="panel-body" style="display:none;">
+          <div style="font-size:11px; color:var(--text-dim); margin-bottom:8px;">Closed-Loop Learning & Evaluation Performance</div>
+          
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:12px;">
+            <div class="hud-card">
+              <div class="hud-label">Goal Success Rate</div>
+              <div id="metric-success-rate" class="hud-value highlight">95.0%</div>
+            </div>
+            <div class="hud-card">
+              <div class="hud-label">Planning Quality</div>
+              <div id="metric-plan-quality" class="hud-value highlight">92%</div>
+            </div>
+            <div class="hud-card">
+              <div class="hud-label">Error Recovery Rate</div>
+              <div id="metric-error-recovery" class="hud-value">88.0%</div>
+            </div>
+            <div class="hud-card">
+              <div class="hud-label">Autonomy Index</div>
+              <div id="metric-autonomy" class="hud-value">96.5%</div>
+            </div>
+          </div>
+
+          <div class="hud-card">
+            <div class="hud-label">Total Lessons Learned from Experience</div>
+            <div id="metric-total-lessons" class="hud-value highlight">4</div>
+          </div>
+        </div>
+
+        <!-- TAB 4: Tools & RBAC Permissions -->
+        <div id="tab-content-tools" class="panel-body" style="display:none;">
+          <div style="font-size:11px; color:var(--text-dim); margin-bottom:8px;">Tool Registry & Security Permission Tiers</div>
+          <div id="tools-list-view">
+            <!-- Populated via API -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Event Bus Logs Stream -->
+      <div class="cyber-panel" style="flex: 0 0 200px;">
+        <div class="panel-header">
+          <div class="panel-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            System Event Log Stream
+          </div>
+        </div>
+        <div id="log-terminal" class="log-terminal">
+          <!-- Real-time logs populated here -->
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="/static/js/simulation3d.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+# Orvix Sphere — Complete Dependency Specification
+# Install with: pip install -r requirements.txt
+
+# Web Dashboard & REST / WebSocket API
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+jinja2>=3.1.3
+pydantic>=2.6.0
+pydantic-settings>=2.2.0
+python-dotenv>=1.0.1
+python-multipart>=0.0.9
+websockets>=12.0
+
+# Cloud AI & Primary Cognitive Reasoning (Google Gemini Flash)
+google-generativeai>=0.8.0
+requests>=2.31.0
+httpx>=0.27.0
+
+# Local AI Engine & Ollama (Qwen2.5-7B / Local Fallbacks)
+ollama>=0.1.7
+
+# Model Context Protocol (MCP)
+mcp>=1.0.0
+aiohttp>=3.9.0
+anyio>=4.0.0
+
+# Proactive Autonomous Layer & Diagnostics
+APScheduler>=3.10.0
+watchdog>=4.0.0
+psutil>=5.9.0
+pyyaml>=6.0.1
+rich>=13.7.0
+numpy>=1.26.0
+
+# Test Suite & Development
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+
+# Optional Desktop Utilities
+pillow>=10.0.0
+pyttsx3>=2.90; sys_platform == 'win32'
+keyboard>=0.13.5; sys_platform == 'win32'

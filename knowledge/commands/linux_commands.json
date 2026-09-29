@@ -1,0 +1,4802 @@
+[
+  {
+    "name": "ls",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "List directory contents",
+    "syntax": "ls [options] [file/dir]",
+    "flags": {
+      "-l": "long format",
+      "-a": "all files including hidden",
+      "-h": "human readable sizes",
+      "-t": "sort by time",
+      "-r": "reverse sort",
+      "-R": "recursive"
+    },
+    "examples": [
+      {
+        "cmd": "ls -la",
+        "desc": "Detailed list of all files"
+      },
+      {
+        "cmd": "ls -lh /var/log",
+        "desc": "List logs with human sizes"
+      },
+      {
+        "cmd": "ls -ltr",
+        "desc": "Sort by mod time ascending"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-ChildItem (ls/dir)",
+    "tags": [
+      "files",
+      "directory",
+      "list",
+      "view"
+    ]
+  },
+  {
+    "name": "cd",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Change current working directory",
+    "syntax": "cd [dir]",
+    "flags": {
+      "-": "go to previous directory",
+      "~": "go to home directory"
+    },
+    "examples": [
+      {
+        "cmd": "cd /etc/nginx",
+        "desc": "Go to nginx dir"
+      },
+      {
+        "cmd": "cd ~",
+        "desc": "Go to home"
+      },
+      {
+        "cmd": "cd -",
+        "desc": "Go back to previous dir"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Set-Location (cd)",
+    "tags": [
+      "directory",
+      "navigate",
+      "cwd"
+    ]
+  },
+  {
+    "name": "pwd",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Print current working directory path",
+    "syntax": "pwd [options]",
+    "flags": {
+      "-P": "physical path resolving symlinks",
+      "-L": "logical path with symlinks"
+    },
+    "examples": [
+      {
+        "cmd": "pwd",
+        "desc": "Print current directory path"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "(Get-Location).Path (pwd)",
+    "tags": [
+      "directory",
+      "cwd",
+      "path"
+    ]
+  },
+  {
+    "name": "cp",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Copy files and directories",
+    "syntax": "cp [options] source destination",
+    "flags": {
+      "-r": "recursive copy",
+      "-v": "verbose",
+      "-p": "preserve attributes",
+      "-u": "update only newer",
+      "-i": "interactive prompt"
+    },
+    "examples": [
+      {
+        "cmd": "cp file.txt backup.txt",
+        "desc": "Copy single file"
+      },
+      {
+        "cmd": "cp -rv /src /dst",
+        "desc": "Recursively copy directory with verbose output"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Copy-Item (cp/copy)",
+    "tags": [
+      "copy",
+      "file",
+      "duplicate"
+    ]
+  },
+  {
+    "name": "mv",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Move or rename files and directories",
+    "syntax": "mv [options] source destination",
+    "flags": {
+      "-v": "verbose",
+      "-i": "prompt before overwrite",
+      "-n": "do not overwrite existing"
+    },
+    "examples": [
+      {
+        "cmd": "mv old.txt new.txt",
+        "desc": "Rename file"
+      },
+      {
+        "cmd": "mv *.log /archive/",
+        "desc": "Move log files to archive"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Move-Item (mv/move)",
+    "tags": [
+      "move",
+      "rename",
+      "file"
+    ]
+  },
+  {
+    "name": "rm",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Remove files or directories",
+    "syntax": "rm [options] file...",
+    "flags": {
+      "-r": "recursive removal",
+      "-f": "force without prompt",
+      "-v": "verbose",
+      "-i": "prompt before every removal"
+    },
+    "examples": [
+      {
+        "cmd": "rm temp.txt",
+        "desc": "Delete file"
+      },
+      {
+        "cmd": "rm -rf ./build",
+        "desc": "Recursively remove build folder"
+      }
+    ],
+    "safety": "dangerous",
+    "is_destructive": true,
+    "requires_elevation": false,
+    "windows_equivalent": "Remove-Item -Recurse -Force",
+    "tags": [
+      "delete",
+      "remove",
+      "clean",
+      "destroy"
+    ]
+  },
+  {
+    "name": "mkdir",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Create new directories",
+    "syntax": "mkdir [options] dir...",
+    "flags": {
+      "-p": "create parent directories as needed",
+      "-m": "set permission mode",
+      "-v": "verbose"
+    },
+    "examples": [
+      {
+        "cmd": "mkdir -p app/src/components",
+        "desc": "Create nested directories"
+      },
+      {
+        "cmd": "mkdir -m 755 public",
+        "desc": "Create directory with mode 755"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "New-Item -ItemType Directory (mkdir)",
+    "tags": [
+      "create",
+      "directory",
+      "folder"
+    ]
+  },
+  {
+    "name": "rmdir",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Remove empty directories",
+    "syntax": "rmdir [options] dir...",
+    "flags": {
+      "-p": "remove empty parent directories too",
+      "-v": "verbose"
+    },
+    "examples": [
+      {
+        "cmd": "rmdir old_dir",
+        "desc": "Remove empty directory"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": true,
+    "requires_elevation": false,
+    "windows_equivalent": "Remove-Item",
+    "tags": [
+      "remove",
+      "empty",
+      "directory"
+    ]
+  },
+  {
+    "name": "touch",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Update file timestamps or create empty file if not existing",
+    "syntax": "touch [options] file...",
+    "flags": {
+      "-a": "change only access time",
+      "-m": "change only modification time",
+      "-c": "do not create file if absent"
+    },
+    "examples": [
+      {
+        "cmd": "touch index.js",
+        "desc": "Create empty file or touch timestamp"
+      },
+      {
+        "cmd": "touch -t 202601010000 file.txt",
+        "desc": "Set specific timestamp"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "New-Item -ItemType File",
+    "tags": [
+      "create",
+      "file",
+      "timestamp"
+    ]
+  },
+  {
+    "name": "ln",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Make links between files (symbolic or hard)",
+    "syntax": "ln [options] target link_name",
+    "flags": {
+      "-s": "make symbolic link instead of hard link",
+      "-f": "force remove existing destination",
+      "-v": "verbose"
+    },
+    "examples": [
+      {
+        "cmd": "ln -s /var/log/app.log ~/current_log",
+        "desc": "Create symbolic link to log file"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "New-Item -ItemType SymbolicLink",
+    "tags": [
+      "symlink",
+      "link",
+      "alias"
+    ]
+  },
+  {
+    "name": "stat",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Display detailed file or filesystem status",
+    "syntax": "stat [options] file...",
+    "flags": {
+      "-c": "use specified format",
+      "-f": "display filesystem status instead of file status"
+    },
+    "examples": [
+      {
+        "cmd": "stat data.csv",
+        "desc": "Show inode, permissions, timestamps of data.csv"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-ItemProperty",
+    "tags": [
+      "info",
+      "file",
+      "metadata",
+      "inode"
+    ]
+  },
+  {
+    "name": "file",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Determine file type using magic numbers",
+    "syntax": "file [options] file...",
+    "flags": {
+      "-b": "brief mode without filename",
+      "-i": "output MIME type strings"
+    },
+    "examples": [
+      {
+        "cmd": "file archive.tar.gz",
+        "desc": "Check archive type"
+      },
+      {
+        "cmd": "file -i script.py",
+        "desc": "Show mime type"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Item",
+    "tags": [
+      "mime",
+      "type",
+      "magic",
+      "binary"
+    ]
+  },
+  {
+    "name": "df",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Report file system disk space usage",
+    "syntax": "df [options] [path]",
+    "flags": {
+      "-h": "human readable format",
+      "-T": "print file system type",
+      "-i": "list inode information"
+    },
+    "examples": [
+      {
+        "cmd": "df -h",
+        "desc": "Show free disk space on all mounted filesystems in GB/MB"
+      },
+      {
+        "cmd": "df -hT /",
+        "desc": "Show root partition space and fs type"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-PSDrive",
+    "tags": [
+      "disk",
+      "space",
+      "storage",
+      "free"
+    ]
+  },
+  {
+    "name": "du",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Estimate file and directory space usage",
+    "syntax": "du [options] [path]",
+    "flags": {
+      "-h": "human readable format",
+      "-s": "display only a total for each argument",
+      "-d": "max depth",
+      "-a": "all files not just dirs"
+    },
+    "examples": [
+      {
+        "cmd": "du -sh /var/log",
+        "desc": "Summary size of /var/log"
+      },
+      {
+        "cmd": "du -h --max-depth=1 /home",
+        "desc": "Top-level sizes in /home"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-ChildItem | Measure-Object -Property Length -Sum",
+    "tags": [
+      "size",
+      "directory",
+      "usage",
+      "disk"
+    ]
+  },
+  {
+    "name": "tree",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "List directory contents in a tree-like format",
+    "syntax": "tree [options] [dir]",
+    "flags": {
+      "-L": "max display level depth",
+      "-a": "all files including hidden",
+      "-d": "list directories only",
+      "-I": "ignore pattern"
+    },
+    "examples": [
+      {
+        "cmd": "tree -L 2",
+        "desc": "Display directory tree 2 levels deep"
+      },
+      {
+        "cmd": "tree -d -I 'node_modules|venv'",
+        "desc": "Tree without dependencies"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "tree /F",
+    "tags": [
+      "hierarchy",
+      "visual",
+      "directory",
+      "structure"
+    ]
+  },
+  {
+    "name": "basename",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Strip directory and suffix from filenames",
+    "syntax": "basename name [suffix]",
+    "flags": {
+      "-a": "support multiple arguments",
+      "-s": "remove trailing suffix"
+    },
+    "examples": [
+      {
+        "cmd": "basename /usr/local/bin/python",
+        "desc": "Outputs 'python'"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Split-Path -Leaf",
+    "tags": [
+      "filename",
+      "path",
+      "utility"
+    ]
+  },
+  {
+    "name": "dirname",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Strip last component from file name path",
+    "syntax": "dirname path...",
+    "flags": {},
+    "examples": [
+      {
+        "cmd": "dirname /usr/local/bin/python",
+        "desc": "Outputs '/usr/local/bin'"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Split-Path -Parent",
+    "tags": [
+      "parent",
+      "path",
+      "directory"
+    ]
+  },
+  {
+    "name": "realpath",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Print the resolved absolute path",
+    "syntax": "realpath [options] path...",
+    "flags": {
+      "-e": "ensure all path components exist",
+      "-m": "resolve even if non-existent"
+    },
+    "examples": [
+      {
+        "cmd": "realpath ./symlink",
+        "desc": "Print absolute canonical target path"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "(Resolve-Path $path).Path",
+    "tags": [
+      "path",
+      "canonical",
+      "absolute"
+    ]
+  },
+  {
+    "name": "mktemp",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Create a temporary file or directory safely",
+    "syntax": "mktemp [options] [template]",
+    "flags": {
+      "-d": "create a directory instead of a file",
+      "-p": "use directory as prefix"
+    },
+    "examples": [
+      {
+        "cmd": "TEMP_FILE=$(mktemp)",
+        "desc": "Create temporary file and save variable"
+      },
+      {
+        "cmd": "mktemp -d /tmp/orvix.XXXXXX",
+        "desc": "Create secure temp folder"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "[System.IO.Path]::GetTempFileName()",
+    "tags": [
+      "temp",
+      "file",
+      "sandbox"
+    ]
+  },
+  {
+    "name": "shred",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Overwrite a file to hide its contents and optionally delete it",
+    "syntax": "shred [options] file...",
+    "flags": {
+      "-u": "truncate and remove file after overwriting",
+      "-z": "add a final overwrite with zeros",
+      "-n": "number of overwrite passes"
+    },
+    "examples": [
+      {
+        "cmd": "shred -u -z secret.key",
+        "desc": "Securely wipe and delete file"
+      }
+    ],
+    "safety": "dangerous",
+    "is_destructive": true,
+    "requires_elevation": false,
+    "windows_equivalent": "sdelete",
+    "tags": [
+      "wipe",
+      "secure",
+      "delete",
+      "erase"
+    ]
+  },
+  {
+    "name": "find",
+    "shell": "bash",
+    "category": "search",
+    "description": "Search for files in a directory hierarchy",
+    "syntax": "find [path] [expression]",
+    "flags": {
+      "-name": "case-sensitive pattern match",
+      "-iname": "case-insensitive pattern match",
+      "-type": "f for file, d for dir",
+      "-size": "filter by size (+100M)",
+      "-mtime": "modification time in days",
+      "-exec": "execute command on match"
+    },
+    "examples": [
+      {
+        "cmd": "find . -name '*.py'",
+        "desc": "Find all Python files in current dir"
+      },
+      {
+        "cmd": "find /var/log -type f -size +50M",
+        "desc": "Find files larger than 50MB"
+      },
+      {
+        "cmd": "find . -name '*.tmp' -delete",
+        "desc": "Find and delete tmp files"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-ChildItem -Recurse -Filter",
+    "tags": [
+      "find",
+      "search",
+      "locate",
+      "files"
+    ]
+  },
+  {
+    "name": "locate",
+    "shell": "bash",
+    "category": "search",
+    "description": "Find files by name using a prebuilt indexed database",
+    "syntax": "locate [options] pattern",
+    "flags": {
+      "-i": "ignore case",
+      "-r": "regular expression search",
+      "-n": "limit number of results"
+    },
+    "examples": [
+      {
+        "cmd": "locate nginx.conf",
+        "desc": "Fast database lookup for nginx.conf"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-ChildItem",
+    "tags": [
+      "fast",
+      "search",
+      "index",
+      "locate"
+    ]
+  },
+  {
+    "name": "which",
+    "shell": "bash",
+    "category": "search",
+    "description": "Locate an executable binary in PATH",
+    "syntax": "which [options] command...",
+    "flags": {
+      "-a": "print all matching pathnames in each directory"
+    },
+    "examples": [
+      {
+        "cmd": "which python3",
+        "desc": "Show absolute path to active python3"
+      },
+      {
+        "cmd": "which -a node",
+        "desc": "Show all node executables in PATH"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Command (where)",
+    "tags": [
+      "executable",
+      "path",
+      "binary",
+      "lookup"
+    ]
+  },
+  {
+    "name": "whereis",
+    "shell": "bash",
+    "category": "search",
+    "description": "Locate the binary, source, and manual page files for a command",
+    "syntax": "whereis [options] name...",
+    "flags": {
+      "-b": "search only for binaries",
+      "-m": "search only for manual sections",
+      "-s": "search only for sources"
+    },
+    "examples": [
+      {
+        "cmd": "whereis bash",
+        "desc": "Show binary, man page and config paths for bash"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "where.exe",
+    "tags": [
+      "binary",
+      "man",
+      "locate",
+      "info"
+    ]
+  },
+  {
+    "name": "type",
+    "shell": "bash",
+    "category": "search",
+    "description": "Describe how a command name would be interpreted (builtin, alias, function, or file)",
+    "syntax": "type [options] name...",
+    "flags": {
+      "-a": "print all locations containing executable named file",
+      "-t": "output single word: alias, keyword, function, builtin, file"
+    },
+    "examples": [
+      {
+        "cmd": "type ll",
+        "desc": "Check if ll is an alias or function"
+      },
+      {
+        "cmd": "type -t cd",
+        "desc": "Returns 'builtin'"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Command",
+    "tags": [
+      "identify",
+      "command",
+      "builtin",
+      "alias"
+    ]
+  },
+  {
+    "name": "grep",
+    "shell": "bash",
+    "category": "search",
+    "description": "Search for patterns in files or standard input using regular expressions",
+    "syntax": "grep [options] pattern [file...]",
+    "flags": {
+      "-i": "ignore case",
+      "-r": "recursive search",
+      "-n": "print line number",
+      "-v": "invert match",
+      "-l": "list matching filenames only",
+      "-c": "count matches",
+      "-E": "extended regex (egrep)"
+    },
+    "examples": [
+      {
+        "cmd": "grep -rn 'ERROR' /var/log/",
+        "desc": "Recursively find ERROR with line numbers"
+      },
+      {
+        "cmd": "grep -i 'exception' app.log",
+        "desc": "Case-insensitive search"
+      },
+      {
+        "cmd": "cat file.txt | grep -v '^#'",
+        "desc": "Filter out comments"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Select-String (findstr)",
+    "tags": [
+      "search",
+      "text",
+      "filter",
+      "regex"
+    ]
+  },
+  {
+    "name": "cat",
+    "shell": "bash",
+    "category": "text",
+    "description": "Concatenate files and print on the standard output",
+    "syntax": "cat [options] [file...]",
+    "flags": {
+      "-n": "number all output lines",
+      "-b": "number non-empty output lines",
+      "-s": "suppress repeated empty lines"
+    },
+    "examples": [
+      {
+        "cmd": "cat config.yaml",
+        "desc": "Print file contents"
+      },
+      {
+        "cmd": "cat -n script.py",
+        "desc": "Print file with numbered lines"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Content (cat/type)",
+    "tags": [
+      "read",
+      "display",
+      "print",
+      "text"
+    ]
+  },
+  {
+    "name": "awk",
+    "shell": "bash",
+    "category": "text",
+    "description": "Pattern scanning and processing language for columnar text",
+    "syntax": "awk 'program' [file...]",
+    "flags": {
+      "-F": "field separator",
+      "-v": "assign variable"
+    },
+    "examples": [
+      {
+        "cmd": "awk -F: '{print $1, $3}' /etc/passwd",
+        "desc": "Print user and UID from passwd"
+      },
+      {
+        "cmd": "ps aux | awk '{sum+=$6} END {print sum/1024 \" MB\"}'",
+        "desc": "Sum RSS memory usage"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Select-Object / ForEach-Object",
+    "tags": [
+      "columns",
+      "stream",
+      "parse",
+      "process"
+    ]
+  },
+  {
+    "name": "sed",
+    "shell": "bash",
+    "category": "text",
+    "description": "Stream editor for filtering and transforming text",
+    "syntax": "sed [options] 'script' [file...]",
+    "flags": {
+      "-i": "edit files in place",
+      "-e": "add script to commands",
+      "-E": "extended regex"
+    },
+    "examples": [
+      {
+        "cmd": "sed 's/localhost/127.0.0.1/g' config.env",
+        "desc": "Replace localhost with IP"
+      },
+      {
+        "cmd": "sed -i 's/foo/bar/g' test.txt",
+        "desc": "In-place file text replacement"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "(Get-Content) -replace ... | Set-Content",
+    "tags": [
+      "replace",
+      "substitute",
+      "stream",
+      "regex"
+    ]
+  },
+  {
+    "name": "cut",
+    "shell": "bash",
+    "category": "text",
+    "description": "Remove sections from each line of files",
+    "syntax": "cut [options] [file...]",
+    "flags": {
+      "-d": "delimiter character",
+      "-f": "select only these fields",
+      "-c": "select only these characters"
+    },
+    "examples": [
+      {
+        "cmd": "cut -d',' -f1,3 data.csv",
+        "desc": "Extract columns 1 and 3 of CSV"
+      },
+      {
+        "cmd": "cut -c1-10 string.txt",
+        "desc": "Extract characters 1 through 10"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Select-Object",
+    "tags": [
+      "columns",
+      "fields",
+      "delimiters",
+      "slice"
+    ]
+  },
+  {
+    "name": "sort",
+    "shell": "bash",
+    "category": "text",
+    "description": "Sort lines of text files",
+    "syntax": "sort [options] [file...]",
+    "flags": {
+      "-n": "numeric sort",
+      "-r": "reverse the result of comparisons",
+      "-u": "output only the first of an equal run (unique)",
+      "-k": "sort via a key column"
+    },
+    "examples": [
+      {
+        "cmd": "sort -n numbers.txt",
+        "desc": "Sort numbers ascending"
+      },
+      {
+        "cmd": "sort -r -k2 data.tsv",
+        "desc": "Sort on column 2 descending"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Sort-Object (sort)",
+    "tags": [
+      "sort",
+      "order",
+      "arrange"
+    ]
+  },
+  {
+    "name": "uniq",
+    "shell": "bash",
+    "category": "text",
+    "description": "Report or omit repeated adjacent lines",
+    "syntax": "uniq [options] [input [output]]",
+    "flags": {
+      "-c": "prefix lines by the number of occurrences",
+      "-d": "only print duplicate lines",
+      "-u": "only print unique lines",
+      "-i": "ignore case"
+    },
+    "examples": [
+      {
+        "cmd": "sort ip_list.txt | uniq -c | sort -nr",
+        "desc": "Count frequency of IPs and sort highest first"
+      },
+      {
+        "cmd": "sort names.txt | uniq -d",
+        "desc": "Find duplicate entries"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Unique",
+    "tags": [
+      "duplicates",
+      "unique",
+      "count",
+      "frequency"
+    ]
+  },
+  {
+    "name": "tr",
+    "shell": "bash",
+    "category": "text",
+    "description": "Translate or delete characters from standard input",
+    "syntax": "tr [options] SET1 [SET2]",
+    "flags": {
+      "-d": "delete characters in SET1",
+      "-s": "squeeze repeats",
+      "-c": "complement SET1"
+    },
+    "examples": [
+      {
+        "cmd": "cat file.txt | tr 'a-z' 'A-Z'",
+        "desc": "Uppercase entire input"
+      },
+      {
+        "cmd": "cat data.txt | tr -d '\\r'",
+        "desc": "Strip DOS CRLF carriage returns"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": ".ToUpper() / -replace",
+    "tags": [
+      "translate",
+      "case",
+      "transform",
+      "char"
+    ]
+  },
+  {
+    "name": "wc",
+    "shell": "bash",
+    "category": "text",
+    "description": "Print newline, word, and byte counts for each file",
+    "syntax": "wc [options] [file...]",
+    "flags": {
+      "-l": "print newline counts",
+      "-w": "print word counts",
+      "-c": "print byte counts",
+      "-m": "print character counts"
+    },
+    "examples": [
+      {
+        "cmd": "wc -l log.txt",
+        "desc": "Count number of lines in file"
+      },
+      {
+        "cmd": "find . -name '*.py' | wc -l",
+        "desc": "Count Python files in project"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Measure-Object -Line -Word -Character",
+    "tags": [
+      "lines",
+      "count",
+      "words",
+      "metrics"
+    ]
+  },
+  {
+    "name": "head",
+    "shell": "bash",
+    "category": "text",
+    "description": "Output the first part of files",
+    "syntax": "head [options] [file...]",
+    "flags": {
+      "-n": "print first N lines",
+      "-c": "print first N bytes"
+    },
+    "examples": [
+      {
+        "cmd": "head -n 20 app.log",
+        "desc": "Show first 20 lines of log"
+      },
+      {
+        "cmd": "head -n 1 data.csv",
+        "desc": "View CSV header"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Content -Head (gc -TotalCount)",
+    "tags": [
+      "preview",
+      "first",
+      "start",
+      "lines"
+    ]
+  },
+  {
+    "name": "tail",
+    "shell": "bash",
+    "category": "text",
+    "description": "Output the last part of files or stream updates",
+    "syntax": "tail [options] [file...]",
+    "flags": {
+      "-n": "output last N lines",
+      "-f": "output appended data as file grows (follow)",
+      "-F": "follow and retry if file re-created"
+    },
+    "examples": [
+      {
+        "cmd": "tail -n 50 /var/log/syslog",
+        "desc": "Show last 50 lines of syslog"
+      },
+      {
+        "cmd": "tail -f app.log",
+        "desc": "Live follow log output"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Content -Tail -Wait",
+    "tags": [
+      "log",
+      "tail",
+      "stream",
+      "live"
+    ]
+  },
+  {
+    "name": "tee",
+    "shell": "bash",
+    "category": "text",
+    "description": "Read from standard input and write to standard output and files",
+    "syntax": "tee [options] [file...]",
+    "flags": {
+      "-a": "append to given files, do not overwrite",
+      "-i": "ignore interrupt signals"
+    },
+    "examples": [
+      {
+        "cmd": "python app.py | tee app.log",
+        "desc": "Display output and simultaneously save to app.log"
+      },
+      {
+        "cmd": "echo 'deb http://...' | sudo tee /etc/apt/sources.list.d/pkg.list",
+        "desc": "Write root file safely"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Tee-Object (tee)",
+    "tags": [
+      "stream",
+      "split",
+      "pipe",
+      "redirect"
+    ]
+  },
+  {
+    "name": "diff",
+    "shell": "bash",
+    "category": "text",
+    "description": "Compare files line by line",
+    "syntax": "diff [options] from-file to-file",
+    "flags": {
+      "-u": "output unified diff format",
+      "-r": "recursively compare subdirectories",
+      "-w": "ignore all white space",
+      "-y": "output in two columns side-by-side"
+    },
+    "examples": [
+      {
+        "cmd": "diff -u file_old.py file_new.py",
+        "desc": "Create unified diff patch"
+      },
+      {
+        "cmd": "diff -rq dir1/ dir2/",
+        "desc": "Quickly check differences between two directories"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Compare-Object (diff)",
+    "tags": [
+      "diff",
+      "compare",
+      "patch",
+      "changes"
+    ]
+  },
+  {
+    "name": "less",
+    "shell": "bash",
+    "category": "text",
+    "description": "Opposite of more: paginate and browse file content interactively",
+    "syntax": "less [options] [file...]",
+    "flags": {
+      "-N": "show line numbers",
+      "-S": "chop long lines instead of wrapping",
+      "-i": "ignore case in searches"
+    },
+    "examples": [
+      {
+        "cmd": "less -N large_log.txt",
+        "desc": "Browse log with line numbers"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "more",
+    "tags": [
+      "pager",
+      "viewer",
+      "scroll",
+      "interactive"
+    ]
+  },
+  {
+    "name": "column",
+    "shell": "bash",
+    "category": "text",
+    "description": "Columnate lists or format text into aligned tables",
+    "syntax": "column [options] [file...]",
+    "flags": {
+      "-t": "determine the number of columns the input contains and create a table",
+      "-s": "specify delimiter character"
+    },
+    "examples": [
+      {
+        "cmd": "mount | column -t",
+        "desc": "Pretty print mounts into aligned columns"
+      },
+      {
+        "cmd": "column -s, -t data.csv",
+        "desc": "Align CSV table nicely"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Format-Table",
+    "tags": [
+      "format",
+      "table",
+      "align",
+      "columns"
+    ]
+  },
+  {
+    "name": "strings",
+    "shell": "bash",
+    "category": "text",
+    "description": "Print the sequences of printable characters in files or binaries",
+    "syntax": "strings [options] [file...]",
+    "flags": {
+      "-n": "minimum string length",
+      "-t": "print the offset of the string"
+    },
+    "examples": [
+      {
+        "cmd": "strings /usr/bin/python3 | grep 'Python'",
+        "desc": "Search strings inside executable binary"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Select-String / strings.exe",
+    "tags": [
+      "binary",
+      "strings",
+      "inspect",
+      "disassemble"
+    ]
+  },
+  {
+    "name": "xargs",
+    "shell": "bash",
+    "category": "text",
+    "description": "Build and execute command lines from standard input",
+    "syntax": "xargs [options] [command]",
+    "flags": {
+      "-I": "replace occurrence of placeholder in args",
+      "-P": "run up to max-procs processes at a time",
+      "-0": "input items are separated by a null byte"
+    },
+    "examples": [
+      {
+        "cmd": "find . -name '*.bak' -print0 | xargs -0 rm -f",
+        "desc": "Safely delete all .bak files handling spaces"
+      },
+      {
+        "cmd": "cat urls.txt | xargs -n 1 -P 4 curl -O",
+        "desc": "Download 4 URLs concurrently"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "ForEach-Object (% / foreach)",
+    "tags": [
+      "batch",
+      "pipe",
+      "parallel",
+      "args"
+    ]
+  },
+  {
+    "name": "ps",
+    "shell": "bash",
+    "category": "process",
+    "description": "Report a snapshot of the current processes",
+    "syntax": "ps [options]",
+    "flags": {
+      "aux": "show processes for all users with terminal, cpu/mem info",
+      "-ef": "standard syntax for full listing",
+      "-u": "processes owned by specific user"
+    },
+    "examples": [
+      {
+        "cmd": "ps aux | grep node",
+        "desc": "Find running node processes"
+      },
+      {
+        "cmd": "ps -ef",
+        "desc": "Display full process list"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Process (ps/gps)",
+    "tags": [
+      "process",
+      "tasks",
+      "list",
+      "ps"
+    ]
+  },
+  {
+    "name": "top",
+    "shell": "bash",
+    "category": "process",
+    "description": "Display Linux processes in real-time",
+    "syntax": "top [options]",
+    "flags": {
+      "-b": "batch mode for logging/scripting",
+      "-n": "number of iterations before exit",
+      "-u": "monitor only user processes",
+      "-p": "monitor specific PIDs"
+    },
+    "examples": [
+      {
+        "cmd": "top -b -n 1 | head -n 20",
+        "desc": "Snapshot of top processes in non-interactive mode"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Process | Sort CPU -Descending",
+    "tags": [
+      "monitor",
+      "cpu",
+      "ram",
+      "top"
+    ]
+  },
+  {
+    "name": "htop",
+    "shell": "bash",
+    "category": "process",
+    "description": "Interactive process viewer and process manager with color display",
+    "syntax": "htop [options]",
+    "flags": {
+      "-u": "show only processes of given user",
+      "-p": "show only given PIDs"
+    },
+    "examples": [
+      {
+        "cmd": "htop",
+        "desc": "Launch interactive visual process viewer"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "taskmgr",
+    "tags": [
+      "interactive",
+      "viewer",
+      "cpu",
+      "process"
+    ]
+  },
+  {
+    "name": "kill",
+    "shell": "bash",
+    "category": "process",
+    "description": "Send a signal to a process (terminate by PID)",
+    "syntax": "kill [options] pid...",
+    "flags": {
+      "-9": "SIGKILL force kill immediately",
+      "-15": "SIGTERM graceful termination request (default)",
+      "-l": "list signal names"
+    },
+    "examples": [
+      {
+        "cmd": "kill 1234",
+        "desc": "Gracefully terminate process PID 1234"
+      },
+      {
+        "cmd": "kill -9 1234",
+        "desc": "Forcefully terminate process PID 1234"
+      }
+    ],
+    "safety": "dangerous",
+    "is_destructive": true,
+    "requires_elevation": false,
+    "windows_equivalent": "Stop-Process -Id (kill)",
+    "tags": [
+      "kill",
+      "terminate",
+      "stop",
+      "signal"
+    ]
+  },
+  {
+    "name": "killall",
+    "shell": "bash",
+    "category": "process",
+    "description": "Kill processes by name",
+    "syntax": "killall [options] name...",
+    "flags": {
+      "-9": "SIGKILL force kill",
+      "-u": "kill only processes owned by user",
+      "-I": "ignore case"
+    },
+    "examples": [
+      {
+        "cmd": "killall nginx",
+        "desc": "Terminate all processes named nginx"
+      },
+      {
+        "cmd": "killall -9 python3",
+        "desc": "Force kill all python3 processes"
+      }
+    ],
+    "safety": "dangerous",
+    "is_destructive": true,
+    "requires_elevation": false,
+    "windows_equivalent": "Stop-Process -Name",
+    "tags": [
+      "kill",
+      "process",
+      "name",
+      "terminate"
+    ]
+  },
+  {
+    "name": "pkill",
+    "shell": "bash",
+    "category": "process",
+    "description": "Signal processes based on pattern matching against process name or cmdline",
+    "syntax": "pkill [options] pattern",
+    "flags": {
+      "-f": "match against full argument list",
+      "-9": "SIGKILL force signal",
+      "-u": "match by user"
+    },
+    "examples": [
+      {
+        "cmd": "pkill -f 'python app.py'",
+        "desc": "Kill process matching full command line"
+      }
+    ],
+    "safety": "dangerous",
+    "is_destructive": true,
+    "requires_elevation": false,
+    "windows_equivalent": "Stop-Process",
+    "tags": [
+      "signal",
+      "pattern",
+      "kill",
+      "process"
+    ]
+  },
+  {
+    "name": "pgrep",
+    "shell": "bash",
+    "category": "process",
+    "description": "Look up process IDs based on pattern match",
+    "syntax": "pgrep [options] pattern",
+    "flags": {
+      "-l": "list process name in addition to PID",
+      "-a": "list full command line and PID",
+      "-u": "filter by user"
+    },
+    "examples": [
+      {
+        "cmd": "pgrep -a python",
+        "desc": "Show PID and full command line of running Python scripts"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Process | Where ProcessName -Match",
+    "tags": [
+      "pid",
+      "search",
+      "process",
+      "lookup"
+    ]
+  },
+  {
+    "name": "nohup",
+    "shell": "bash",
+    "category": "process",
+    "description": "Run a command immune to hangups, with output to a non-tty",
+    "syntax": "nohup command [arg...] &",
+    "flags": {},
+    "examples": [
+      {
+        "cmd": "nohup python server.py > server.log 2>&1 &",
+        "desc": "Run background server detached from terminal"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Start-Process",
+    "tags": [
+      "background",
+      "daemon",
+      "detach",
+      "nohup"
+    ]
+  },
+  {
+    "name": "nice",
+    "shell": "bash",
+    "category": "process",
+    "description": "Run a program with modified scheduling priority",
+    "syntax": "nice [options] [command [arg...]]",
+    "flags": {
+      "-n": "add integer niceness (-20 high priority to 19 lowest)"
+    },
+    "examples": [
+      {
+        "cmd": "nice -n 10 python heavy_compute.py",
+        "desc": "Run low-priority background computation"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Set priority in Process",
+    "tags": [
+      "priority",
+      "scheduling",
+      "cpu",
+      "niceness"
+    ]
+  },
+  {
+    "name": "renice",
+    "shell": "bash",
+    "category": "process",
+    "description": "Alter priority of running processes",
+    "syntax": "renice priority [options] pid...",
+    "flags": {
+      "-p": "force to be interpreted as process IDs",
+      "-u": "interpret as user names"
+    },
+    "examples": [
+      {
+        "cmd": "renice +5 1234",
+        "desc": "Lower CPU priority of process 1234"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "(Get-Process -Id 1234).PriorityClass",
+    "tags": [
+      "priority",
+      "nice",
+      "process"
+    ]
+  },
+  {
+    "name": "jobs",
+    "shell": "bash",
+    "category": "process",
+    "description": "List active background jobs in the current shell session",
+    "syntax": "jobs [options]",
+    "flags": {
+      "-l": "list process IDs in addition to normal information",
+      "-p": "list only process IDs"
+    },
+    "examples": [
+      {
+        "cmd": "jobs -l",
+        "desc": "List background shell jobs with PIDs"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Job",
+    "tags": [
+      "jobs",
+      "background",
+      "shell"
+    ]
+  },
+  {
+    "name": "bg",
+    "shell": "bash",
+    "category": "process",
+    "description": "Resume suspended jobs in the background",
+    "syntax": "bg [job_spec...]",
+    "flags": {},
+    "examples": [
+      {
+        "cmd": "bg %1",
+        "desc": "Resume job 1 in the background"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Resume-Job",
+    "tags": [
+      "background",
+      "resume",
+      "jobs"
+    ]
+  },
+  {
+    "name": "fg",
+    "shell": "bash",
+    "category": "process",
+    "description": "Move background job into the foreground",
+    "syntax": "fg [job_spec]",
+    "flags": {},
+    "examples": [
+      {
+        "cmd": "fg %1",
+        "desc": "Bring job 1 to foreground interactive"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Receive-Job",
+    "tags": [
+      "foreground",
+      "jobs",
+      "interactive"
+    ]
+  },
+  {
+    "name": "pidof",
+    "shell": "bash",
+    "category": "process",
+    "description": "Find the process ID of a running program",
+    "syntax": "pidof [options] program...",
+    "flags": {
+      "-s": "single PID only",
+      "-x": "scripts too"
+    },
+    "examples": [
+      {
+        "cmd": "pidof nginx",
+        "desc": "Get PID of nginx"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "(Get-Process nginx).Id",
+    "tags": [
+      "pid",
+      "lookup",
+      "id"
+    ]
+  },
+  {
+    "name": "pstree",
+    "shell": "bash",
+    "category": "process",
+    "description": "Display a tree of processes",
+    "syntax": "pstree [options] [pid/user]",
+    "flags": {
+      "-p": "show PIDs",
+      "-u": "show uid transitions",
+      "-a": "show command line arguments"
+    },
+    "examples": [
+      {
+        "cmd": "pstree -p",
+        "desc": "Show tree of running processes with PIDs"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-CimInstance Win32_Process",
+    "tags": [
+      "tree",
+      "hierarchy",
+      "process",
+      "parent"
+    ]
+  },
+  {
+    "name": "lsof",
+    "shell": "bash",
+    "category": "process",
+    "description": "List open files, network sockets, and associated processes",
+    "syntax": "lsof [options] [file]",
+    "flags": {
+      "-i": "select by internet socket (:port)",
+      "-p": "select by PID",
+      "-u": "select by user",
+      "+D": "recurse directory"
+    },
+    "examples": [
+      {
+        "cmd": "lsof -i :8080",
+        "desc": "Find what process is listening on port 8080"
+      },
+      {
+        "cmd": "lsof -p 1234",
+        "desc": "List all open files and sockets of process 1234"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-NetTCPConnection",
+    "tags": [
+      "ports",
+      "sockets",
+      "open files",
+      "inspect"
+    ]
+  },
+  {
+    "name": "fuser",
+    "shell": "bash",
+    "category": "process",
+    "description": "Identify processes using files or sockets and optionally signal them",
+    "syntax": "fuser [options] name...",
+    "flags": {
+      "-k": "kill processes accessing the file",
+      "-n": "search namespace (tcp, udp)",
+      "-v": "verbose"
+    },
+    "examples": [
+      {
+        "cmd": "fuser 8000/tcp",
+        "desc": "Check what PID is holding port 8000"
+      },
+      {
+        "cmd": "fuser -k 8000/tcp",
+        "desc": "Kill whatever process holds port 8000"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Stop-Process (netstat lookup)",
+    "tags": [
+      "ports",
+      "lock",
+      "pid",
+      "free"
+    ]
+  },
+  {
+    "name": "curl",
+    "shell": "bash",
+    "category": "network",
+    "description": "Transfer data from or to a server using HTTP, HTTPS, FTP, etc.",
+    "syntax": "curl [options] [URL...]",
+    "flags": {
+      "-O": "write output to a local file named like remote file",
+      "-L": "follow HTTP redirects",
+      "-I": "fetch headers only (HEAD)",
+      "-X": "specify HTTP request method (GET, POST)",
+      "-H": "pass custom header",
+      "-d": "send HTTP POST data",
+      "-s": "silent mode"
+    },
+    "examples": [
+      {
+        "cmd": "curl -s https://api.ipify.org",
+        "desc": "Get public IP address"
+      },
+      {
+        "cmd": "curl -O -L https://example.com/app.tar.gz",
+        "desc": "Download file following redirects"
+      },
+      {
+        "cmd": "curl -X POST -H 'Content-Type: application/json' -d '{\"key\":\"val\"}' http://localhost:3000/api",
+        "desc": "Send JSON POST"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Invoke-WebRequest / curl.exe",
+    "tags": [
+      "http",
+      "download",
+      "api",
+      "web",
+      "rest"
+    ]
+  },
+  {
+    "name": "wget",
+    "shell": "bash",
+    "category": "network",
+    "description": "Non-interactive network downloader supporting HTTP, HTTPS, and FTP",
+    "syntax": "wget [options] [URL...]",
+    "flags": {
+      "-c": "resume getting a partially-downloaded file",
+      "-O": "write documents to specific file",
+      "-q": "quiet (no output)",
+      "-r": "recursive download"
+    },
+    "examples": [
+      {
+        "cmd": "wget https://example.com/data.zip",
+        "desc": "Download archive file"
+      },
+      {
+        "cmd": "wget -c https://example.com/large.iso",
+        "desc": "Resume interrupted download"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Start-BitsTransfer / curl.exe",
+    "tags": [
+      "download",
+      "fetch",
+      "file",
+      "network"
+    ]
+  },
+  {
+    "name": "ping",
+    "shell": "bash",
+    "category": "network",
+    "description": "Send ICMP ECHO_REQUEST to network hosts to check connectivity and latency",
+    "syntax": "ping [options] destination",
+    "flags": {
+      "-c": "stop after sending count ECHO_REQUEST packets",
+      "-i": "wait interval seconds between sending each packet",
+      "-W": "time to wait for response in seconds"
+    },
+    "examples": [
+      {
+        "cmd": "ping -c 4 8.8.8.8",
+        "desc": "Ping Google DNS 4 times"
+      },
+      {
+        "cmd": "ping -c 3 google.com",
+        "desc": "Check DNS resolution and latency"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Test-Connection (ping)",
+    "tags": [
+      "connectivity",
+      "latency",
+      "icmp",
+      "network"
+    ]
+  },
+  {
+    "name": "traceroute",
+    "shell": "bash",
+    "category": "network",
+    "description": "Print the route packets trace to network host",
+    "syntax": "traceroute [options] host",
+    "flags": {
+      "-n": "do not resolve IP addresses to domain names",
+      "-m": "max number of hops"
+    },
+    "examples": [
+      {
+        "cmd": "traceroute -n 1.1.1.1",
+        "desc": "Trace network route hops to Cloudflare DNS"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Test-NetConnection -TraceRoute (tracert)",
+    "tags": [
+      "route",
+      "hops",
+      "latency",
+      "network"
+    ]
+  },
+  {
+    "name": "ip",
+    "shell": "bash",
+    "category": "network",
+    "description": "Show / manipulate routing, network devices, interfaces and tunnels",
+    "syntax": "ip [options] OBJECT COMMAND",
+    "flags": {
+      "-br": "brief format",
+      "-c": "color output"
+    },
+    "examples": [
+      {
+        "cmd": "ip addr show",
+        "desc": "Display all network interfaces and IP addresses"
+      },
+      {
+        "cmd": "ip route show",
+        "desc": "Display routing table and default gateway"
+      },
+      {
+        "cmd": "ip -br a",
+        "desc": "Brief overview of network interfaces"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-NetIPAddress / Get-NetRoute",
+    "tags": [
+      "network",
+      "interface",
+      "ip",
+      "route"
+    ]
+  },
+  {
+    "name": "ifconfig",
+    "shell": "bash",
+    "category": "network",
+    "description": "Configure or display network interface parameters (legacy net-tools)",
+    "syntax": "ifconfig [interface] [options]",
+    "flags": {
+      "-a": "display all interfaces even if down"
+    },
+    "examples": [
+      {
+        "cmd": "ifconfig -a",
+        "desc": "Display all network interfaces"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "ipconfig",
+    "tags": [
+      "interface",
+      "network",
+      "mac",
+      "legacy"
+    ]
+  },
+  {
+    "name": "netstat",
+    "shell": "bash",
+    "category": "network",
+    "description": "Print network connections, routing tables, and interface statistics",
+    "syntax": "netstat [options]",
+    "flags": {
+      "-t": "tcp connections",
+      "-u": "udp connections",
+      "-l": "listening sockets only",
+      "-n": "show numerical addresses",
+      "-p": "show PID/Program name"
+    },
+    "examples": [
+      {
+        "cmd": "netstat -tulnp",
+        "desc": "Show all listening TCP/UDP ports with PIDs"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "netstat -ano",
+    "tags": [
+      "ports",
+      "connections",
+      "listening",
+      "sockets"
+    ]
+  },
+  {
+    "name": "ss",
+    "shell": "bash",
+    "category": "network",
+    "description": "Modern utility to investigate sockets (faster replacement for netstat)",
+    "syntax": "ss [options] [filter]",
+    "flags": {
+      "-t": "display TCP sockets",
+      "-u": "display UDP sockets",
+      "-l": "display listening sockets",
+      "-n": "do not resolve service names",
+      "-p": "show process using socket"
+    },
+    "examples": [
+      {
+        "cmd": "ss -tulpn",
+        "desc": "Show all listening sockets with PIDs"
+      },
+      {
+        "cmd": "ss -s",
+        "desc": "Display socket summary statistics"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-NetTCPConnection",
+    "tags": [
+      "sockets",
+      "ports",
+      "tcp",
+      "listen"
+    ]
+  },
+  {
+    "name": "dig",
+    "shell": "bash",
+    "category": "network",
+    "description": "DNS lookup utility",
+    "syntax": "dig [options] [@server] domain [type]",
+    "flags": {
+      "+short": "provide terse answer only",
+      "+trace": "trace delegation path from root servers",
+      "-x": "reverse lookup IP to name"
+    },
+    "examples": [
+      {
+        "cmd": "dig google.com",
+        "desc": "Query DNS records for domain"
+      },
+      {
+        "cmd": "dig +short A github.com",
+        "desc": "Get IPv4 address of github.com"
+      },
+      {
+        "cmd": "dig @8.8.8.8 example.com MX",
+        "desc": "Query MX mail records via Google DNS"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Resolve-DnsName",
+    "tags": [
+      "dns",
+      "lookup",
+      "domain",
+      "records"
+    ]
+  },
+  {
+    "name": "nslookup",
+    "shell": "bash",
+    "category": "network",
+    "description": "Query Internet name servers interactively or non-interactively",
+    "syntax": "nslookup [options] domain [server]",
+    "flags": {
+      "-type": "record type query (A, MX, TXT, NS)"
+    },
+    "examples": [
+      {
+        "cmd": "nslookup google.com",
+        "desc": "Resolve domain to IP addresses"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Resolve-DnsName / nslookup",
+    "tags": [
+      "dns",
+      "resolve",
+      "ip"
+    ]
+  },
+  {
+    "name": "host",
+    "shell": "bash",
+    "category": "network",
+    "description": "Simple utility for performing DNS lookups",
+    "syntax": "host [options] name [server]",
+    "flags": {
+      "-t": "specify query type",
+      "-a": "query all types"
+    },
+    "examples": [
+      {
+        "cmd": "host example.com",
+        "desc": "Look up domain IP and mail handling"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Resolve-DnsName",
+    "tags": [
+      "dns",
+      "host",
+      "lookup"
+    ]
+  },
+  {
+    "name": "iptables",
+    "shell": "bash",
+    "category": "network",
+    "description": "Administration tool for IPv4 packet filtering and NAT firewall",
+    "syntax": "iptables [options] [rule]",
+    "flags": {
+      "-L": "list all rules in selected chain",
+      "-n": "numeric output of addresses and ports",
+      "-v": "verbose output",
+      "-F": "flush all chains (clear rules)"
+    },
+    "examples": [
+      {
+        "cmd": "sudo iptables -L -n -v",
+        "desc": "List all active firewall rules with packet counters"
+      }
+    ],
+    "safety": "dangerous",
+    "is_destructive": true,
+    "requires_elevation": true,
+    "windows_equivalent": "Get-NetFirewallRule",
+    "tags": [
+      "firewall",
+      "security",
+      "filter",
+      "packets"
+    ]
+  },
+  {
+    "name": "ufw",
+    "shell": "bash",
+    "category": "network",
+    "description": "Uncomplicated Firewall - user-friendly management interface for iptables",
+    "syntax": "ufw [options] command",
+    "flags": {
+      "status": "show firewall status and rules",
+      "enable": "enable firewall",
+      "allow": "allow traffic on port/service",
+      "deny": "deny traffic"
+    },
+    "examples": [
+      {
+        "cmd": "sudo ufw status verbose",
+        "desc": "View active UFW status and rules"
+      },
+      {
+        "cmd": "sudo ufw allow 22/tcp",
+        "desc": "Allow SSH incoming traffic"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "New-NetFirewallRule",
+    "tags": [
+      "firewall",
+      "rules",
+      "security",
+      "ufw"
+    ]
+  },
+  {
+    "name": "tcpdump",
+    "shell": "bash",
+    "category": "network",
+    "description": "Dump traffic on a network (packet analyzer)",
+    "syntax": "tcpdump [options] [filter-expression]",
+    "flags": {
+      "-i": "interface to listen on",
+      "-n": "do not convert addresses to names",
+      "-c": "exit after receiving count packets",
+      "-w": "write raw packets to file (.pcap)"
+    },
+    "examples": [
+      {
+        "cmd": "sudo tcpdump -i eth0 -n -c 10 port 80",
+        "desc": "Capture first 10 HTTP packets on eth0"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "pktmon",
+    "tags": [
+      "sniff",
+      "packets",
+      "pcap",
+      "network"
+    ]
+  },
+  {
+    "name": "nmap",
+    "shell": "bash",
+    "category": "network",
+    "description": "Network exploration tool and security / port scanner",
+    "syntax": "nmap [scan-type] [options] target",
+    "flags": {
+      "-sV": "probe open ports to determine service/version info",
+      "-p": "only scan specified ports",
+      "-O": "enable OS detection",
+      "-sn": "ping scan without port scan"
+    },
+    "examples": [
+      {
+        "cmd": "nmap -p 22,80,443 localhost",
+        "desc": "Scan common web/ssh ports locally"
+      },
+      {
+        "cmd": "nmap -sn 192.168.1.0/24",
+        "desc": "Discover active devices on local subnet"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Test-NetConnection",
+    "tags": [
+      "scanner",
+      "ports",
+      "security",
+      "nmap"
+    ]
+  },
+  {
+    "name": "scp",
+    "shell": "bash",
+    "category": "network",
+    "description": "Secure copy (remote file copy program over SSH)",
+    "syntax": "scp [options] [[user@]host1:]file1 [[user@]host2:]file2",
+    "flags": {
+      "-r": "recursively copy entire directories",
+      "-P": "port to connect to on remote host",
+      "-i": "identity key file"
+    },
+    "examples": [
+      {
+        "cmd": "scp file.txt user@remote:/var/www/",
+        "desc": "Copy local file to remote server"
+      },
+      {
+        "cmd": "scp -r user@remote:/var/log/ ./logs/",
+        "desc": "Download remote logs folder"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "scp.exe",
+    "tags": [
+      "ssh",
+      "transfer",
+      "upload",
+      "copy"
+    ]
+  },
+  {
+    "name": "rsync",
+    "shell": "bash",
+    "category": "network",
+    "description": "Fast, versatile, remote (and local) file-copying tool",
+    "syntax": "rsync [options] source destination",
+    "flags": {
+      "-a": "archive mode (equals -rlptgoD)",
+      "-v": "verbose",
+      "-z": "compress file data during transfer",
+      "-P": "show progress and resume partial",
+      "--delete": "delete extraneous files from dest dirs"
+    },
+    "examples": [
+      {
+        "cmd": "rsync -avz --progress ./src/ /backup/src/",
+        "desc": "Synchronize source folder with backup"
+      },
+      {
+        "cmd": "rsync -avz -e ssh ./build/ user@remote:/var/www/app/",
+        "desc": "Deploy build over SSH"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "robocopy",
+    "tags": [
+      "sync",
+      "backup",
+      "transfer",
+      "differential"
+    ]
+  },
+  {
+    "name": "ssh",
+    "shell": "bash",
+    "category": "network",
+    "description": "OpenSSH remote login client",
+    "syntax": "ssh [options] [user@]hostname [command]",
+    "flags": {
+      "-p": "port to connect to",
+      "-i": "identity private key file",
+      "-N": "do not execute a remote command (port forward only)",
+      "-L": "local port forwarding"
+    },
+    "examples": [
+      {
+        "cmd": "ssh user@192.168.1.100",
+        "desc": "Connect to remote host"
+      },
+      {
+        "cmd": "ssh -L 9000:localhost:9000 user@server",
+        "desc": "Create SSH tunnel forwarding port 9000"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "ssh.exe",
+    "tags": [
+      "remote",
+      "login",
+      "ssh",
+      "tunnel"
+    ]
+  },
+  {
+    "name": "nc",
+    "shell": "bash",
+    "category": "network",
+    "description": "Netcat - arbitrary TCP and UDP connections and listens",
+    "syntax": "nc [options] [destination] [port]",
+    "flags": {
+      "-l": "listen mode for inbound connects",
+      "-p": "source port",
+      "-z": "zero-I/O mode (used for scanning)",
+      "-v": "verbose"
+    },
+    "examples": [
+      {
+        "cmd": "nc -zv 127.0.0.1 8000",
+        "desc": "Check if port 8000 is accepting connections"
+      },
+      {
+        "cmd": "nc -l 9999",
+        "desc": "Listen on port 9999"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Test-NetConnection",
+    "tags": [
+      "netcat",
+      "probe",
+      "port",
+      "raw"
+    ]
+  },
+  {
+    "name": "uname",
+    "shell": "bash",
+    "category": "system",
+    "description": "Print system information",
+    "syntax": "uname [options]",
+    "flags": {
+      "-a": "print all system information",
+      "-r": "kernel release",
+      "-m": "machine hardware architecture",
+      "-s": "kernel name"
+    },
+    "examples": [
+      {
+        "cmd": "uname -a",
+        "desc": "Show OS, kernel version, hostname and CPU arch"
+      },
+      {
+        "cmd": "uname -r",
+        "desc": "Show kernel release"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "[System.Environment]::OSVersion",
+    "tags": [
+      "kernel",
+      "os",
+      "architecture",
+      "info"
+    ]
+  },
+  {
+    "name": "hostname",
+    "shell": "bash",
+    "category": "system",
+    "description": "Show or set the system's host name",
+    "syntax": "hostname [options]",
+    "flags": {
+      "-I": "all network addresses of the host",
+      "-f": "FQDN fully qualified domain name"
+    },
+    "examples": [
+      {
+        "cmd": "hostname",
+        "desc": "Show current hostname"
+      },
+      {
+        "cmd": "hostname -I",
+        "desc": "Show all local IP addresses"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "$env:COMPUTERNAME (hostname)",
+    "tags": [
+      "host",
+      "name",
+      "dns",
+      "identity"
+    ]
+  },
+  {
+    "name": "uptime",
+    "shell": "bash",
+    "category": "system",
+    "description": "Tell how long the system has been running",
+    "syntax": "uptime [options]",
+    "flags": {
+      "-p": "pretty format",
+      "-s": "system up since (time)"
+    },
+    "examples": [
+      {
+        "cmd": "uptime -p",
+        "desc": "Show pretty uptime string (e.g., up 2 days, 3 hours)"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "(Get-CimInstance Win32_OperatingSystem).LastBootUpTime",
+    "tags": [
+      "uptime",
+      "boot",
+      "duration",
+      "load"
+    ]
+  },
+  {
+    "name": "whoami",
+    "shell": "bash",
+    "category": "system",
+    "description": "Print effective user name",
+    "syntax": "whoami",
+    "flags": {},
+    "examples": [
+      {
+        "cmd": "whoami",
+        "desc": "Print current active logged-in user name"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "$env:USERNAME (whoami)",
+    "tags": [
+      "user",
+      "identity",
+      "current"
+    ]
+  },
+  {
+    "name": "id",
+    "shell": "bash",
+    "category": "system",
+    "description": "Print user and group IDs and memberships",
+    "syntax": "id [options] [user]",
+    "flags": {
+      "-u": "print only effective user ID",
+      "-g": "print only effective group ID",
+      "-G": "print all group IDs",
+      "-n": "print names instead of numbers"
+    },
+    "examples": [
+      {
+        "cmd": "id",
+        "desc": "Show current uid, gid, and groups"
+      },
+      {
+        "cmd": "id -un",
+        "desc": "Show current user name"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "whoami /groups",
+    "tags": [
+      "uid",
+      "gid",
+      "groups",
+      "permissions"
+    ]
+  },
+  {
+    "name": "date",
+    "shell": "bash",
+    "category": "system",
+    "description": "Print or set system date and time",
+    "syntax": "date [options] [+format]",
+    "flags": {
+      "-u": "display or set UTC/GMT time",
+      "-I": "ISO-8601 output"
+    },
+    "examples": [
+      {
+        "cmd": "date",
+        "desc": "Show current date and time"
+      },
+      {
+        "cmd": "date +'%Y-%m-%d_%H-%M-%S'",
+        "desc": "Format date for timestamping"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Date",
+    "tags": [
+      "time",
+      "clock",
+      "timestamp",
+      "calendar"
+    ]
+  },
+  {
+    "name": "dmesg",
+    "shell": "bash",
+    "category": "system",
+    "description": "Print or control the kernel ring buffer (hardware and boot logs)",
+    "syntax": "dmesg [options]",
+    "flags": {
+      "-T": "read human-readable timestamps",
+      "-l": "restrict output to given levels (err, warn)",
+      "-w": "wait for new messages"
+    },
+    "examples": [
+      {
+        "cmd": "dmesg -T | grep -i error",
+        "desc": "Search kernel messages for errors with readable timestamps"
+      },
+      {
+        "cmd": "dmesg -T | tail -n 30",
+        "desc": "Last 30 kernel messages"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-WinEvent -LogName System",
+    "tags": [
+      "kernel",
+      "hardware",
+      "boot",
+      "drivers"
+    ]
+  },
+  {
+    "name": "journalctl",
+    "shell": "bash",
+    "category": "system",
+    "description": "Query the systemd journal logs",
+    "syntax": "journalctl [options] [matches...]",
+    "flags": {
+      "-u": "show logs for specified systemd unit",
+      "-f": "follow live log stream",
+      "-n": "number of journal entries to show",
+      "-p": "filter by priority (err, warning)",
+      "-b": "show messages from current boot"
+    },
+    "examples": [
+      {
+        "cmd": "journalctl -u nginx -n 50 --no-pager",
+        "desc": "Show last 50 log lines for nginx service"
+      },
+      {
+        "cmd": "journalctl -p err -b",
+        "desc": "Show all errors logged since boot"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-EventLog",
+    "tags": [
+      "logs",
+      "systemd",
+      "journal",
+      "events"
+    ]
+  },
+  {
+    "name": "systemctl",
+    "shell": "bash",
+    "category": "system",
+    "description": "Control the systemd system and service manager",
+    "syntax": "systemctl [command] [unit]",
+    "flags": {
+      "status": "show runtime status",
+      "start": "start service",
+      "stop": "stop service",
+      "restart": "restart service",
+      "enable": "enable service at boot",
+      "disable": "disable service",
+      "list-units": "list loaded units"
+    },
+    "examples": [
+      {
+        "cmd": "systemctl status docker",
+        "desc": "Check if Docker daemon is running"
+      },
+      {
+        "cmd": "sudo systemctl restart nginx",
+        "desc": "Restart nginx web server"
+      },
+      {
+        "cmd": "systemctl list-units --type=service --state=running",
+        "desc": "List all active running services"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "Get-Service / Restart-Service",
+    "tags": [
+      "services",
+      "systemd",
+      "daemon",
+      "lifecycle"
+    ]
+  },
+  {
+    "name": "free",
+    "shell": "bash",
+    "category": "system",
+    "description": "Display amount of free and used memory in the system",
+    "syntax": "free [options]",
+    "flags": {
+      "-h": "human readable output (MB, GB)",
+      "-m": "display in mebibytes",
+      "-g": "display in gibibytes",
+      "-t": "show total line"
+    },
+    "examples": [
+      {
+        "cmd": "free -h",
+        "desc": "Display RAM and swap usage in human-readable units"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "(Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory",
+    "tags": [
+      "ram",
+      "memory",
+      "swap",
+      "hardware"
+    ]
+  },
+  {
+    "name": "lscpu",
+    "shell": "bash",
+    "category": "system",
+    "description": "Display information about the CPU architecture",
+    "syntax": "lscpu [options]",
+    "flags": {
+      "-e": "print CPU list in tabular format",
+      "-J": "output in JSON format"
+    },
+    "examples": [
+      {
+        "cmd": "lscpu",
+        "desc": "Show CPU cores, model name, cache, virtualization support"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-CimInstance Win32_Processor",
+    "tags": [
+      "cpu",
+      "processor",
+      "cores",
+      "hardware"
+    ]
+  },
+  {
+    "name": "lsblk",
+    "shell": "bash",
+    "category": "system",
+    "description": "List information about all available block devices (drives, partitions)",
+    "syntax": "lsblk [options] [device]",
+    "flags": {
+      "-f": "output info about filesystems (UUID, mountpoint, type)",
+      "-m": "permissions mode",
+      "-J": "output JSON"
+    },
+    "examples": [
+      {
+        "cmd": "lsblk -f",
+        "desc": "List drives, partitions, filesystem types and mountpoints"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Disk / Get-Partition",
+    "tags": [
+      "disks",
+      "partitions",
+      "drives",
+      "block"
+    ]
+  },
+  {
+    "name": "lshw",
+    "shell": "bash",
+    "category": "system",
+    "description": "List detailed hardware configuration",
+    "syntax": "lshw [options]",
+    "flags": {
+      "-short": "display hardware tree showing device paths",
+      "-C": "display specific hardware class (network, disk, memory)",
+      "-json": "output in JSON"
+    },
+    "examples": [
+      {
+        "cmd": "sudo lshw -short",
+        "desc": "Summary hardware inventory table"
+      },
+      {
+        "cmd": "sudo lshw -C network",
+        "desc": "Show detailed network adapter hardware"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "Get-PnpDevice",
+    "tags": [
+      "hardware",
+      "specs",
+      "inventory",
+      "devices"
+    ]
+  },
+  {
+    "name": "lspci",
+    "shell": "bash",
+    "category": "system",
+    "description": "List all PCI devices (GPUs, network cards, controllers)",
+    "syntax": "lspci [options]",
+    "flags": {
+      "-v": "be verbose",
+      "-k": "show kernel drivers handling each device",
+      "-nn": "show device codes and names"
+    },
+    "examples": [
+      {
+        "cmd": "lspci | grep -i vga",
+        "desc": "Find graphics card / GPU device details"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-PnpDevice",
+    "tags": [
+      "pci",
+      "gpu",
+      "hardware",
+      "motherboard"
+    ]
+  },
+  {
+    "name": "lsusb",
+    "shell": "bash",
+    "category": "system",
+    "description": "List USB devices connected to system",
+    "syntax": "lsusb [options]",
+    "flags": {
+      "-v": "be verbose",
+      "-t": "dump USB device hierarchy as a tree"
+    },
+    "examples": [
+      {
+        "cmd": "lsusb",
+        "desc": "List all plugged-in USB peripherals and hubs"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-PnpDevice -Class USB",
+    "tags": [
+      "usb",
+      "peripherals",
+      "devices"
+    ]
+  },
+  {
+    "name": "env",
+    "shell": "bash",
+    "category": "system",
+    "description": "Run a program in a modified environment or print environment variables",
+    "syntax": "env [options] [name=value...] [command]",
+    "flags": {
+      "-u": "remove variable from environment",
+      "-i": "start with an empty environment"
+    },
+    "examples": [
+      {
+        "cmd": "env",
+        "desc": "Print all environment variables"
+      },
+      {
+        "cmd": "env | grep -i path",
+        "desc": "Inspect PATH variable"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-ChildItem Env:",
+    "tags": [
+      "env",
+      "variables",
+      "config",
+      "path"
+    ]
+  },
+  {
+    "name": "export",
+    "shell": "bash",
+    "category": "system",
+    "description": "Set export attribute for shell variables so child processes inherit them",
+    "syntax": "export [-f] [-n] [name[=value] ...] or export -p",
+    "flags": {
+      "-p": "display a list of all exported variables"
+    },
+    "examples": [
+      {
+        "cmd": "export NODE_ENV=production",
+        "desc": "Export environment variable for current session"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "$env:VAR = 'val'",
+    "tags": [
+      "environment",
+      "variable",
+      "set"
+    ]
+  },
+  {
+    "name": "vmstat",
+    "shell": "bash",
+    "category": "system",
+    "description": "Report virtual memory statistics, processes, IO and CPU activity",
+    "syntax": "vmstat [options] [delay [count]]",
+    "flags": {
+      "-s": "display memory event counter table",
+      "-d": "display disk statistics"
+    },
+    "examples": [
+      {
+        "cmd": "vmstat 1 5",
+        "desc": "Report system stats every 1 second, 5 times"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Counter",
+    "tags": [
+      "performance",
+      "cpu",
+      "io",
+      "memory"
+    ]
+  },
+  {
+    "name": "iostat",
+    "shell": "bash",
+    "category": "system",
+    "description": "Report Central Processing Unit (CPU) and input/output statistics for devices",
+    "syntax": "iostat [options] [interval [count]]",
+    "flags": {
+      "-x": "display extended statistics",
+      "-h": "human readable format",
+      "-d": "display device utilization report only"
+    },
+    "examples": [
+      {
+        "cmd": "iostat -xz 1 3",
+        "desc": "Monitor disk queue, read/write IOPS and latency"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-PhysicalDisk",
+    "tags": [
+      "disk",
+      "iops",
+      "throughput",
+      "io"
+    ]
+  },
+  {
+    "name": "tar",
+    "shell": "bash",
+    "category": "archive",
+    "description": "Archive utility to create, extract and manage tape archives (.tar, .tar.gz, .tar.bz2, .tar.xz)",
+    "syntax": "tar [options] [archive-file] [file or dir...]",
+    "flags": {
+      "-c": "create a new archive",
+      "-x": "extract files from an archive",
+      "-v": "verbosely list files processed",
+      "-f": "use archive file",
+      "-z": "filter the archive through gzip (.tar.gz)",
+      "-j": "filter through bzip2 (.tar.bz2)",
+      "-J": "filter through xz (.tar.xz)",
+      "-C": "change to directory before extracting"
+    },
+    "examples": [
+      {
+        "cmd": "tar -czvf archive.tar.gz ./my_folder",
+        "desc": "Compress directory to .tar.gz"
+      },
+      {
+        "cmd": "tar -xzvf archive.tar.gz -C /dest/",
+        "desc": "Extract .tar.gz to destination folder"
+      },
+      {
+        "cmd": "tar -tf archive.tar.gz",
+        "desc": "List contents of archive without extracting"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "tar.exe",
+    "tags": [
+      "archive",
+      "compress",
+      "extract",
+      "tar",
+      "gzip"
+    ]
+  },
+  {
+    "name": "gzip",
+    "shell": "bash",
+    "category": "archive",
+    "description": "Compress or expand files using Lempel-Ziv coding (LZ77)",
+    "syntax": "gzip [options] [file...]",
+    "flags": {
+      "-d": "decompress file (same as gunzip)",
+      "-k": "keep (do not delete) input files",
+      "-r": "recursively traverse directory",
+      "-9": "best compression level"
+    },
+    "examples": [
+      {
+        "cmd": "gzip -k backup.sql",
+        "desc": "Compress SQL dump keeping original file"
+      },
+      {
+        "cmd": "gzip -d backup.sql.gz",
+        "desc": "Decompress file"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Compress-Archive",
+    "tags": [
+      "gzip",
+      "compress",
+      "decompress"
+    ]
+  },
+  {
+    "name": "gunzip",
+    "shell": "bash",
+    "category": "archive",
+    "description": "Decompress files compressed with gzip",
+    "syntax": "gunzip [options] [file...]",
+    "flags": {
+      "-k": "keep original archive",
+      "-v": "verbose"
+    },
+    "examples": [
+      {
+        "cmd": "gunzip data.csv.gz",
+        "desc": "Decompress gzip archive to data.csv"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Expand-Archive",
+    "tags": [
+      "unzip",
+      "decompress",
+      "gzip"
+    ]
+  },
+  {
+    "name": "zip",
+    "shell": "bash",
+    "category": "archive",
+    "description": "Package and compress (archive) files into .zip format",
+    "syntax": "zip [options] [archive.zip] [file...]",
+    "flags": {
+      "-r": "recurse into directories",
+      "-e": "encrypt archive with password",
+      "-q": "quiet operation",
+      "-9": "optimal compression"
+    },
+    "examples": [
+      {
+        "cmd": "zip -r project.zip ./src package.json",
+        "desc": "Compress src and package.json into zip file"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Compress-Archive",
+    "tags": [
+      "zip",
+      "compress",
+      "package"
+    ]
+  },
+  {
+    "name": "unzip",
+    "shell": "bash",
+    "category": "archive",
+    "description": "Extract compressed files from a ZIP archive",
+    "syntax": "unzip [options] archive.zip [-d exdir]",
+    "flags": {
+      "-l": "list archive files without extraction",
+      "-d": "target directory to extract files into",
+      "-o": "overwrite existing files without prompting",
+      "-q": "quiet mode"
+    },
+    "examples": [
+      {
+        "cmd": "unzip project.zip -d ./extracted/",
+        "desc": "Extract archive into folder"
+      },
+      {
+        "cmd": "unzip -l archive.zip",
+        "desc": "List zip files"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Expand-Archive",
+    "tags": [
+      "unzip",
+      "extract",
+      "zip"
+    ]
+  },
+  {
+    "name": "7z",
+    "shell": "bash",
+    "category": "archive",
+    "description": "7-Zip high-compression file archiver",
+    "syntax": "7z <command> [options] <archive_name> [<file_names>...]",
+    "flags": {
+      "a": "add files to archive",
+      "x": "eXtract files with full paths",
+      "l": "list contents of archive"
+    },
+    "examples": [
+      {
+        "cmd": "7z a archive.7z *.log",
+        "desc": "Create high-ratio 7z archive"
+      },
+      {
+        "cmd": "7z x archive.7z -o/out/",
+        "desc": "Extract 7z archive to directory"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "7z.exe",
+    "tags": [
+      "7zip",
+      "archive",
+      "compression"
+    ]
+  },
+  {
+    "name": "chmod",
+    "shell": "bash",
+    "category": "permission",
+    "description": "Change file mode bits (permissions: read, write, execute)",
+    "syntax": "chmod [options] mode[,mode]... file...",
+    "flags": {
+      "-R": "change files and directories recursively",
+      "-v": "output a diagnostic for every file processed",
+      "+x": "add execute permission",
+      "755": "rwxr-xr-x",
+      "644": "rw-r--r--",
+      "600": "rw------- (secure key)"
+    },
+    "examples": [
+      {
+        "cmd": "chmod +x build.sh",
+        "desc": "Make script executable"
+      },
+      {
+        "cmd": "chmod 600 ~/.ssh/id_rsa",
+        "desc": "Set private SSH key permissions"
+      },
+      {
+        "cmd": "chmod -R 755 /var/www/html",
+        "desc": "Set web folder permissions recursively"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "icacls",
+    "tags": [
+      "permissions",
+      "chmod",
+      "security",
+      "executable"
+    ]
+  },
+  {
+    "name": "chown",
+    "shell": "bash",
+    "category": "permission",
+    "description": "Change file owner and group",
+    "syntax": "chown [options] [owner][:group] file...",
+    "flags": {
+      "-R": "operate on files and directories recursively",
+      "-v": "output diagnostic for every file processed"
+    },
+    "examples": [
+      {
+        "cmd": "sudo chown -R www-data:www-data /var/www",
+        "desc": "Change owner and group to web server user"
+      },
+      {
+        "cmd": "sudo chown $USER:$USER file.txt",
+        "desc": "Reclaim ownership of file"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "icacls /setowner",
+    "tags": [
+      "owner",
+      "group",
+      "chown",
+      "user"
+    ]
+  },
+  {
+    "name": "chgrp",
+    "shell": "bash",
+    "category": "permission",
+    "description": "Change group ownership of files",
+    "syntax": "chgrp [options] group file...",
+    "flags": {
+      "-R": "operate recursively",
+      "-v": "verbose output"
+    },
+    "examples": [
+      {
+        "cmd": "sudo chgrp developers /opt/project",
+        "desc": "Set group ownership"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "icacls",
+    "tags": [
+      "group",
+      "ownership",
+      "permission"
+    ]
+  },
+  {
+    "name": "umask",
+    "shell": "bash",
+    "category": "permission",
+    "description": "Set or display file mode creation mask",
+    "syntax": "umask [-S] [mode]",
+    "flags": {
+      "-S": "display symbolic mask"
+    },
+    "examples": [
+      {
+        "cmd": "umask 022",
+        "desc": "Default file creation mask (rw-r--r-- for files, rwxr-xr-x for dirs)"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Default ACL",
+    "tags": [
+      "mask",
+      "security",
+      "permissions"
+    ]
+  },
+  {
+    "name": "useradd",
+    "shell": "bash",
+    "category": "user",
+    "description": "Create a new user or update default new user information",
+    "syntax": "useradd [options] LOGIN",
+    "flags": {
+      "-m": "create the user's home directory",
+      "-s": "login shell for the new account",
+      "-G": "list of supplementary groups"
+    },
+    "examples": [
+      {
+        "cmd": "sudo useradd -m -s /bin/bash -G sudo developer",
+        "desc": "Create user with home directory and sudo privileges"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "New-LocalUser",
+    "tags": [
+      "user",
+      "create",
+      "account",
+      "system"
+    ]
+  },
+  {
+    "name": "userdel",
+    "shell": "bash",
+    "category": "user",
+    "description": "Delete a user account and related files",
+    "syntax": "userdel [options] LOGIN",
+    "flags": {
+      "-r": "remove files in user's home directory and mail spool"
+    },
+    "examples": [
+      {
+        "cmd": "sudo userdel -r testuser",
+        "desc": "Remove user and delete their home directory"
+      }
+    ],
+    "safety": "dangerous",
+    "is_destructive": true,
+    "requires_elevation": true,
+    "windows_equivalent": "Remove-LocalUser",
+    "tags": [
+      "delete",
+      "user",
+      "remove",
+      "account"
+    ]
+  },
+  {
+    "name": "usermod",
+    "shell": "bash",
+    "category": "user",
+    "description": "Modify a user account",
+    "syntax": "usermod [options] LOGIN",
+    "flags": {
+      "-aG": "append user to supplemental groups without removing existing",
+      "-s": "change login shell",
+      "-l": "new login name"
+    },
+    "examples": [
+      {
+        "cmd": "sudo usermod -aG docker $USER",
+        "desc": "Add current user to docker group to run docker without sudo"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "Add-LocalGroupMember",
+    "tags": [
+      "user",
+      "groups",
+      "permissions",
+      "modify"
+    ]
+  },
+  {
+    "name": "passwd",
+    "shell": "bash",
+    "category": "user",
+    "description": "Change user password",
+    "syntax": "passwd [options] [LOGIN]",
+    "flags": {
+      "-l": "lock password",
+      "-u": "unlock password",
+      "-e": "expire password immediately"
+    },
+    "examples": [
+      {
+        "cmd": "passwd",
+        "desc": "Change current user's password"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Set-LocalUser -Password",
+    "tags": [
+      "password",
+      "auth",
+      "security"
+    ]
+  },
+  {
+    "name": "sudo",
+    "shell": "bash",
+    "category": "user",
+    "description": "Execute a command as another user (defaults to superuser / root)",
+    "syntax": "sudo [options] command",
+    "flags": {
+      "-i": "simulate initial login shell as target user",
+      "-u": "run command as specified user",
+      "-E": "preserve user environment variables"
+    },
+    "examples": [
+      {
+        "cmd": "sudo systemctl restart nginx",
+        "desc": "Execute command with administrative root privileges"
+      },
+      {
+        "cmd": "sudo -i",
+        "desc": "Open interactive root shell"
+      }
+    ],
+    "safety": "dangerous",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "Start-Process -Verb RunAs",
+    "tags": [
+      "admin",
+      "root",
+      "elevation",
+      "privilege"
+    ]
+  },
+  {
+    "name": "su",
+    "shell": "bash",
+    "category": "user",
+    "description": "Switch current user or superuser",
+    "syntax": "su [options] [username]",
+    "flags": {
+      "-": "provide an environment similar to what the user would expect had the user logged in directly (login shell)"
+    },
+    "examples": [
+      {
+        "cmd": "su -",
+        "desc": "Switch to root environment with root path and env"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "runas",
+    "tags": [
+      "switch",
+      "user",
+      "root"
+    ]
+  },
+  {
+    "name": "who",
+    "shell": "bash",
+    "category": "user",
+    "description": "Show who is logged on",
+    "syntax": "who [options]",
+    "flags": {
+      "-b": "time of last system boot",
+      "-u": "list users logged in with idle time"
+    },
+    "examples": [
+      {
+        "cmd": "who",
+        "desc": "Show currently logged in user sessions and terminals"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "query user",
+    "tags": [
+      "users",
+      "sessions",
+      "login"
+    ]
+  },
+  {
+    "name": "w",
+    "shell": "bash",
+    "category": "user",
+    "description": "Show who is logged on and what they are doing",
+    "syntax": "w [options] [user]",
+    "flags": {
+      "-h": "do not print header",
+      "-s": "use short format"
+    },
+    "examples": [
+      {
+        "cmd": "w",
+        "desc": "Display logged in users, load averages, and active commands"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-Process / query user",
+    "tags": [
+      "users",
+      "activity",
+      "load"
+    ]
+  },
+  {
+    "name": "last",
+    "shell": "bash",
+    "category": "user",
+    "description": "Show a listing of last logged in users",
+    "syntax": "last [options] [username...]",
+    "flags": {
+      "-n": "number of lines to show",
+      "-F": "print full login and logout times and dates"
+    },
+    "examples": [
+      {
+        "cmd": "last -n 10",
+        "desc": "Show last 10 login sessions including reboots"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-WinEvent",
+    "tags": [
+      "audit",
+      "history",
+      "logins",
+      "security"
+    ]
+  },
+  {
+    "name": "apt",
+    "shell": "bash",
+    "category": "package",
+    "description": "Command-line interface for package management on Debian / Ubuntu",
+    "syntax": "apt [options] command",
+    "flags": {
+      "update": "download package information from all configured sources",
+      "upgrade": "install available upgrades of all packages",
+      "install": "install packages",
+      "remove": "remove packages",
+      "search": "search for package",
+      "show": "show package details"
+    },
+    "examples": [
+      {
+        "cmd": "sudo apt update && sudo apt upgrade -y",
+        "desc": "Update repository index and upgrade installed packages"
+      },
+      {
+        "cmd": "sudo apt install -y build-essential curl",
+        "desc": "Install packages non-interactively"
+      },
+      {
+        "cmd": "apt search ripgrep",
+        "desc": "Search for package in repositories"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "winget install",
+    "tags": [
+      "package",
+      "install",
+      "debian",
+      "ubuntu",
+      "software"
+    ]
+  },
+  {
+    "name": "apt-get",
+    "shell": "bash",
+    "category": "package",
+    "description": "Low-level package handling utility for Debian/Ubuntu (script-friendly)",
+    "syntax": "apt-get [options] command",
+    "flags": {
+      "-y": "automatic yes to prompts",
+      "--no-install-recommends": "avoid installing recommended packages"
+    },
+    "examples": [
+      {
+        "cmd": "sudo apt-get install -y --no-install-recommends git",
+        "desc": "Minimal automated installation of git"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "winget",
+    "tags": [
+      "package",
+      "apt",
+      "scripting"
+    ]
+  },
+  {
+    "name": "dpkg",
+    "shell": "bash",
+    "category": "package",
+    "description": "Package manager for Debian (.deb packages)",
+    "syntax": "dpkg [options] action",
+    "flags": {
+      "-i": "install package file",
+      "-l": "list packages matching pattern",
+      "-s": "report status of package",
+      "-r": "remove package"
+    },
+    "examples": [
+      {
+        "cmd": "sudo dpkg -i package.deb",
+        "desc": "Install downloaded .deb file"
+      },
+      {
+        "cmd": "dpkg -l | grep python",
+        "desc": "List installed Python packages"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "msiexec",
+    "tags": [
+      "deb",
+      "dpkg",
+      "debian",
+      "install"
+    ]
+  },
+  {
+    "name": "yum",
+    "shell": "bash",
+    "category": "package",
+    "description": "Yellowdog Updater Modified - package manager for RHEL/CentOS 7",
+    "syntax": "yum [options] command",
+    "flags": {
+      "-y": "answer yes for all questions",
+      "install": "install packages",
+      "update": "update packages"
+    },
+    "examples": [
+      {
+        "cmd": "sudo yum install -y epel-release",
+        "desc": "Install EPEL repo on CentOS"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "winget",
+    "tags": [
+      "yum",
+      "rpm",
+      "rhel",
+      "centos"
+    ]
+  },
+  {
+    "name": "dnf",
+    "shell": "bash",
+    "category": "package",
+    "description": "Dandified YUM - next-generation package manager for Fedora/RHEL 8+",
+    "syntax": "dnf [options] command",
+    "flags": {
+      "-y": "automatically answer yes",
+      "install": "install package",
+      "upgrade": "upgrade system packages"
+    },
+    "examples": [
+      {
+        "cmd": "sudo dnf check-update",
+        "desc": "Check for available package updates"
+      },
+      {
+        "cmd": "sudo dnf install -y htop",
+        "desc": "Install package"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "winget",
+    "tags": [
+      "dnf",
+      "fedora",
+      "rhel",
+      "rpm"
+    ]
+  },
+  {
+    "name": "pacman",
+    "shell": "bash",
+    "category": "package",
+    "description": "Package manager utility for Arch Linux",
+    "syntax": "pacman <operation> [options] [targets]",
+    "flags": {
+      "-Syu": "synchronize databases and upgrade all packages",
+      "-S": "install package",
+      "-R": "remove package",
+      "-Ss": "search for package"
+    },
+    "examples": [
+      {
+        "cmd": "sudo pacman -Syu",
+        "desc": "Full Arch system rolling upgrade"
+      },
+      {
+        "cmd": "sudo pacman -S neovim",
+        "desc": "Install package"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "winget",
+    "tags": [
+      "arch",
+      "pacman",
+      "packages"
+    ]
+  },
+  {
+    "name": "snap",
+    "shell": "bash",
+    "category": "package",
+    "description": "Manage cross-distro sandboxed Snap packages",
+    "syntax": "snap [command] [options]",
+    "flags": {
+      "install": "install snap",
+      "list": "list installed snaps",
+      "--classic": "install with classic confinement"
+    },
+    "examples": [
+      {
+        "cmd": "sudo snap install code --classic",
+        "desc": "Install VS Code snap"
+      },
+      {
+        "cmd": "snap list",
+        "desc": "List installed snap packages"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "winget",
+    "tags": [
+      "snap",
+      "sandbox",
+      "container",
+      "package"
+    ]
+  },
+  {
+    "name": "flatpak",
+    "shell": "bash",
+    "category": "package",
+    "description": "Build, install and run sandboxed desktop applications",
+    "syntax": "flatpak [command] [options]",
+    "flags": {
+      "install": "install application",
+      "run": "run application",
+      "update": "update all installed applications",
+      "list": "list installed apps"
+    },
+    "examples": [
+      {
+        "cmd": "flatpak list",
+        "desc": "List installed flatpak applications"
+      },
+      {
+        "cmd": "flatpak update -y",
+        "desc": "Update flatpaks"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "winget",
+    "tags": [
+      "flatpak",
+      "apps",
+      "desktop",
+      "sandbox"
+    ]
+  },
+  {
+    "name": "git status",
+    "shell": "bash",
+    "category": "git",
+    "description": "Show the working tree status",
+    "syntax": "git status [options]",
+    "flags": {
+      "-s": "give the output in the short-format",
+      "-b": "show the branch and tracking info even in short-format"
+    },
+    "examples": [
+      {
+        "cmd": "git status",
+        "desc": "Check modified, staged, and untracked files"
+      },
+      {
+        "cmd": "git status -sb",
+        "desc": "Short status with branch name"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "git status",
+    "tags": [
+      "git",
+      "vcs",
+      "status",
+      "changes"
+    ]
+  },
+  {
+    "name": "git add",
+    "shell": "bash",
+    "category": "git",
+    "description": "Add file contents to the staging index",
+    "syntax": "git add [options] <pathspec>...",
+    "flags": {
+      "-A": "update index not only where the working tree has a file but also where index has an entry",
+      "-p": "interactively choose hunks of patch",
+      "-u": "update tracked files only"
+    },
+    "examples": [
+      {
+        "cmd": "git add .",
+        "desc": "Stage all current changes"
+      },
+      {
+        "cmd": "git add src/main.py",
+        "desc": "Stage specific file"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "git add",
+    "tags": [
+      "git",
+      "stage",
+      "index"
+    ]
+  },
+  {
+    "name": "git commit",
+    "shell": "bash",
+    "category": "git",
+    "description": "Record changes to the repository",
+    "syntax": "git commit [options]",
+    "flags": {
+      "-m": "use the given message as the commit message",
+      "-a": "automatically stage modified and deleted files",
+      "--amend": "amend previous commit"
+    },
+    "examples": [
+      {
+        "cmd": "git commit -m 'feat: add terminal controller'",
+        "desc": "Commit staged changes with message"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "git commit",
+    "tags": [
+      "git",
+      "commit",
+      "save",
+      "vcs"
+    ]
+  },
+  {
+    "name": "git push",
+    "shell": "bash",
+    "category": "git",
+    "description": "Update remote refs along with associated objects",
+    "syntax": "git push [options] [repository [refspec...]]",
+    "flags": {
+      "-u": "set upstream tracking branch",
+      "--force": "force push (dangerous)",
+      "--tags": "push all tags"
+    },
+    "examples": [
+      {
+        "cmd": "git push origin main",
+        "desc": "Push commits to origin main branch"
+      },
+      {
+        "cmd": "git push -u origin feature-branch",
+        "desc": "Push branch and set upstream"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "git push",
+    "tags": [
+      "git",
+      "push",
+      "remote",
+      "sync"
+    ]
+  },
+  {
+    "name": "git pull",
+    "shell": "bash",
+    "category": "git",
+    "description": "Fetch from and integrate with another repository or a local branch",
+    "syntax": "git pull [options] [repository [refspec...]]",
+    "flags": {
+      "--rebase": "rebase current branch on top of upstream branch after fetch",
+      "--autostash": "automatically stash before rebase and pop after"
+    },
+    "examples": [
+      {
+        "cmd": "git pull --rebase origin main",
+        "desc": "Pull latest changes and rebase cleanly"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "git pull",
+    "tags": [
+      "git",
+      "pull",
+      "fetch",
+      "merge"
+    ]
+  },
+  {
+    "name": "git diff",
+    "shell": "bash",
+    "category": "git",
+    "description": "Show changes between commits, commit and working tree, etc.",
+    "syntax": "git diff [options] [commit] [--] [path...]",
+    "flags": {
+      "--staged": "view changes staged for commit (cached)",
+      "--stat": "show statistics on files changed",
+      "-w": "ignore whitespace"
+    },
+    "examples": [
+      {
+        "cmd": "git diff",
+        "desc": "Show unstaged working tree diff"
+      },
+      {
+        "cmd": "git diff --staged",
+        "desc": "Show changes staged in index"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "git diff",
+    "tags": [
+      "git",
+      "diff",
+      "patch",
+      "inspect"
+    ]
+  },
+  {
+    "name": "git log",
+    "shell": "bash",
+    "category": "git",
+    "description": "Show commit logs",
+    "syntax": "git log [options] [revision-range] [[--] path...]",
+    "flags": {
+      "--oneline": "shorthand for --pretty=oneline --abbrev-commit",
+      "-n": "limit number of commits",
+      "--graph": "draw text graph of commit history",
+      "--stat": "show files changed per commit"
+    },
+    "examples": [
+      {
+        "cmd": "git log --oneline -n 10",
+        "desc": "Show last 10 commits concisely"
+      },
+      {
+        "cmd": "git log --graph --oneline --all",
+        "desc": "Visual graph of all branches"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "git log",
+    "tags": [
+      "git",
+      "history",
+      "log",
+      "commits"
+    ]
+  },
+  {
+    "name": "git branch",
+    "shell": "bash",
+    "category": "git",
+    "description": "List, create, or delete branches",
+    "syntax": "git branch [options] [branchname]",
+    "flags": {
+      "-a": "list both remote-tracking and local branches",
+      "-d": "delete a branch",
+      "-D": "force delete branch",
+      "-m": "rename branch"
+    },
+    "examples": [
+      {
+        "cmd": "git branch -a",
+        "desc": "List all local and remote branches"
+      },
+      {
+        "cmd": "git branch feature-x",
+        "desc": "Create new branch"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "git branch",
+    "tags": [
+      "git",
+      "branch",
+      "branches"
+    ]
+  },
+  {
+    "name": "git checkout",
+    "shell": "bash",
+    "category": "git",
+    "description": "Switch branches or restore working tree files",
+    "syntax": "git checkout [options] <branch>",
+    "flags": {
+      "-b": "create and checkout a new branch",
+      "-f": "force checkout throwing away local changes"
+    },
+    "examples": [
+      {
+        "cmd": "git checkout main",
+        "desc": "Switch to main branch"
+      },
+      {
+        "cmd": "git checkout -b new-feature",
+        "desc": "Create and switch to new branch"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "git checkout / git switch",
+    "tags": [
+      "git",
+      "switch",
+      "checkout"
+    ]
+  },
+  {
+    "name": "git clone",
+    "shell": "bash",
+    "category": "git",
+    "description": "Clone a repository into a new directory",
+    "syntax": "git clone [options] <repository> [<directory>]",
+    "flags": {
+      "--depth": "create a shallow clone with history truncated to specified number of commits",
+      "-b": "point HEAD to branch instead of remote HEAD",
+      "--recursive": "initialize submodules"
+    },
+    "examples": [
+      {
+        "cmd": "git clone --depth 1 https://github.com/user/repo.git",
+        "desc": "Fast shallow clone of repository"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "git clone",
+    "tags": [
+      "git",
+      "clone",
+      "download",
+      "repo"
+    ]
+  },
+  {
+    "name": "git reset",
+    "shell": "bash",
+    "category": "git",
+    "description": "Reset current HEAD to the specified state",
+    "syntax": "git reset [options] [commit]",
+    "flags": {
+      "--soft": "does not touch index file or working tree",
+      "--hard": "resets index and working tree (discards all changes)",
+      "HEAD~1": "step back one commit"
+    },
+    "examples": [
+      {
+        "cmd": "git reset --soft HEAD~1",
+        "desc": "Undo last commit keeping files staged"
+      },
+      {
+        "cmd": "git reset --hard HEAD",
+        "desc": "Discard all local uncommitted changes"
+      }
+    ],
+    "safety": "dangerous",
+    "is_destructive": true,
+    "requires_elevation": false,
+    "windows_equivalent": "git reset",
+    "tags": [
+      "git",
+      "reset",
+      "undo",
+      "revert"
+    ]
+  },
+  {
+    "name": "git stash",
+    "shell": "bash",
+    "category": "git",
+    "description": "Stash the changes in a dirty working directory away",
+    "syntax": "git stash [push|pop|list|drop|clear]",
+    "flags": {
+      "pop": "apply the stash and remove it from stash list",
+      "list": "list stashed changes",
+      "-u": "include untracked files"
+    },
+    "examples": [
+      {
+        "cmd": "git stash -u",
+        "desc": "Stash all modified and untracked files"
+      },
+      {
+        "cmd": "git stash pop",
+        "desc": "Restore stashed files"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "git stash",
+    "tags": [
+      "git",
+      "stash",
+      "save",
+      "shelf"
+    ]
+  },
+  {
+    "name": "python3",
+    "shell": "bash",
+    "category": "dev",
+    "description": "Python 3 interpreter",
+    "syntax": "python3 [options] [-c cmd | -m mod | file] [arg...]",
+    "flags": {
+      "-c": "program passed in as string",
+      "-m": "run library module as a script",
+      "-v": "verbose",
+      "-u": "force unbuffered binary stdout and stderr"
+    },
+    "examples": [
+      {
+        "cmd": "python3 -m http.server 8080",
+        "desc": "Start instant local web server on port 8080"
+      },
+      {
+        "cmd": "python3 -c 'import sys; print(sys.version)'",
+        "desc": "Print Python version"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "python",
+    "tags": [
+      "python",
+      "script",
+      "code",
+      "runtime"
+    ]
+  },
+  {
+    "name": "pip",
+    "shell": "bash",
+    "category": "dev",
+    "description": "The PyPA recommended tool for installing Python packages",
+    "syntax": "pip <command> [options]",
+    "flags": {
+      "install": "install packages",
+      "uninstall": "uninstall packages",
+      "list": "list installed packages",
+      "freeze": "output installed packages in requirements format",
+      "-r": "install from requirements file"
+    },
+    "examples": [
+      {
+        "cmd": "pip install -r requirements.txt",
+        "desc": "Install project dependencies"
+      },
+      {
+        "cmd": "pip list --outdated",
+        "desc": "Check outdated packages"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "pip.exe",
+    "tags": [
+      "python",
+      "packages",
+      "pip",
+      "dependencies"
+    ]
+  },
+  {
+    "name": "node",
+    "shell": "bash",
+    "category": "dev",
+    "description": "Node.js JavaScript runtime engine",
+    "syntax": "node [options] [ -e script | script.js ] [arguments]",
+    "flags": {
+      "-v": "print version",
+      "-e": "evaluate JavaScript expression",
+      "--inspect": "activate inspector on port"
+    },
+    "examples": [
+      {
+        "cmd": "node index.js",
+        "desc": "Run JavaScript file"
+      },
+      {
+        "cmd": "node -e 'console.log(process.platform)'",
+        "desc": "Evaluate JS inline"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "node.exe",
+    "tags": [
+      "node",
+      "javascript",
+      "runtime",
+      "server"
+    ]
+  },
+  {
+    "name": "npm",
+    "shell": "bash",
+    "category": "dev",
+    "description": "Node package manager and build tool",
+    "syntax": "npm <command> [args]",
+    "flags": {
+      "install": "install dependencies",
+      "run": "run project script",
+      "test": "run tests",
+      "build": "build project",
+      "-g": "global install"
+    },
+    "examples": [
+      {
+        "cmd": "npm install",
+        "desc": "Install package.json dependencies"
+      },
+      {
+        "cmd": "npm run build",
+        "desc": "Execute build script"
+      },
+      {
+        "cmd": "npm run dev",
+        "desc": "Start dev server"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "npm.cmd",
+    "tags": [
+      "npm",
+      "node",
+      "javascript",
+      "packages"
+    ]
+  },
+  {
+    "name": "make",
+    "shell": "bash",
+    "category": "dev",
+    "description": "GNU make utility to maintain groups of programs from Makefile",
+    "syntax": "make [options] [target...]",
+    "flags": {
+      "-j": "specifies the number of jobs (commands) to run simultaneously",
+      "-f": "use specified file as makefile",
+      "-C": "change directory before reading makefile"
+    },
+    "examples": [
+      {
+        "cmd": "make -j$(nproc)",
+        "desc": "Parallel build using all available CPU cores"
+      },
+      {
+        "cmd": "make clean",
+        "desc": "Execute clean build target"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "make / nmake",
+    "tags": [
+      "build",
+      "compile",
+      "c",
+      "make"
+    ]
+  },
+  {
+    "name": "gcc",
+    "shell": "bash",
+    "category": "dev",
+    "description": "GNU project C compiler",
+    "syntax": "gcc [options] file...",
+    "flags": {
+      "-o": "place the output into <file>",
+      "-Wall": "enable all warnings",
+      "-O2": "optimize code level 2",
+      "-g": "generate debug information"
+    },
+    "examples": [
+      {
+        "cmd": "gcc -Wall -O2 main.c -o app",
+        "desc": "Compile C source code into binary"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "cl.exe",
+    "tags": [
+      "c",
+      "compiler",
+      "binary",
+      "build"
+    ]
+  },
+  {
+    "name": "docker",
+    "shell": "bash",
+    "category": "dev",
+    "description": "Manage Docker containers and images",
+    "syntax": "docker [options] command",
+    "flags": {
+      "ps": "list containers (-a for all)",
+      "images": "list images",
+      "run": "run command in a new container",
+      "exec": "run command in running container",
+      "stop": "stop running containers",
+      "rm": "remove containers",
+      "rmi": "remove images"
+    },
+    "examples": [
+      {
+        "cmd": "docker ps -a",
+        "desc": "List all running and stopped containers"
+      },
+      {
+        "cmd": "docker run -d -p 80:80 nginx",
+        "desc": "Run nginx container in background"
+      },
+      {
+        "cmd": "docker exec -it my_container bash",
+        "desc": "Interactive bash inside container"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "docker.exe",
+    "tags": [
+      "docker",
+      "containers",
+      "devops",
+      "cloud"
+    ]
+  },
+  {
+    "name": "docker-compose",
+    "shell": "bash",
+    "category": "dev",
+    "description": "Define and run multi-container Docker applications with YAML",
+    "syntax": "docker-compose [options] [COMMAND] [ARGS...]",
+    "flags": {
+      "up": "create and start containers (-d detached)",
+      "down": "stop and remove containers, networks, volumes",
+      "logs": "view output from containers (-f follow)"
+    },
+    "examples": [
+      {
+        "cmd": "docker-compose up -d",
+        "desc": "Start multi-container stack in background"
+      },
+      {
+        "cmd": "docker-compose logs -f",
+        "desc": "Stream logs from all services"
+      },
+      {
+        "cmd": "docker-compose down",
+        "desc": "Tear down stack"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "docker-compose.exe",
+    "tags": [
+      "docker",
+      "compose",
+      "stack",
+      "orchestration"
+    ]
+  },
+  {
+    "name": "mount",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Mount a filesystem to a directory",
+    "syntax": "mount [options] device dir",
+    "flags": {
+      "-t": "specify filesystem type (ext4, nfs, iso9660)",
+      "-o": "mount options (ro, rw, noexec)",
+      "-a": "mount all filesystems mentioned in fstab"
+    },
+    "examples": [
+      {
+        "cmd": "sudo mount /dev/sdb1 /mnt/data",
+        "desc": "Mount drive partition to /mnt/data"
+      },
+      {
+        "cmd": "mount | grep ext4",
+        "desc": "Show ext4 mounted filesystems"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "Mount-DiskImage",
+    "tags": [
+      "mount",
+      "drive",
+      "storage",
+      "filesystem"
+    ]
+  },
+  {
+    "name": "umount",
+    "shell": "bash",
+    "category": "filesystem",
+    "description": "Unmount file systems",
+    "syntax": "umount [options] {dir|device}...",
+    "flags": {
+      "-f": "force unmount",
+      "-l": "lazy unmount (detach filesystem now, clean up refs later)"
+    },
+    "examples": [
+      {
+        "cmd": "sudo umount /mnt/data",
+        "desc": "Safely unmount partition"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": true,
+    "windows_equivalent": "Dismount-DiskImage",
+    "tags": [
+      "unmount",
+      "eject",
+      "drive"
+    ]
+  },
+  {
+    "name": "crontab",
+    "shell": "bash",
+    "category": "scheduling",
+    "description": "Maintain crontab files for individual users (scheduled background tasks)",
+    "syntax": "crontab [options]",
+    "flags": {
+      "-l": "display the current crontab",
+      "-e": "edit the current crontab",
+      "-r": "remove current crontab"
+    },
+    "examples": [
+      {
+        "cmd": "crontab -l",
+        "desc": "List current user scheduled cron jobs"
+      }
+    ],
+    "safety": "caution",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-ScheduledTask",
+    "tags": [
+      "cron",
+      "schedule",
+      "automation",
+      "timer"
+    ]
+  },
+  {
+    "name": "ffmpeg",
+    "shell": "bash",
+    "category": "media",
+    "description": "Hyper-fast audio and video converter and streamer",
+    "syntax": "ffmpeg [global_options] {[input_file_options] -i input_url} ... {[output_file_options] output_url} ...",
+    "flags": {
+      "-i": "input file URL",
+      "-vn": "disable video recording (audio only)",
+      "-c:v": "video codec",
+      "-c:a": "audio codec",
+      "-y": "overwrite output files without asking"
+    },
+    "examples": [
+      {
+        "cmd": "ffmpeg -i input.mp4 -vn -q:a 0 output.mp3",
+        "desc": "Extract audio from video as MP3"
+      },
+      {
+        "cmd": "ffmpeg -i input.mov -c:v libx264 -crf 23 output.mp4",
+        "desc": "Compress video to H.264 MP4"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "ffmpeg.exe",
+    "tags": [
+      "video",
+      "audio",
+      "transcode",
+      "media"
+    ]
+  },
+  {
+    "name": "ffprobe",
+    "shell": "bash",
+    "category": "media",
+    "description": "Multimedia streams analyzer (audio/video metadata)",
+    "syntax": "ffprobe [options] [input_url]",
+    "flags": {
+      "-v": "set logging level (quiet)",
+      "-print_format": "output format (json, csv)",
+      "-show_streams": "show streams info",
+      "-show_format": "show container format"
+    },
+    "examples": [
+      {
+        "cmd": "ffprobe -v quiet -print_format json -show_format -show_streams video.mp4",
+        "desc": "Inspect video resolution, codec, and duration in JSON"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "ffprobe.exe",
+    "tags": [
+      "media",
+      "metadata",
+      "duration",
+      "resolution"
+    ]
+  },
+  {
+    "name": "watch",
+    "shell": "bash",
+    "category": "misc",
+    "description": "Execute a program periodically, showing output fullscreen",
+    "syntax": "watch [options] command",
+    "flags": {
+      "-n": "interval in seconds (default 2)",
+      "-d": "highlight differences between successive updates",
+      "-t": "turn off header"
+    },
+    "examples": [
+      {
+        "cmd": "watch -n 1 'nvidia-smi'",
+        "desc": "Monitor GPU stats every second"
+      },
+      {
+        "cmd": "watch -d 'ls -l /tmp'",
+        "desc": "Watch temporary directory for new files"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "while ($true) { ...; Start-Sleep 2 }",
+    "tags": [
+      "loop",
+      "monitor",
+      "watch",
+      "refresh"
+    ]
+  },
+  {
+    "name": "time",
+    "shell": "bash",
+    "category": "misc",
+    "description": "Time a simple command or give resource usage",
+    "syntax": "time [options] command [arguments...]",
+    "flags": {
+      "-p": "POSIX output format"
+    },
+    "examples": [
+      {
+        "cmd": "time python heavy_script.py",
+        "desc": "Measure real, user, and sys CPU execution time"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Measure-Command",
+    "tags": [
+      "benchmark",
+      "time",
+      "duration",
+      "performance"
+    ]
+  },
+  {
+    "name": "sleep",
+    "shell": "bash",
+    "category": "misc",
+    "description": "Delay for a specified amount of time",
+    "syntax": "sleep NUMBER[SUFFIX]...",
+    "flags": {},
+    "examples": [
+      {
+        "cmd": "sleep 5",
+        "desc": "Pause execution for 5 seconds"
+      },
+      {
+        "cmd": "sleep 1m",
+        "desc": "Sleep for 1 minute"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Start-Sleep -Seconds (sleep)",
+    "tags": [
+      "delay",
+      "wait",
+      "pause",
+      "timer"
+    ]
+  },
+  {
+    "name": "echo",
+    "shell": "bash",
+    "category": "text",
+    "description": "Display a line of text",
+    "syntax": "echo [short-option]... [string]...",
+    "flags": {
+      "-e": "enable interpretation of backslash escapes",
+      "-n": "do not output trailing newline"
+    },
+    "examples": [
+      {
+        "cmd": "echo 'Hello World'",
+        "desc": "Print string to console"
+      },
+      {
+        "cmd": "echo 'PATH=$PATH:/opt/bin' >> ~/.bashrc",
+        "desc": "Append line to bashrc"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Write-Output (echo)",
+    "tags": [
+      "print",
+      "output",
+      "echo"
+    ]
+  },
+  {
+    "name": "clear",
+    "shell": "bash",
+    "category": "misc",
+    "description": "Clear the terminal screen",
+    "syntax": "clear",
+    "flags": {},
+    "examples": [
+      {
+        "cmd": "clear",
+        "desc": "Clear terminal viewport"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Clear-Host (cls/clear)",
+    "tags": [
+      "terminal",
+      "clear",
+      "screen"
+    ]
+  },
+  {
+    "name": "history",
+    "shell": "bash",
+    "category": "misc",
+    "description": "GNU History Library - display shell command history list",
+    "syntax": "history [n] or history -c",
+    "flags": {
+      "-c": "clear history list",
+      "-w": "write current history to file"
+    },
+    "examples": [
+      {
+        "cmd": "history | tail -n 25",
+        "desc": "Show last 25 executed commands"
+      },
+      {
+        "cmd": "history | grep docker",
+        "desc": "Search command history for docker"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Get-History (h)",
+    "tags": [
+      "history",
+      "commands",
+      "recall",
+      "bash"
+    ]
+  },
+  {
+    "name": "alias",
+    "shell": "bash",
+    "category": "misc",
+    "description": "Define or display aliases",
+    "syntax": "alias [name[=value] ... ]",
+    "flags": {
+      "-p": "print all defined aliases in a reusable format"
+    },
+    "examples": [
+      {
+        "cmd": "alias ll='ls -la'",
+        "desc": "Create shortcut alias ll"
+      },
+      {
+        "cmd": "alias",
+        "desc": "List all active aliases"
+      }
+    ],
+    "safety": "safe",
+    "is_destructive": false,
+    "requires_elevation": false,
+    "windows_equivalent": "Set-Alias",
+    "tags": [
+      "alias",
+      "shortcut",
+      "custom"
+    ]
+  },
+  {
+    "name": "reboot",
+    "shell": "bash",
+    "category": "power",
+    "description": "Reboot the machine",
+    "syntax": "reboot [options]",
+    "flags": {
+      "-f": "force immediate reboot",
+      "--halt": "halt the machine"
+    },
+    "examples": [
+      {
+        "cmd": "sudo reboot",
+        "desc": "Restart system immediately"
+      }
+    ],
+    "safety": "dangerous",
+    "is_destructive": true,
+    "requires_elevation": true,
+    "windows_equivalent": "Restart-Computer",
+    "tags": [
+      "reboot",
+      "restart",
+      "power"
+    ]
+  },
+  {
+    "name": "shutdown",
+    "shell": "bash",
+    "category": "power",
+    "description": "Power off or halt the machine after a delay",
+    "syntax": "shutdown [options] [time] [wall...]",
+    "flags": {
+      "-h": "halt or power off",
+      "-r": "reboot",
+      "-c": "cancel a pending shutdown",
+      "now": "immediate execution"
+    },
+    "examples": [
+      {
+        "cmd": "sudo shutdown -h now",
+        "desc": "Shut down machine immediately"
+      },
+      {
+        "cmd": "sudo shutdown -c",
+        "desc": "Cancel scheduled shutdown"
+      }
+    ],
+    "safety": "dangerous",
+    "is_destructive": true,
+    "requires_elevation": true,
+    "windows_equivalent": "Stop-Computer (shutdown /s)",
+    "tags": [
+      "shutdown",
+      "power",
+      "off"
+    ]
+  }
+]

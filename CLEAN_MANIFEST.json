@@ -1,0 +1,312 @@
+{
+  "project": "P.H.A.S.S Sphere Zenith",
+  "version": "8.0",
+  "generated_at": "2026-09-05T15:14:25.424391",
+  "total_files": 459,
+  "total_size_bytes": 2493879704,
+  "directories": {
+    "agents": {
+      "file_count": 2,
+      "size_bytes": 13577
+    },
+    "checkpoints": {
+      "file_count": 14,
+      "size_bytes": 407718
+    },
+    "config": {
+      "file_count": 4,
+      "size_bytes": 10653
+    },
+    "core": {
+      "file_count": 37,
+      "size_bytes": 422095
+    },
+    "data": {
+      "file_count": 1,
+      "size_bytes": 1855488
+    },
+    "database": {
+      "file_count": 2,
+      "size_bytes": 1475
+    },
+    "diagnostics": {
+      "file_count": 6,
+      "size_bytes": 18731
+    },
+    "docs": {
+      "file_count": 5,
+      "size_bytes": 22104
+    },
+    "exported_model": {
+      "file_count": 7,
+      "size_bytes": 2978
+    },
+    "generated_apps": {
+      "file_count": 4,
+      "size_bytes": 3235
+    },
+    "gui": {
+      "file_count": 7,
+      "size_bytes": 48949
+    },
+    "holographic_hud": {
+      "file_count": 3,
+      "size_bytes": 5429
+    },
+    "interface": {
+      "file_count": 6,
+      "size_bytes": 58470
+    },
+    "jarvis": {
+      "file_count": 3,
+      "size_bytes": 17771
+    },
+    "knowledge": {
+      "file_count": 6,
+      "size_bytes": 28703
+    },
+    "learning": {
+      "file_count": 12,
+      "size_bytes": 57223
+    },
+    "memory": {
+      "file_count": 10,
+      "size_bytes": 32232
+    },
+    "memory_vault": {
+      "file_count": 25,
+      "size_bytes": 281706
+    },
+    "mesh": {
+      "file_count": 2,
+      "size_bytes": 16975
+    },
+    "models": {
+      "file_count": 9,
+      "size_bytes": 2488922924
+    },
+    "neural": {
+      "file_count": 12,
+      "size_bytes": 77952
+    },
+    "neural_checkpoints": {
+      "file_count": 4,
+      "size_bytes": 1326
+    },
+    "nlp": {
+      "file_count": 10,
+      "size_bytes": 176024
+    },
+    "overnight_logs": {
+      "file_count": 46,
+      "size_bytes": 118086
+    },
+    "perception": {
+      "file_count": 8,
+      "size_bytes": 21958
+    },
+    "robot": {
+      "file_count": 3,
+      "size_bytes": 7604
+    },
+    "security": {
+      "file_count": 5,
+      "size_bytes": 37818
+    },
+    "sensors": {
+      "file_count": 2,
+      "size_bytes": 15137
+    },
+    "simulation": {
+      "file_count": 3,
+      "size_bytes": 5668
+    },
+    "swarm": {
+      "file_count": 2,
+      "size_bytes": 4842
+    },
+    "tests": {
+      "file_count": 70,
+      "size_bytes": 247506
+    },
+    "tools": {
+      "file_count": 66,
+      "size_bytes": 635716
+    },
+    "ui": {
+      "file_count": 3,
+      "size_bytes": 60282
+    },
+    "vision": {
+      "file_count": 1,
+      "size_bytes": 5847
+    },
+    "voice": {
+      "file_count": 7,
+      "size_bytes": 25775
+    },
+    "workspace": {
+      "file_count": 7,
+      "size_bytes": 9573
+    },
+    "world": {
+      "file_count": 7,
+      "size_bytes": 32252
+    }
+  },
+  "root_files": {
+    "auto_install.py": {
+      "size_bytes": 5510,
+      "sha256": "0e20d34fc83fd68f"
+    },
+    "build.py": {
+      "size_bytes": 4545,
+      "sha256": "3e2bb9434ab9fc63"
+    },
+    "build_linux.sh": {
+      "size_bytes": 1394,
+      "sha256": "ccdd838a74ce9d11"
+    },
+    "build_windows.bat": {
+      "size_bytes": 1076,
+      "sha256": "48e09edfb19b8d43"
+    },
+    "create_ollama_model.bat": {
+      "size_bytes": 741,
+      "sha256": "fe1cc6a89c05005a"
+    },
+    "Dockerfile": {
+      "size_bytes": 1300,
+      "sha256": "42f95c919fab8cda"
+    },
+    "document.pdf": {
+      "size_bytes": 488,
+      "sha256": "9614feb70494a370"
+    },
+    "ecosystem_devices.json": {
+      "size_bytes": 1875,
+      "sha256": "670f59c97c73c7ac"
+    },
+    "get_llama.ps1": {
+      "size_bytes": 1244,
+      "sha256": "b7ac731d0feb08c5"
+    },
+    "get_llama.sh": {
+      "size_bytes": 1404,
+      "sha256": "9dd8032c72b1828f"
+    },
+    "install.bat": {
+      "size_bytes": 841,
+      "sha256": "7a2912c998b4602d"
+    },
+    "INSTALL.md": {
+      "size_bytes": 3870,
+      "sha256": "08238f2a3b78c018"
+    },
+    "install.py": {
+      "size_bytes": 5333,
+      "sha256": "e235f47bc3c660e8"
+    },
+    "install.sh": {
+      "size_bytes": 964,
+      "sha256": "56d1173f92f16480"
+    },
+    "install_ollama_windows.ps1": {
+      "size_bytes": 2113,
+      "sha256": "a74da090a0731653"
+    },
+    "intrusion_defense_ledger.json": {
+      "size_bytes": 51187,
+      "sha256": "92ff5d5d0b4ecfbb"
+    },
+    "launch.py": {
+      "size_bytes": 5181,
+      "sha256": "1fdd980bd99f413d"
+    },
+    "Modelfile": {
+      "size_bytes": 754,
+      "sha256": "c5f7bbf37bd53e56"
+    },
+    "phass_cli.py": {
+      "size_bytes": 19604,
+      "sha256": "a3cfe3847d2021f7"
+    },
+    "package.bat": {
+      "size_bytes": 922,
+      "sha256": "d362e527deef90e3"
+    },
+    "package.sh": {
+      "size_bytes": 1195,
+      "sha256": "8eb0928207df3e99"
+    },
+    "paired_devices.json": {
+      "size_bytes": 5376,
+      "sha256": "b3756b15dc952abf"
+    },
+    "quantum_vault.enc": {
+      "size_bytes": 352,
+      "sha256": "3bb95e73de1bec25"
+    },
+    "README.md": {
+      "size_bytes": 6757,
+      "sha256": "08769ce1c372926e"
+    },
+    "requirements.txt": {
+      "size_bytes": 2131,
+      "sha256": "cfed36f0aa289d42"
+    },
+    "run_ai_model.bat": {
+      "size_bytes": 275,
+      "sha256": "fe298fe37c2c5ad9"
+    },
+    "run_ai_model.sh": {
+      "size_bytes": 234,
+      "sha256": "ae5cbe187d6186ae"
+    },
+    "run_model_chat.py": {
+      "size_bytes": 23595,
+      "sha256": "4d4ee6d26ece9725"
+    },
+    "run_model_dashboard.py": {
+      "size_bytes": 1446,
+      "sha256": "d11b45c273227962"
+    },
+    "run_orvix.bat": {
+      "size_bytes": 356,
+      "sha256": "7f48d7ea99da8e2f"
+    },
+    "run_orvix.sh": {
+      "size_bytes": 429,
+      "sha256": "f84887eb5c5dd0fc"
+    },
+    "run_server.py": {
+      "size_bytes": 1376,
+      "sha256": "4f01a9dbf8111348"
+    },
+    "run_simulation.py": {
+      "size_bytes": 4228,
+      "sha256": "d1887f3463bf0f7b"
+    },
+    "run_software.py": {
+      "size_bytes": 574,
+      "sha256": "40e428eaf217743f"
+    },
+    "setup_environment.py": {
+      "size_bytes": 1186,
+      "sha256": "25c625eb6a9453cd"
+    },
+    "summary_report.md": {
+      "size_bytes": 81,
+      "sha256": "f771fcda059768b3"
+    },
+    "train_model.py": {
+      "size_bytes": 4387,
+      "sha256": "3245c69e48316561"
+    },
+    "trial_model.py": {
+      "size_bytes": 3578,
+      "sha256": "5ecdb8b7f36247f1"
+    }
+  },
+  "total_size_mb": 2378.35
+}

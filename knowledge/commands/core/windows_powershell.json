@@ -1,0 +1,4492 @@
+[
+  {
+    "name": "Get-ChildItem",
+    "aliases": [
+      "gci",
+      "ls",
+      "dir"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Lists files and directories in one or more specified locations",
+    "syntax": "Get-ChildItem [-Path] <string> [-Recurse] [-Filter <string>]",
+    "examples": [
+      {
+        "cmd": "Get-ChildItem -Recurse -Filter *.txt",
+        "desc": "Find all .txt files recursively"
+      },
+      {
+        "cmd": "gci | Where-Object {$_.Length -gt 1MB}",
+        "desc": "Find files larger than 1MB"
+      }
+    ],
+    "related": [
+      "Get-Item",
+      "Remove-Item",
+      "Copy-Item"
+    ],
+    "safety": "safe",
+    "tags": [
+      "list",
+      "directory",
+      "files",
+      "ls",
+      "dir"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Content",
+    "aliases": [
+      "gc",
+      "cat",
+      "type"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Gets the content of the item at the specified location",
+    "syntax": "Get-Content [-Path] <string> [-Tail <int>] [-Wait]",
+    "examples": [
+      {
+        "cmd": "Get-Content server.log -Tail 50",
+        "desc": "Read last 50 lines of file"
+      },
+      {
+        "cmd": "Get-Content data.json | ConvertFrom-Json",
+        "desc": "Read and parse JSON"
+      }
+    ],
+    "related": [
+      "Set-Content",
+      "Add-Content",
+      "Clear-Content"
+    ],
+    "safety": "safe",
+    "tags": [
+      "read",
+      "view",
+      "cat",
+      "tail",
+      "content"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Set-Content",
+    "aliases": [
+      "sc"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Writes or replaces the content in an item with new content",
+    "syntax": "Set-Content [-Path] <string> [-Value] <Object>",
+    "examples": [
+      {
+        "cmd": "Set-Content -Path note.txt -Value 'Hello World'",
+        "desc": "Overwrite file with text"
+      }
+    ],
+    "related": [
+      "Add-Content",
+      "Clear-Content",
+      "Out-File"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "write",
+      "overwrite",
+      "save"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Add-Content",
+    "aliases": [
+      "ac"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Appends content to the specified items and files",
+    "syntax": "Add-Content [-Path] <string> [-Value] <Object>",
+    "examples": [
+      {
+        "cmd": "Add-Content -Path app.log -Value 'Task finished at $(Get-Date)'",
+        "desc": "Append timestamp to log"
+      }
+    ],
+    "related": [
+      "Set-Content",
+      "Get-Content"
+    ],
+    "safety": "safe",
+    "tags": [
+      "append",
+      "log",
+      "write"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Clear-Content",
+    "aliases": [
+      "clc"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Deletes the contents of an item without deleting the item itself",
+    "syntax": "Clear-Content [-Path] <string>",
+    "examples": [
+      {
+        "cmd": "Clear-Content cache.log",
+        "desc": "Truncate file to 0 bytes"
+      }
+    ],
+    "related": [
+      "Remove-Item",
+      "Set-Content"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "truncate",
+      "clear",
+      "empty"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Copy-Item",
+    "aliases": [
+      "cpi",
+      "cp",
+      "copy"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Copies an item from one location to another",
+    "syntax": "Copy-Item [-Path] <string> [-Destination] <string> [-Recurse]",
+    "examples": [
+      {
+        "cmd": "Copy-Item -Path ./data -Destination ./backup -Recurse",
+        "desc": "Copy directory recursively"
+      }
+    ],
+    "related": [
+      "Move-Item",
+      "Remove-Item"
+    ],
+    "safety": "safe",
+    "tags": [
+      "copy",
+      "duplicate",
+      "backup"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Move-Item",
+    "aliases": [
+      "mi",
+      "mv",
+      "move"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Moves an item from one location to another",
+    "syntax": "Move-Item [-Path] <string> [-Destination] <string> [-Force]",
+    "examples": [
+      {
+        "cmd": "Move-Item *.csv ./archive/",
+        "desc": "Move all CSV files to archive"
+      }
+    ],
+    "related": [
+      "Copy-Item",
+      "Rename-Item"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "move",
+      "relocate",
+      "rename"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Remove-Item",
+    "aliases": [
+      "ri",
+      "rm",
+      "del",
+      "erase"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Deletes the specified items and files",
+    "syntax": "Remove-Item [-Path] <string> [-Recurse] [-Force]",
+    "examples": [
+      {
+        "cmd": "Remove-Item -Path ./temp/*.tmp -Force",
+        "desc": "Delete temporary files"
+      }
+    ],
+    "related": [
+      "Clear-Content",
+      "New-Item"
+    ],
+    "safety": "destructive",
+    "tags": [
+      "delete",
+      "remove",
+      "rm",
+      "unlink"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "New-Item",
+    "aliases": [
+      "ni",
+      "mkdir",
+      "md"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Creates a new item such as a file or directory",
+    "syntax": "New-Item [-Path] <string> [-ItemType <string>] [-Value <Object>]",
+    "examples": [
+      {
+        "cmd": "New-Item -ItemType Directory -Path ./src/components",
+        "desc": "Create directory tree"
+      },
+      {
+        "cmd": "New-Item -ItemType File -Path config.env -Value 'PORT=8000'",
+        "desc": "Create file with initial value"
+      }
+    ],
+    "related": [
+      "Remove-Item",
+      "Test-Path"
+    ],
+    "safety": "safe",
+    "tags": [
+      "create",
+      "mkdir",
+      "touch",
+      "folder",
+      "file"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Test-Path",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Determines whether all elements of a path exist",
+    "syntax": "Test-Path [-Path] <string> [-PathType <string>]",
+    "examples": [
+      {
+        "cmd": "Test-Path C:\\Windows\\System32",
+        "desc": "Check if folder exists"
+      },
+      {
+        "cmd": "if (Test-Path .env) { gc .env }",
+        "desc": "Read file if present"
+      }
+    ],
+    "related": [
+      "Resolve-Path",
+      "Get-Item"
+    ],
+    "safety": "safe",
+    "tags": [
+      "exists",
+      "check",
+      "verify",
+      "path"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Rename-Item",
+    "aliases": [
+      "ren",
+      "rni"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Renames an item in a PowerShell provider namespace",
+    "syntax": "Rename-Item [-Path] <string> [-NewName] <string>",
+    "examples": [
+      {
+        "cmd": "Rename-Item report_old.txt report_new.txt",
+        "desc": "Rename file"
+      }
+    ],
+    "related": [
+      "Move-Item",
+      "Copy-Item"
+    ],
+    "safety": "safe",
+    "tags": [
+      "rename",
+      "mv"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Item",
+    "aliases": [
+      "gi"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Gets the item at the specified location",
+    "syntax": "Get-Item [-Path] <string>",
+    "examples": [
+      {
+        "cmd": "Get-Item package.json | Select-Object Length, LastWriteTime",
+        "desc": "Get file metadata"
+      }
+    ],
+    "related": [
+      "Get-ChildItem",
+      "Get-ItemProperty"
+    ],
+    "safety": "safe",
+    "tags": [
+      "info",
+      "stat",
+      "metadata"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Set-Item",
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Changes the value of an item",
+    "syntax": "Set-Item [-Path] <path> [-Value] <object>",
+    "examples": [
+      {
+        "cmd": "Set-Item",
+        "desc": "Run Set-Item"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "si"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Clear-Item",
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Clears contents of an item",
+    "syntax": "Clear-Item [-Path] <path>",
+    "examples": [
+      {
+        "cmd": "Clear-Item",
+        "desc": "Run Clear-Item"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "cli"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Split-Path",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "search",
+    "description": "Returns the specified part of a path",
+    "syntax": "Split-Path [-Path] <string> [-Leaf | -Parent | -Extension]",
+    "examples": [
+      {
+        "cmd": "Split-Path C:\\Folder\\file.txt -Leaf",
+        "desc": "Get filename 'file.txt'"
+      },
+      {
+        "cmd": "Split-Path C:\\Folder\\file.txt -Parent",
+        "desc": "Get parent folder"
+      }
+    ],
+    "related": [
+      "Join-Path",
+      "Resolve-Path"
+    ],
+    "safety": "safe",
+    "tags": [
+      "dirname",
+      "basename",
+      "path"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Join-Path",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "search",
+    "description": "Combines a path and a child-path into a single path",
+    "syntax": "Join-Path [-Path] <string> [-ChildPath] <string>",
+    "examples": [
+      {
+        "cmd": "Join-Path $env:TEMP 'output.log'",
+        "desc": "Construct platform-safe path"
+      }
+    ],
+    "related": [
+      "Split-Path",
+      "Resolve-Path"
+    ],
+    "safety": "safe",
+    "tags": [
+      "combine",
+      "path",
+      "join"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Resolve-Path",
+    "aliases": [
+      "rvpa"
+    ],
+    "shell": "powershell",
+    "category": "search",
+    "description": "Resolves the wildcard characters in a path and displays the path contents",
+    "syntax": "Resolve-Path [-Path] <string[]>",
+    "examples": [
+      {
+        "cmd": "Resolve-Path ~\\Documents",
+        "desc": "Expand relative or home path to full path"
+      }
+    ],
+    "related": [
+      "Split-Path",
+      "Join-Path"
+    ],
+    "safety": "safe",
+    "tags": [
+      "absolute",
+      "expand",
+      "path"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Convert-Path",
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Converts provider path to standard Windows path",
+    "syntax": "Convert-Path [-Path] <path>",
+    "examples": [
+      {
+        "cmd": "Convert-Path",
+        "desc": "Run Convert-Path"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "path"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Location",
+    "aliases": [
+      "gl",
+      "pwd"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Gets information about the current working location",
+    "syntax": "Get-Location",
+    "examples": [
+      {
+        "cmd": "Get-Location",
+        "desc": "Display current working path"
+      }
+    ],
+    "related": [
+      "Set-Location",
+      "Push-Location"
+    ],
+    "safety": "safe",
+    "tags": [
+      "pwd",
+      "cwd",
+      "current"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Set-Location",
+    "aliases": [
+      "cd",
+      "chdir",
+      "sl"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Sets the current working location to a specified path",
+    "syntax": "Set-Location [-Path] <string>",
+    "examples": [
+      {
+        "cmd": "Set-Location C:\\Projects\\orvix_sphere",
+        "desc": "Change directory"
+      }
+    ],
+    "related": [
+      "Get-Location",
+      "Push-Location",
+      "Pop-Location"
+    ],
+    "safety": "safe",
+    "tags": [
+      "cd",
+      "chdir",
+      "navigate"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Push-Location",
+    "aliases": [
+      "pushd"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Adds the current location to the top of a location stack",
+    "syntax": "Push-Location [[-Path] <string>]",
+    "examples": [
+      {
+        "cmd": "Push-Location C:\\Temp; ...; Pop-Location",
+        "desc": "Push location stack"
+      }
+    ],
+    "related": [
+      "Pop-Location",
+      "Set-Location"
+    ],
+    "safety": "safe",
+    "tags": [
+      "pushd",
+      "stack"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Pop-Location",
+    "aliases": [
+      "popd"
+    ],
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Changes the current location to the location most recently pushed",
+    "syntax": "Pop-Location",
+    "examples": [
+      {
+        "cmd": "Pop-Location",
+        "desc": "Return to previous pushed directory"
+      }
+    ],
+    "related": [
+      "Push-Location",
+      "Get-Location"
+    ],
+    "safety": "safe",
+    "tags": [
+      "popd",
+      "return"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-ItemPropertyValue",
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Gets value of a property on an item",
+    "syntax": "Get-ItemPropertyValue [-Path] <path> [-Name] <prop>",
+    "examples": [
+      {
+        "cmd": "Get-ItemPropertyValue",
+        "desc": "Run Get-ItemPropertyValue"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "property"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Set-ItemProperty",
+    "aliases": [
+      "sp"
+    ],
+    "shell": "powershell",
+    "category": "registry",
+    "description": "Creates or changes the value of a property of an item",
+    "syntax": "Set-ItemProperty [-Path] <string[]> [-Name] <string> [-Value] <Object>",
+    "examples": [
+      {
+        "cmd": "Set-ItemProperty 'HKCU:\\Software\\Orvix' -Name 'Theme' -Value 'Dark'",
+        "desc": "Set registry configuration value"
+      }
+    ],
+    "related": [
+      "Get-ItemProperty",
+      "Remove-ItemProperty"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "registry",
+      "write",
+      "configure"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-ItemProperty",
+    "aliases": [
+      "gp"
+    ],
+    "shell": "powershell",
+    "category": "registry",
+    "description": "Gets the properties of a specified item (registry key or filesystem item)",
+    "syntax": "Get-ItemProperty [-Path] <string[]> [[-Name] <string[]>]",
+    "examples": [
+      {
+        "cmd": "Get-ItemProperty 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'",
+        "desc": "View user startup programs"
+      }
+    ],
+    "related": [
+      "Set-ItemProperty",
+      "reg query"
+    ],
+    "safety": "safe",
+    "tags": [
+      "registry",
+      "hkey",
+      "startup"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "New-ItemProperty",
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Creates a new property on an item or registry key",
+    "syntax": "New-ItemProperty [-Path] <path> -Name <string> -PropertyType <type> -Value <val>",
+    "examples": [
+      {
+        "cmd": "New-ItemProperty",
+        "desc": "Run New-ItemProperty"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "registry"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Remove-ItemProperty",
+    "aliases": [
+      "rp"
+    ],
+    "shell": "powershell",
+    "category": "registry",
+    "description": "Deletes the property and its value from an item",
+    "syntax": "Remove-ItemProperty [-Path] <string[]> [-Name] <string[]>",
+    "examples": [
+      {
+        "cmd": "Remove-ItemProperty 'HKCU:\\Software\\Orvix' -Name 'OldKey'",
+        "desc": "Remove registry key value"
+      }
+    ],
+    "related": [
+      "Set-ItemProperty"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "registry",
+      "delete"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Clear-ItemProperty",
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Clears property value on an item or registry key",
+    "syntax": "Clear-ItemProperty [-Path] <path> -Name <string>",
+    "examples": [
+      {
+        "cmd": "Clear-ItemProperty",
+        "desc": "Run Clear-ItemProperty"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "registry"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Copy-ItemProperty",
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Copies property from one item to another",
+    "syntax": "Copy-ItemProperty [-Path] <src> -Destination <dest> -Name <prop>",
+    "examples": [
+      {
+        "cmd": "Copy-ItemProperty",
+        "desc": "Run Copy-ItemProperty"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "registry"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Move-ItemProperty",
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Moves property from one item to another",
+    "syntax": "Move-ItemProperty [-Path] <src> -Destination <dest> -Name <prop>",
+    "examples": [
+      {
+        "cmd": "Move-ItemProperty",
+        "desc": "Run Move-ItemProperty"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "registry"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Rename-ItemProperty",
+    "shell": "powershell",
+    "category": "filesystem",
+    "description": "Renames property on an item or registry key",
+    "syntax": "Rename-ItemProperty [-Path] <path> -Name <old> -NewName <new>",
+    "examples": [
+      {
+        "cmd": "Rename-ItemProperty",
+        "desc": "Run Rename-ItemProperty"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "registry"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Process",
+    "aliases": [
+      "gps",
+      "ps"
+    ],
+    "shell": "powershell",
+    "category": "process",
+    "description": "Gets the processes that are running on the local computer",
+    "syntax": "Get-Process [[-Name] <string[]>] [-Id <int[]>]",
+    "examples": [
+      {
+        "cmd": "Get-Process chrome | Select CPU, WorkingSet64",
+        "desc": "Get Chrome memory/CPU metrics"
+      },
+      {
+        "cmd": "Get-Process | Sort CPU -Descending | Select -First 5",
+        "desc": "Top 5 CPU consumers"
+      }
+    ],
+    "related": [
+      "Stop-Process",
+      "Start-Process"
+    ],
+    "safety": "safe",
+    "tags": [
+      "ps",
+      "tasklist",
+      "top",
+      "proc"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Start-Process",
+    "aliases": [
+      "saps",
+      "start"
+    ],
+    "shell": "powershell",
+    "category": "process",
+    "description": "Starts one or more processes on the local computer",
+    "syntax": "Start-Process [-FilePath] <string> [[-ArgumentList] <string[]>] [-Wait] [-NoNewWindow]",
+    "examples": [
+      {
+        "cmd": "Start-Process notepad.exe config.ini",
+        "desc": "Launch Notepad with file"
+      },
+      {
+        "cmd": "Start-Process python.exe -ArgumentList 'main.py' -NoNewWindow",
+        "desc": "Run script in background"
+      }
+    ],
+    "related": [
+      "Stop-Process",
+      "Wait-Process"
+    ],
+    "safety": "safe",
+    "tags": [
+      "launch",
+      "exec",
+      "open",
+      "spawn"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Stop-Process",
+    "aliases": [
+      "spps",
+      "kill"
+    ],
+    "shell": "powershell",
+    "category": "process",
+    "description": "Stops one or more running processes",
+    "syntax": "Stop-Process [-Id] <int[]> [-Force] [-PassThru]",
+    "examples": [
+      {
+        "cmd": "Stop-Process -Name notepad -Force",
+        "desc": "Kill all notepad processes"
+      },
+      {
+        "cmd": "Stop-Process -Id 14204",
+        "desc": "Kill process by PID"
+      }
+    ],
+    "related": [
+      "Get-Process",
+      "taskkill"
+    ],
+    "safety": "destructive",
+    "tags": [
+      "kill",
+      "terminate",
+      "sigkill"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Wait-Process",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "process",
+    "description": "Waits for the processes to be stopped before accepting more input",
+    "syntax": "Wait-Process [-Id] <int[]> [-Timeout <int>]",
+    "examples": [
+      {
+        "cmd": "Start-Process build.bat -PassThru | Wait-Process",
+        "desc": "Wait for build batch to complete"
+      }
+    ],
+    "related": [
+      "Start-Process",
+      "Get-Process"
+    ],
+    "safety": "safe",
+    "tags": [
+      "wait",
+      "join",
+      "sync"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Debug-Process",
+    "shell": "powershell",
+    "category": "process",
+    "description": "Attaches debugger to running process",
+    "syntax": "Debug-Process [-Id <int>]",
+    "examples": [
+      {
+        "cmd": "Debug-Process",
+        "desc": "Run Debug-Process"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "debug"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Service",
+    "aliases": [
+      "gsv"
+    ],
+    "shell": "powershell",
+    "category": "process",
+    "description": "Gets the services on the computer",
+    "syntax": "Get-Service [[-Name] <string[]>]",
+    "examples": [
+      {
+        "cmd": "Get-Service | Where-Object {$_.Status -eq 'Running'}",
+        "desc": "List active Windows services"
+      },
+      {
+        "cmd": "Get-Service wuauserv",
+        "desc": "Check Windows Update service status"
+      }
+    ],
+    "related": [
+      "Start-Service",
+      "Stop-Service",
+      "Restart-Service"
+    ],
+    "safety": "safe",
+    "tags": [
+      "service",
+      "daemon",
+      "status"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Start-Service",
+    "aliases": [
+      "sasv"
+    ],
+    "shell": "powershell",
+    "category": "process",
+    "description": "Starts one or more stopped services",
+    "syntax": "Start-Service [-Name] <string[]>",
+    "examples": [
+      {
+        "cmd": "Start-Service -Name Spooler",
+        "desc": "Start print spooler service"
+      }
+    ],
+    "related": [
+      "Stop-Service",
+      "Get-Service"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "service",
+      "start"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Stop-Service",
+    "aliases": [
+      "spsv"
+    ],
+    "shell": "powershell",
+    "category": "process",
+    "description": "Stops one or more running services",
+    "syntax": "Stop-Service [-Name] <string[]> [-Force]",
+    "examples": [
+      {
+        "cmd": "Stop-Service -Name wuauserv",
+        "desc": "Stop Windows update service"
+      }
+    ],
+    "related": [
+      "Start-Service",
+      "Get-Service"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "service",
+      "stop"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Restart-Service",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "process",
+    "description": "Stops and then starts one or more services",
+    "syntax": "Restart-Service [-Name] <string[]>",
+    "examples": [
+      {
+        "cmd": "Restart-Service -Name LanmanServer",
+        "desc": "Restart SMB server service"
+      }
+    ],
+    "related": [
+      "Get-Service"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "service",
+      "restart",
+      "reload"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Set-Service",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "process",
+    "description": "Starts, stops, and suspends a service, and changes its properties",
+    "syntax": "Set-Service [-Name] <string> [-StartupType <string>]",
+    "examples": [
+      {
+        "cmd": "Set-Service -Name OpenSSH -StartupType Automatic",
+        "desc": "Set SSH service to start automatically on boot"
+      }
+    ],
+    "related": [
+      "Get-Service"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "service",
+      "startup",
+      "boot"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Suspend-Service",
+    "shell": "powershell",
+    "category": "service",
+    "description": "Suspends (pauses) one or more running services",
+    "syntax": "Suspend-Service [-Name] <string[]>",
+    "examples": [
+      {
+        "cmd": "Suspend-Service",
+        "desc": "Run Suspend-Service"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "pause"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Resume-Service",
+    "shell": "powershell",
+    "category": "service",
+    "description": "Resumes one or more suspended services",
+    "syntax": "Resume-Service [-Name] <string[]>",
+    "examples": [
+      {
+        "cmd": "Resume-Service",
+        "desc": "Run Resume-Service"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "resume"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "New-Service",
+    "shell": "powershell",
+    "category": "service",
+    "description": "Creates a new Windows service entry",
+    "syntax": "New-Service -Name <string> -BinaryPathName <path>",
+    "examples": [
+      {
+        "cmd": "New-Service",
+        "desc": "Run New-Service"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "create"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Test-NetConnection",
+    "aliases": [
+      "tnc",
+      "ping"
+    ],
+    "shell": "powershell",
+    "category": "network",
+    "description": "Displays diagnostic information for a connection",
+    "syntax": "Test-NetConnection [[-ComputerName] <string>] [-Port <int>]",
+    "examples": [
+      {
+        "cmd": "Test-NetConnection google.com -Port 443",
+        "desc": "Test TCP handshake to port 443"
+      },
+      {
+        "cmd": "Test-NetConnection 127.0.0.1 -Port 8000",
+        "desc": "Check local web dashboard port"
+      }
+    ],
+    "related": [
+      "ping",
+      "Invoke-WebRequest"
+    ],
+    "safety": "safe",
+    "tags": [
+      "ping",
+      "port",
+      "connect",
+      "tcp"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Invoke-WebRequest",
+    "aliases": [
+      "iwr",
+      "curl",
+      "wget"
+    ],
+    "shell": "powershell",
+    "category": "network",
+    "description": "Gets content from a web page on the internet",
+    "syntax": "Invoke-WebRequest [-Uri] <Uri> [-OutFile <string>] [-Method <string>]",
+    "examples": [
+      {
+        "cmd": "Invoke-WebRequest -Uri https://api.github.com/zen -UseBasicParsing",
+        "desc": "Perform HTTP GET"
+      },
+      {
+        "cmd": "iwr -Uri https://example.com/file.zip -OutFile file.zip",
+        "desc": "Download file"
+      }
+    ],
+    "related": [
+      "Invoke-RestMethod",
+      "curl"
+    ],
+    "safety": "safe",
+    "tags": [
+      "http",
+      "get",
+      "curl",
+      "download"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Invoke-RestMethod",
+    "aliases": [
+      "irm"
+    ],
+    "shell": "powershell",
+    "category": "network",
+    "description": "Sends an HTTP or HTTPS request to a RESTful web service and parses JSON/XML automatically",
+    "syntax": "Invoke-RestMethod [-Uri] <Uri> [-Method <string>] [-Body <Object>]",
+    "examples": [
+      {
+        "cmd": "Invoke-RestMethod -Uri http://127.0.0.1:8000/api/status",
+        "desc": "Query Orvix Web API"
+      }
+    ],
+    "related": [
+      "Invoke-WebRequest"
+    ],
+    "safety": "safe",
+    "tags": [
+      "rest",
+      "api",
+      "json",
+      "http"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Resolve-DnsName",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "network",
+    "description": "Performs a DNS query resolution for the specified name",
+    "syntax": "Resolve-DnsName [-Name] <string> [-Type <string>]",
+    "examples": [
+      {
+        "cmd": "Resolve-DnsName google.com -Type A",
+        "desc": "Resolve DNS A records"
+      }
+    ],
+    "related": [
+      "nslookup"
+    ],
+    "safety": "safe",
+    "tags": [
+      "dns",
+      "lookup",
+      "resolve",
+      "host"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-NetIPAddress",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "network",
+    "description": "Gets information about IP address configuration",
+    "syntax": "Get-NetIPAddress [-InterfaceAlias <string>] [-AddressFamily <string>]",
+    "examples": [
+      {
+        "cmd": "Get-NetIPAddress -AddressFamily IPv4 | Select IPAddress, InterfaceAlias",
+        "desc": "List all local IPv4 addresses"
+      }
+    ],
+    "related": [
+      "ipconfig",
+      "Get-NetAdapter"
+    ],
+    "safety": "safe",
+    "tags": [
+      "ip",
+      "subnet",
+      "dhcp"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-NetAdapter",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "network",
+    "description": "Gets the basic network adapter properties",
+    "syntax": "Get-NetAdapter [[-Name] <string[]>]",
+    "examples": [
+      {
+        "cmd": "Get-NetAdapter | Select Name, InterfaceDescription, Status, LinkSpeed",
+        "desc": "List physical NICs and speeds"
+      }
+    ],
+    "related": [
+      "Get-NetIPAddress"
+    ],
+    "safety": "safe",
+    "tags": [
+      "nic",
+      "interface",
+      "ethernet",
+      "wifi"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-NetRoute",
+    "shell": "powershell",
+    "category": "network",
+    "description": "Gets IP routing table information",
+    "syntax": "Get-NetRoute [-DestinationPrefix <prefix>]",
+    "examples": [
+      {
+        "cmd": "Get-NetRoute",
+        "desc": "Run Get-NetRoute"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "route"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-NetTCPConnection",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "network",
+    "description": "Gets information about current TCP connections",
+    "syntax": "Get-NetTCPConnection [-LocalPort <int[]>] [-State <string[]>]",
+    "examples": [
+      {
+        "cmd": "Get-NetTCPConnection -State Listen | Select LocalAddress, LocalPort, OwningProcess",
+        "desc": "List listening ports with owning PIDs"
+      }
+    ],
+    "related": [
+      "netstat"
+    ],
+    "safety": "safe",
+    "tags": [
+      "ports",
+      "listen",
+      "tcp"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "New-NetFirewallRule",
+    "shell": "powershell",
+    "category": "network",
+    "description": "Creates a new firewall rule",
+    "syntax": "New-NetFirewallRule -DisplayName <name> -Direction <Inbound|Outbound> -Action <Allow|Block>",
+    "examples": [
+      {
+        "cmd": "New-NetFirewallRule",
+        "desc": "Run New-NetFirewallRule"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "firewall"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-NetFirewallRule",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "network",
+    "description": "Retrieves firewall rules from the target computer",
+    "syntax": "Get-NetFirewallRule [-Enabled <string>] [-Direction <string>]",
+    "examples": [
+      {
+        "cmd": "Get-NetFirewallRule -Enabled True | Select -First 5",
+        "desc": "Inspect active firewall rules"
+      }
+    ],
+    "related": [
+      "netsh"
+    ],
+    "safety": "safe",
+    "tags": [
+      "firewall",
+      "security",
+      "ports"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Set-NetFirewallRule",
+    "shell": "powershell",
+    "category": "network",
+    "description": "Modifies existing firewall rule",
+    "syntax": "Set-NetFirewallRule -DisplayName <name> [-Enabled <true|false>]",
+    "examples": [
+      {
+        "cmd": "Set-NetFirewallRule",
+        "desc": "Run Set-NetFirewallRule"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "firewall"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Remove-NetFirewallRule",
+    "shell": "powershell",
+    "category": "network",
+    "description": "Deletes firewall rule",
+    "syntax": "Remove-NetFirewallRule -DisplayName <name>",
+    "examples": [
+      {
+        "cmd": "Remove-NetFirewallRule",
+        "desc": "Run Remove-NetFirewallRule"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "firewall"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Test-Connection",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "network",
+    "description": "Sends ICMP echo request packets to one or more computers",
+    "syntax": "Test-Connection [-TargetName] <string[]> [-Count <int>]",
+    "examples": [
+      {
+        "cmd": "Test-Connection 8.8.8.8 -Count 2",
+        "desc": "PowerShell native ICMP ping"
+      }
+    ],
+    "related": [
+      "ping",
+      "Test-NetConnection"
+    ],
+    "safety": "safe",
+    "tags": [
+      "ping",
+      "icmp"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-DnsClientServerAddress",
+    "shell": "powershell",
+    "category": "network",
+    "description": "Gets DNS server IP addresses on network interfaces",
+    "syntax": "Get-DnsClientServerAddress",
+    "examples": [
+      {
+        "cmd": "Get-DnsClientServerAddress",
+        "desc": "Run Get-DnsClientServerAddress"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "dns"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Clear-DnsClientCache",
+    "shell": "powershell",
+    "category": "network",
+    "description": "Clears DNS client cache contents",
+    "syntax": "Clear-DnsClientCache",
+    "examples": [
+      {
+        "cmd": "Clear-DnsClientCache",
+        "desc": "Run Clear-DnsClientCache"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "flushdns"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-ComputerInfo",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "system",
+    "description": "Gets a consolidated set of system and operating system properties",
+    "syntax": "Get-ComputerInfo [-Property <string[]>]",
+    "examples": [
+      {
+        "cmd": "Get-ComputerInfo | Select OsName, WindowsVersion, TotalPhysicalMemory",
+        "desc": "System hardware specs"
+      }
+    ],
+    "related": [
+      "systeminfo"
+    ],
+    "safety": "safe",
+    "tags": [
+      "specs",
+      "ram",
+      "os"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Volume",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "system",
+    "description": "Gets the volume objects on the system",
+    "syntax": "Get-Volume",
+    "examples": [
+      {
+        "cmd": "Get-Volume | Select DriveLetter, FileSystemType, SizeRemaining, Size",
+        "desc": "Disk free space on all drives"
+      }
+    ],
+    "related": [
+      "Get-PSDrive"
+    ],
+    "safety": "safe",
+    "tags": [
+      "disk",
+      "storage",
+      "drives",
+      "free-space"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Disk",
+    "shell": "powershell",
+    "category": "system",
+    "description": "Gets physical disk drives connected to system",
+    "syntax": "Get-Disk",
+    "examples": [
+      {
+        "cmd": "Get-Disk",
+        "desc": "Run Get-Disk"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "storage",
+      "drives"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Partition",
+    "shell": "powershell",
+    "category": "system",
+    "description": "Gets partition information on disks",
+    "syntax": "Get-Partition [-DiskNumber <int>]",
+    "examples": [
+      {
+        "cmd": "Get-Partition",
+        "desc": "Run Get-Partition"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "partition"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-CimInstance",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "process",
+    "description": "Gets CIM instances from a CIM server using WMI classes",
+    "syntax": "Get-CimInstance [-ClassName] <string> [-Filter <string>]",
+    "examples": [
+      {
+        "cmd": "Get-CimInstance Win32_Process | Select Name, CommandLine",
+        "desc": "Inspect process launch arguments"
+      },
+      {
+        "cmd": "Get-CimInstance Win32_Processor",
+        "desc": "Query CPU hardware specs"
+      }
+    ],
+    "related": [
+      "Get-WmiObject"
+    ],
+    "safety": "safe",
+    "tags": [
+      "wmi",
+      "cim",
+      "hardware",
+      "query"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-WmiObject",
+    "shell": "powershell",
+    "category": "system",
+    "description": "Gets instances of WMI classes (legacy)",
+    "syntax": "Get-WmiObject [-Class] <string>",
+    "examples": [
+      {
+        "cmd": "Get-WmiObject",
+        "desc": "Run Get-WmiObject"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "gwmi",
+      "wmi"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-EventLog",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "system",
+    "description": "Gets the events in an event log, or a list of the event logs",
+    "syntax": "Get-EventLog [-LogName] <string> [-Newest <int>] [-EntryType <string[]>]",
+    "examples": [
+      {
+        "cmd": "Get-EventLog -LogName System -Newest 10 -EntryType Error",
+        "desc": "Inspect top 10 system error events"
+      }
+    ],
+    "related": [
+      "Get-WinEvent"
+    ],
+    "safety": "safe",
+    "tags": [
+      "logs",
+      "events",
+      "troubleshoot"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-WinEvent",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "system",
+    "description": "Gets events from event logs and Event Tracing for Windows (ETW) log files",
+    "syntax": "Get-WinEvent [-FilterHashtable] <hashtable>",
+    "examples": [
+      {
+        "cmd": "Get-WinEvent -FilterHashtable @{LogName='Application'; Level=2} -MaxEvents 5",
+        "desc": "Query application error logs"
+      }
+    ],
+    "related": [
+      "Get-EventLog"
+    ],
+    "safety": "safe",
+    "tags": [
+      "events",
+      "diagnostics",
+      "audit"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Date",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "system",
+    "description": "Gets the current date and time",
+    "syntax": "Get-Date [-Format <string>]",
+    "examples": [
+      {
+        "cmd": "Get-Date -Format 'yyyy-MM-dd HH:mm:ss'",
+        "desc": "Format timestamp"
+      }
+    ],
+    "related": [
+      "Get-TimeZone"
+    ],
+    "safety": "safe",
+    "tags": [
+      "time",
+      "clock",
+      "timestamp",
+      "date"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Uptime",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "system",
+    "description": "Shows the time elapsed since the last operating system boot",
+    "syntax": "Get-Uptime [-Since]",
+    "examples": [
+      {
+        "cmd": "Get-Uptime",
+        "desc": "Show system uptime duration"
+      }
+    ],
+    "related": [
+      "Get-Date"
+    ],
+    "safety": "safe",
+    "tags": [
+      "uptime",
+      "boot",
+      "time"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Host",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "system",
+    "description": "Gets an object that represents the current host program",
+    "syntax": "Get-Host",
+    "examples": [
+      {
+        "cmd": "Get-Host | Select Version",
+        "desc": "Get PowerShell engine version"
+      }
+    ],
+    "related": [
+      "$PSVersionTable"
+    ],
+    "safety": "safe",
+    "tags": [
+      "version",
+      "engine",
+      "shell"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Clear-Host",
+    "aliases": [
+      "clear",
+      "cls"
+    ],
+    "shell": "powershell",
+    "category": "misc",
+    "description": "Clears the display in the host program",
+    "syntax": "Clear-Host",
+    "examples": [
+      {
+        "cmd": "Clear-Host",
+        "desc": "Clear PowerShell host console"
+      }
+    ],
+    "related": [
+      "cls"
+    ],
+    "safety": "safe",
+    "tags": [
+      "clear",
+      "screen",
+      "terminal"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-TimeZone",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "system",
+    "description": "Gets the current time zone or a list of available time zones",
+    "syntax": "Get-TimeZone",
+    "examples": [
+      {
+        "cmd": "Get-TimeZone",
+        "desc": "Show local timezone information"
+      }
+    ],
+    "related": [
+      "Get-Date"
+    ],
+    "safety": "safe",
+    "tags": [
+      "timezone",
+      "clock",
+      "utc"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Set-TimeZone",
+    "shell": "powershell",
+    "category": "system",
+    "description": "Sets system time zone",
+    "syntax": "Set-TimeZone -Id <id>",
+    "examples": [
+      {
+        "cmd": "Set-TimeZone",
+        "desc": "Run Set-TimeZone"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "timezone"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-HotFix",
+    "shell": "powershell",
+    "category": "system",
+    "description": "Gets installed updates and hotfixes",
+    "syntax": "Get-HotFix",
+    "examples": [
+      {
+        "cmd": "Get-HotFix",
+        "desc": "Run Get-HotFix"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "patches",
+      "updates"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Restart-Computer",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "power",
+    "description": "Restarts the operating system on local and remote computers",
+    "syntax": "Restart-Computer [-Force]",
+    "examples": [
+      {
+        "cmd": "Restart-Computer -Confirm",
+        "desc": "Restart machine"
+      }
+    ],
+    "related": [
+      "Stop-Computer",
+      "shutdown"
+    ],
+    "safety": "destructive",
+    "tags": [
+      "reboot",
+      "restart"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Stop-Computer",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "power",
+    "description": "Stops (shuts down) local and remote computers",
+    "syntax": "Stop-Computer [-Force]",
+    "examples": [
+      {
+        "cmd": "Stop-Computer -Force",
+        "desc": "Shut down machine immediately"
+      }
+    ],
+    "related": [
+      "Restart-Computer",
+      "shutdown"
+    ],
+    "safety": "destructive",
+    "tags": [
+      "poweroff",
+      "shutdown"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-PnpDevice",
+    "shell": "powershell",
+    "category": "system",
+    "description": "Gets information about PnP devices",
+    "syntax": "Get-PnpDevice [-Class <class>]",
+    "examples": [
+      {
+        "cmd": "Get-PnpDevice",
+        "desc": "Run Get-PnpDevice"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "device",
+      "hardware"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-ScheduledTask",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "scheduling",
+    "description": "Gets the task definition objects of a scheduled task that is registered",
+    "syntax": "Get-ScheduledTask [[-TaskName] <string[]>]",
+    "examples": [
+      {
+        "cmd": "Get-ScheduledTask *Orvix*",
+        "desc": "Find all Orvix background tasks"
+      }
+    ],
+    "related": [
+      "Register-ScheduledTask",
+      "Start-ScheduledTask"
+    ],
+    "safety": "safe",
+    "tags": [
+      "tasks",
+      "cron",
+      "list"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Register-ScheduledTask",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "scheduling",
+    "description": "Registers a scheduled task on a local computer",
+    "syntax": "Register-ScheduledTask [-TaskName] <string> [-Action] <Object> [-Trigger] <Object>",
+    "examples": [
+      {
+        "cmd": "Register-ScheduledTask -TaskName BackupTask -Action $act -Trigger $trig",
+        "desc": "Register new automated scheduled job"
+      }
+    ],
+    "related": [
+      "Get-ScheduledTask",
+      "Unregister-ScheduledTask"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "cron",
+      "create",
+      "automate"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Start-ScheduledTask",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "scheduling",
+    "description": "Starts one or more instances of a scheduled task immediately",
+    "syntax": "Start-ScheduledTask [-TaskName] <string>",
+    "examples": [
+      {
+        "cmd": "Start-ScheduledTask -TaskName DailySummary",
+        "desc": "Trigger task execution immediately"
+      }
+    ],
+    "related": [
+      "Get-ScheduledTask"
+    ],
+    "safety": "safe",
+    "tags": [
+      "run",
+      "trigger",
+      "cron"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Stop-ScheduledTask",
+    "shell": "powershell",
+    "category": "scheduling",
+    "description": "Stops running instances of scheduled task",
+    "syntax": "Stop-ScheduledTask -TaskName <name>",
+    "examples": [
+      {
+        "cmd": "Stop-ScheduledTask",
+        "desc": "Run Stop-ScheduledTask"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "tasks"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Unregister-ScheduledTask",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "scheduling",
+    "description": "Deletes a registered scheduled task from the computer",
+    "syntax": "Unregister-ScheduledTask [-TaskName] <string> [-Confirm:$false]",
+    "examples": [
+      {
+        "cmd": "Unregister-ScheduledTask -TaskName TempTask -Confirm:$false",
+        "desc": "Remove scheduled task"
+      }
+    ],
+    "related": [
+      "Register-ScheduledTask"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "delete",
+      "remove",
+      "task"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Enable-ScheduledTask",
+    "shell": "powershell",
+    "category": "scheduling",
+    "description": "Enables a scheduled task",
+    "syntax": "Enable-ScheduledTask -TaskName <name>",
+    "examples": [
+      {
+        "cmd": "Enable-ScheduledTask",
+        "desc": "Run Enable-ScheduledTask"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "tasks"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Disable-ScheduledTask",
+    "shell": "powershell",
+    "category": "scheduling",
+    "description": "Disables a scheduled task",
+    "syntax": "Disable-ScheduledTask -TaskName <name>",
+    "examples": [
+      {
+        "cmd": "Disable-ScheduledTask",
+        "desc": "Run Disable-ScheduledTask"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "tasks"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Acl",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "permission",
+    "description": "Gets the security descriptor for a resource, such as a file or registry key",
+    "syntax": "Get-Acl [[-Path] <string>]",
+    "examples": [
+      {
+        "cmd": "Get-Acl .\\database.sqlite | Format-List",
+        "desc": "Display NTFS permissions"
+      }
+    ],
+    "related": [
+      "Set-Acl",
+      "icacls"
+    ],
+    "safety": "safe",
+    "tags": [
+      "permissions",
+      "security",
+      "ntfs",
+      "audit"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Set-Acl",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "permission",
+    "description": "Changes the security descriptor of a specified resource",
+    "syntax": "Set-Acl [-Path] <string> [-AclObject] <Object>",
+    "examples": [
+      {
+        "cmd": "Set-Acl -Path file.txt -AclObject $acl",
+        "desc": "Apply security descriptor"
+      }
+    ],
+    "related": [
+      "Get-Acl",
+      "icacls"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "permissions",
+      "security",
+      "apply"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Credential",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "user",
+    "description": "Gets a credential object based on a user name and password prompt",
+    "syntax": "Get-Credential [[-UserName] <string>]",
+    "examples": [
+      {
+        "cmd": "$cred = Get-Credential",
+        "desc": "Prompt securely for operator credentials"
+      }
+    ],
+    "related": [],
+    "safety": "safe",
+    "tags": [
+      "auth",
+      "credentials",
+      "prompt"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ConvertTo-SecureString",
+    "shell": "powershell",
+    "category": "security",
+    "description": "Converts plain text into secure string",
+    "syntax": "ConvertTo-SecureString <string> -AsPlainText -Force",
+    "examples": [
+      {
+        "cmd": "ConvertTo-SecureString",
+        "desc": "Run ConvertTo-SecureString"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "crypto"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ConvertFrom-SecureString",
+    "shell": "powershell",
+    "category": "security",
+    "description": "Converts secure string into encrypted standard string",
+    "syntax": "ConvertFrom-SecureString <SecureString>",
+    "examples": [
+      {
+        "cmd": "ConvertFrom-SecureString",
+        "desc": "Run ConvertFrom-SecureString"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "crypto"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Protect-CmsMessage",
+    "shell": "powershell",
+    "category": "security",
+    "description": "Encrypts content using Cryptographic Message Syntax",
+    "syntax": "Protect-CmsMessage [-Content] <string> -To <cert>",
+    "examples": [
+      {
+        "cmd": "Protect-CmsMessage",
+        "desc": "Run Protect-CmsMessage"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "crypto"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Module",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "package",
+    "description": "Gets the modules that typically have been imported or that can be imported",
+    "syntax": "Get-Module [-ListAvailable]",
+    "examples": [
+      {
+        "cmd": "Get-Module -ListAvailable",
+        "desc": "Show all installed PowerShell modules"
+      }
+    ],
+    "related": [
+      "Install-Module"
+    ],
+    "safety": "safe",
+    "tags": [
+      "modules",
+      "psm1",
+      "list"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Import-Module",
+    "shell": "powershell",
+    "category": "package",
+    "description": "Adds modules to current session",
+    "syntax": "Import-Module [-Name] <name>",
+    "examples": [
+      {
+        "cmd": "Import-Module",
+        "desc": "Run Import-Module"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "ipmo"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Remove-Module",
+    "shell": "powershell",
+    "category": "package",
+    "description": "Removes modules from current session",
+    "syntax": "Remove-Module [-Name] <name>",
+    "examples": [
+      {
+        "cmd": "Remove-Module",
+        "desc": "Run Remove-Module"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "rmo"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Install-Module",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "package",
+    "description": "Downloads one or more modules from an online gallery and installs them",
+    "syntax": "Install-Module [-Name] <string[]> [-Scope <string>]",
+    "examples": [
+      {
+        "cmd": "Install-Module -Name PSScriptAnalyzer -Scope CurrentUser",
+        "desc": "Install PowerShell linter module"
+      }
+    ],
+    "related": [
+      "Get-Module",
+      "Update-Module"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "powershell",
+      "module",
+      "gallery"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Find-Module",
+    "shell": "powershell",
+    "category": "package",
+    "description": "Finds modules in repository",
+    "syntax": "Find-Module [-Name] <name>",
+    "examples": [
+      {
+        "cmd": "Find-Module",
+        "desc": "Run Find-Module"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "search"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Update-Module",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "package",
+    "description": "Downloads and installs the newest version of specified modules",
+    "syntax": "Update-Module [[-Name] <string[]>]",
+    "examples": [
+      {
+        "cmd": "Update-Module -Name *",
+        "desc": "Update all installed modules"
+      }
+    ],
+    "related": [
+      "Install-Module"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "update",
+      "upgrade",
+      "modules"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Uninstall-Module",
+    "shell": "powershell",
+    "category": "package",
+    "description": "Uninstalls module from system",
+    "syntax": "Uninstall-Module [-Name] <name>",
+    "examples": [
+      {
+        "cmd": "Uninstall-Module",
+        "desc": "Run Uninstall-Module"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "remove"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Command",
+    "aliases": [
+      "gcm"
+    ],
+    "shell": "powershell",
+    "category": "search",
+    "description": "Gets all commands installed on the computer",
+    "syntax": "Get-Command [[-Name] <string[]>] [-Module <string[]>]",
+    "examples": [
+      {
+        "cmd": "Get-Command *Network*",
+        "desc": "Find all network cmdlets"
+      },
+      {
+        "cmd": "Get-Command python | Select-Object Source",
+        "desc": "Resolve binary source location"
+      }
+    ],
+    "related": [
+      "where.exe",
+      "Get-Help"
+    ],
+    "safety": "safe",
+    "tags": [
+      "which",
+      "cmdlet",
+      "lookup"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Help",
+    "aliases": [
+      "help",
+      "man"
+    ],
+    "shell": "powershell",
+    "category": "search",
+    "description": "Displays information about PowerShell commands and concepts",
+    "syntax": "Get-Help [-Name] <string> [-Full | -Examples]",
+    "examples": [
+      {
+        "cmd": "Get-Help Get-Process -Examples",
+        "desc": "Show usage examples for cmdlet"
+      }
+    ],
+    "related": [
+      "Get-Command"
+    ],
+    "safety": "safe",
+    "tags": [
+      "help",
+      "documentation",
+      "man"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Package",
+    "shell": "powershell",
+    "category": "package",
+    "description": "Returns installed software packages",
+    "syntax": "Get-Package [-Name <pattern>]",
+    "examples": [
+      {
+        "cmd": "Get-Package",
+        "desc": "Run Get-Package"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "software"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Install-Package",
+    "shell": "powershell",
+    "category": "package",
+    "description": "Installs software packages",
+    "syntax": "Install-Package -Name <name> -ProviderName <provider>",
+    "examples": [
+      {
+        "cmd": "Install-Package",
+        "desc": "Run Install-Package"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "software"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Find-Package",
+    "shell": "powershell",
+    "category": "package",
+    "description": "Finds software packages from package sources",
+    "syntax": "Find-Package [-Name <pattern>]",
+    "examples": [
+      {
+        "cmd": "Find-Package",
+        "desc": "Run Find-Package"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "software"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Select-String",
+    "aliases": [
+      "sls",
+      "grep"
+    ],
+    "shell": "powershell",
+    "category": "search",
+    "description": "Finds text in strings and files using regular expressions",
+    "syntax": "Select-String [-Pattern] <string[]> [-Path <string[]>] [-CaseSensitive]",
+    "examples": [
+      {
+        "cmd": "Select-String -Path *.py -Pattern 'def process_'",
+        "desc": "Search Python files for function definitions"
+      },
+      {
+        "cmd": "Get-Content server.log | Select-String 'ERROR' -Context 2",
+        "desc": "Find errors with 2 lines context"
+      }
+    ],
+    "related": [
+      "findstr",
+      "Get-Content"
+    ],
+    "safety": "safe",
+    "tags": [
+      "grep",
+      "search",
+      "regex",
+      "find"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Select-Object",
+    "aliases": [
+      "select"
+    ],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Selects objects or object properties",
+    "syntax": "Select-Object [[-Property] <Object[]>] [-First <int>] [-Last <int>] [-Unique]",
+    "examples": [
+      {
+        "cmd": "Get-Process | Select-Object -First 10 -Property Name, CPU",
+        "desc": "Top 10 processes by columns"
+      }
+    ],
+    "related": [
+      "Where-Object",
+      "Sort-Object"
+    ],
+    "safety": "safe",
+    "tags": [
+      "filter",
+      "columns",
+      "slice"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Where-Object",
+    "aliases": [
+      "where",
+      "?"
+    ],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Selects objects from a collection based on their property values",
+    "syntax": "Where-Object [-FilterScript] <scriptblock>",
+    "examples": [
+      {
+        "cmd": "Get-Service | Where-Object {$_.Status -eq 'Running'}",
+        "desc": "Filter running services"
+      }
+    ],
+    "related": [
+      "Select-Object",
+      "ForEach-Object"
+    ],
+    "safety": "safe",
+    "tags": [
+      "filter",
+      "predicate",
+      "query"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ForEach-Object",
+    "aliases": [
+      "foreach",
+      "%"
+    ],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Performs an operation against each item in a collection of input objects",
+    "syntax": "ForEach-Object [-Process] <ScriptBlock[]>",
+    "examples": [
+      {
+        "cmd": "1..5 | ForEach-Object { $_ * 2 }",
+        "desc": "Transform each item"
+      }
+    ],
+    "related": [
+      "Where-Object",
+      "Select-Object"
+    ],
+    "safety": "safe",
+    "tags": [
+      "iterate",
+      "map",
+      "loop"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Measure-Object",
+    "aliases": [
+      "measure"
+    ],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Calculates the numeric properties of objects, and characters, words, and lines in string objects",
+    "syntax": "Measure-Object [[-Property] <string[]>] [-Sum] [-Average] [-Line] [-Word] [-Character]",
+    "examples": [
+      {
+        "cmd": "Get-Content code.py | Measure-Object -Line",
+        "desc": "Count lines of code"
+      },
+      {
+        "cmd": "gci | Measure-Object Length -Sum",
+        "desc": "Calculate total folder bytes"
+      }
+    ],
+    "related": [
+      "Group-Object",
+      "Sort-Object"
+    ],
+    "safety": "safe",
+    "tags": [
+      "count",
+      "wc",
+      "sum",
+      "stats"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Sort-Object",
+    "aliases": [
+      "sort"
+    ],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Sorts objects by property values",
+    "syntax": "Sort-Object [[-Property] <Object[]>] [-Descending] [-Unique]",
+    "examples": [
+      {
+        "cmd": "Get-ChildItem | Sort-Object Length -Descending",
+        "desc": "Sort files by size descending"
+      }
+    ],
+    "related": [
+      "Select-Object",
+      "Measure-Object"
+    ],
+    "safety": "safe",
+    "tags": [
+      "order",
+      "sort",
+      "ranking"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Group-Object",
+    "aliases": [
+      "group"
+    ],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Groups objects that contain the same value for specified properties",
+    "syntax": "Group-Object [[-Property] <Object[]>] [-NoElement]",
+    "examples": [
+      {
+        "cmd": "Get-ChildItem | Group-Object Extension",
+        "desc": "Count files by file extension"
+      }
+    ],
+    "related": [
+      "Sort-Object",
+      "Measure-Object"
+    ],
+    "safety": "safe",
+    "tags": [
+      "group",
+      "aggregate",
+      "stats"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Compare-Object",
+    "shell": "powershell",
+    "category": "text",
+    "description": "Compares two sets of objects",
+    "syntax": "Compare-Object -ReferenceObject <ref> -DifferenceObject <diff>",
+    "examples": [
+      {
+        "cmd": "Compare-Object",
+        "desc": "Run Compare-Object"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "diff"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Measure-Command",
+    "shell": "powershell",
+    "category": "text",
+    "description": "Measures the time it takes to run script blocks and cmdlets",
+    "syntax": "Measure-Command -Expression {<scriptblock>}",
+    "examples": [
+      {
+        "cmd": "Measure-Command",
+        "desc": "Run Measure-Command"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "time"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Out-File",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Sends output to a file",
+    "syntax": "Out-File [-FilePath] <string> [-Encoding <string>] [-Append]",
+    "examples": [
+      {
+        "cmd": "Get-Process | Out-File -FilePath proc.txt -Encoding utf8",
+        "desc": "Save output to UTF-8 file"
+      }
+    ],
+    "related": [
+      "Set-Content",
+      "Tee-Object"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "save",
+      "redirect",
+      "export"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Out-String",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Converts the objects that PowerShell manages into an array of strings",
+    "syntax": "Out-String [-InputObject <psobject>] [-Width <int>]",
+    "examples": [
+      {
+        "cmd": "Get-Process | Out-String",
+        "desc": "Render structured object as single text string"
+      }
+    ],
+    "related": [
+      "Out-File"
+    ],
+    "safety": "safe",
+    "tags": [
+      "convert",
+      "string",
+      "render"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Out-Null",
+    "shell": "powershell",
+    "category": "text",
+    "description": "Discards output instead of sending down pipeline",
+    "syntax": "Out-Null",
+    "examples": [
+      {
+        "cmd": "Out-Null",
+        "desc": "Run Out-Null"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "silent",
+      "null"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Out-GridView",
+    "shell": "powershell",
+    "category": "text",
+    "description": "Sends output to an interactive visual grid table",
+    "syntax": "Out-GridView [-Title <string>] [-PassThru]",
+    "examples": [
+      {
+        "cmd": "Out-GridView",
+        "desc": "Run Out-GridView"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "gui",
+      "table"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Format-Table",
+    "aliases": [
+      "ft"
+    ],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Formats the output of a command as a table",
+    "syntax": "Format-Table [[-Property] <Object[]>] [-AutoSize]",
+    "examples": [
+      {
+        "cmd": "Get-Process | Format-Table Name, Id, WorkingSet64 -AutoSize",
+        "desc": "Format table with auto column sizing"
+      }
+    ],
+    "related": [
+      "Format-List"
+    ],
+    "safety": "safe",
+    "tags": [
+      "table",
+      "display",
+      "columns"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Format-List",
+    "shell": "powershell",
+    "category": "text",
+    "description": "Formats output as a list of properties",
+    "syntax": "Format-List [[-Property] <props>]",
+    "examples": [
+      {
+        "cmd": "Format-List",
+        "desc": "Run Format-List"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "fl",
+      "list"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ConvertTo-Json",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Converts an object to a JSON-formatted string",
+    "syntax": "ConvertTo-Json [-InputObject] <Object> [-Depth <int>]",
+    "examples": [
+      {
+        "cmd": "Get-Service | Select -First 3 | ConvertTo-Json",
+        "desc": "Serialize object as JSON"
+      }
+    ],
+    "related": [
+      "ConvertFrom-Json"
+    ],
+    "safety": "safe",
+    "tags": [
+      "json",
+      "serialize",
+      "export"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ConvertFrom-Json",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Converts a JSON-formatted string to a custom object or a hash table",
+    "syntax": "ConvertFrom-Json [-InputObject] <string> [-AsHashtable]",
+    "examples": [
+      {
+        "cmd": "Get-Content package.json | ConvertFrom-Json",
+        "desc": "Parse JSON file"
+      }
+    ],
+    "related": [
+      "ConvertTo-Json"
+    ],
+    "safety": "safe",
+    "tags": [
+      "json",
+      "deserialize",
+      "parse"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ConvertTo-Csv",
+    "shell": "powershell",
+    "category": "text",
+    "description": "Converts objects into series of CSV character strings",
+    "syntax": "ConvertTo-Csv [-InputObject <obj>] [-NoTypeInformation]",
+    "examples": [
+      {
+        "cmd": "ConvertTo-Csv",
+        "desc": "Run ConvertTo-Csv"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "csv"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ConvertFrom-Csv",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Converts object properties in comma-separated value (CSV) format into objects",
+    "syntax": "ConvertFrom-Csv [-InputObject] <string[]>",
+    "examples": [
+      {
+        "cmd": "Get-Content data.csv | ConvertFrom-Csv",
+        "desc": "Parse CSV"
+      }
+    ],
+    "related": [
+      "ConvertTo-Csv",
+      "Export-Csv"
+    ],
+    "safety": "safe",
+    "tags": [
+      "csv",
+      "table",
+      "data"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Export-Csv",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Converts objects into a series of CSV strings and saves them in a file",
+    "syntax": "Export-Csv -Path <string> [-NoTypeInformation]",
+    "examples": [
+      {
+        "cmd": "Get-Process | Export-Csv processes.csv -NoTypeInformation",
+        "desc": "Export process table to CSV"
+      }
+    ],
+    "related": [
+      "Import-Csv"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "csv",
+      "export",
+      "spreadsheet"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Import-Csv",
+    "aliases": [
+      "ipcsv"
+    ],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Creates table-like custom objects from the items in a CSV file",
+    "syntax": "Import-Csv [-Path] <string[]>",
+    "examples": [
+      {
+        "cmd": "$users = Import-Csv users.csv",
+        "desc": "Load CSV data into object array"
+      }
+    ],
+    "related": [
+      "Export-Csv"
+    ],
+    "safety": "safe",
+    "tags": [
+      "csv",
+      "import",
+      "load"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Tee-Object",
+    "aliases": [
+      "tee"
+    ],
+    "shell": "powershell",
+    "category": "text",
+    "description": "Saves command output in a file or variable and also sends it down the pipeline",
+    "syntax": "Tee-Object [-FilePath <string>] [-Append]",
+    "examples": [
+      {
+        "cmd": "ping 8.8.8.8 | Tee-Object ping.log",
+        "desc": "Stream output to console and file"
+      }
+    ],
+    "related": [
+      "Out-File"
+    ],
+    "safety": "safe",
+    "tags": [
+      "tee",
+      "pipe",
+      "log"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Compress-Archive",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "archive",
+    "description": "Creates a compressed archive, or zipped file, from specified files and folders",
+    "syntax": "Compress-Archive [-Path] <string[]> [-DestinationPath] <string> [-CompressionLevel <string>]",
+    "examples": [
+      {
+        "cmd": "Compress-Archive -Path ./logs -DestinationPath logs_backup.zip",
+        "desc": "Create zip archive of logs"
+      }
+    ],
+    "related": [
+      "Expand-Archive",
+      "tar"
+    ],
+    "safety": "safe",
+    "tags": [
+      "zip",
+      "compress",
+      "archive"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Expand-Archive",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "archive",
+    "description": "Extracts files from a specified zipped archive file",
+    "syntax": "Expand-Archive [-Path] <string> [-DestinationPath] <string> [-Force]",
+    "examples": [
+      {
+        "cmd": "Expand-Archive -Path bundle.zip -DestinationPath ./bundle -Force",
+        "desc": "Extract zip package"
+      }
+    ],
+    "related": [
+      "Compress-Archive",
+      "tar"
+    ],
+    "safety": "safe",
+    "tags": [
+      "unzip",
+      "extract",
+      "decompress"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Clipboard",
+    "aliases": [
+      "gcb"
+    ],
+    "shell": "powershell",
+    "category": "misc",
+    "description": "Gets the current Windows clipboard entry",
+    "syntax": "Get-Clipboard [-Format <string>]",
+    "examples": [
+      {
+        "cmd": "Get-Clipboard",
+        "desc": "Read active clipboard text"
+      }
+    ],
+    "related": [
+      "Set-Clipboard"
+    ],
+    "safety": "safe",
+    "tags": [
+      "clipboard",
+      "copy",
+      "paste"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Set-Clipboard",
+    "aliases": [
+      "scb",
+      "clip"
+    ],
+    "shell": "powershell",
+    "category": "misc",
+    "description": "Sets the current Windows clipboard entry",
+    "syntax": "Set-Clipboard [-Value] <string[]>",
+    "examples": [
+      {
+        "cmd": "Set-Clipboard -Value 'API_KEY_12345'",
+        "desc": "Copy text to clipboard"
+      }
+    ],
+    "related": [
+      "Get-Clipboard"
+    ],
+    "safety": "safe",
+    "tags": [
+      "clipboard",
+      "copy",
+      "buffer"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Start-Job",
+    "aliases": [
+      "sajb"
+    ],
+    "shell": "powershell",
+    "category": "process",
+    "description": "Starts a PowerShell background job",
+    "syntax": "Start-Job [-ScriptBlock] <scriptblock>",
+    "examples": [
+      {
+        "cmd": "Start-Job -ScriptBlock { Get-Process }",
+        "desc": "Spawn async job in background"
+      }
+    ],
+    "related": [
+      "Get-Job",
+      "Receive-Job"
+    ],
+    "safety": "safe",
+    "tags": [
+      "async",
+      "spawn",
+      "background"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Job",
+    "aliases": [
+      "gjb"
+    ],
+    "shell": "powershell",
+    "category": "process",
+    "description": "Gets PowerShell background jobs that are running in the current session",
+    "syntax": "Get-Job [[-Id] <int[]>]",
+    "examples": [
+      {
+        "cmd": "Get-Job",
+        "desc": "List background async jobs"
+      }
+    ],
+    "related": [
+      "Start-Job",
+      "Receive-Job",
+      "Stop-Job"
+    ],
+    "safety": "safe",
+    "tags": [
+      "job",
+      "background",
+      "async"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Receive-Job",
+    "shell": "powershell",
+    "category": "job",
+    "description": "Gets results of PowerShell background jobs",
+    "syntax": "Receive-Job [-Job] <job> [-Keep]",
+    "examples": [
+      {
+        "cmd": "Receive-Job",
+        "desc": "Run Receive-Job"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "job"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Stop-Job",
+    "shell": "powershell",
+    "category": "job",
+    "description": "Stops a PowerShell background job",
+    "syntax": "Stop-Job [-Job] <job>",
+    "examples": [
+      {
+        "cmd": "Stop-Job",
+        "desc": "Run Stop-Job"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "job"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Wait-Job",
+    "shell": "powershell",
+    "category": "job",
+    "description": "Suppresses prompt until one or all background jobs complete",
+    "syntax": "Wait-Job [-Job] <job> [-Timeout <sec>]",
+    "examples": [
+      {
+        "cmd": "Wait-Job",
+        "desc": "Run Wait-Job"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "job"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Remove-Job",
+    "shell": "powershell",
+    "category": "job",
+    "description": "Deletes a background job",
+    "syntax": "Remove-Job [-Job] <job> [-Force]",
+    "examples": [
+      {
+        "cmd": "Remove-Job",
+        "desc": "Run Remove-Job"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "job"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Start-ThreadJob",
+    "shell": "powershell",
+    "category": "job",
+    "description": "Creates background jobs that run in separate threads within current process",
+    "syntax": "Start-ThreadJob -ScriptBlock {<script>}",
+    "examples": [
+      {
+        "cmd": "Start-ThreadJob",
+        "desc": "Run Start-ThreadJob"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "thread",
+      "job"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Start-Sleep",
+    "aliases": [
+      "sleep"
+    ],
+    "shell": "powershell",
+    "category": "process",
+    "description": "Suspends the activity in a script or session for the specified period",
+    "syntax": "Start-Sleep [-Seconds] <int> | [-Milliseconds] <int>",
+    "examples": [
+      {
+        "cmd": "Start-Sleep -Seconds 5",
+        "desc": "Pause execution for 5 seconds"
+      }
+    ],
+    "related": [],
+    "safety": "safe",
+    "tags": [
+      "delay",
+      "pause",
+      "timeout",
+      "sleep"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Invoke-Command",
+    "shell": "powershell",
+    "category": "remote",
+    "description": "Runs commands on local and remote computers",
+    "syntax": "Invoke-Command [-ComputerName <host>] -ScriptBlock {<script>}",
+    "examples": [
+      {
+        "cmd": "Invoke-Command",
+        "desc": "Run Invoke-Command"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "remote",
+      "ssh"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Enter-PSSession",
+    "shell": "powershell",
+    "category": "remote",
+    "description": "Starts an interactive session with a remote computer",
+    "syntax": "Enter-PSSession [-ComputerName <host>]",
+    "examples": [
+      {
+        "cmd": "Enter-PSSession",
+        "desc": "Run Enter-PSSession"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "remote",
+      "shell"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Exit-PSSession",
+    "shell": "powershell",
+    "category": "remote",
+    "description": "Ends an interactive session with remote computer",
+    "syntax": "Exit-PSSession",
+    "examples": [
+      {
+        "cmd": "Exit-PSSession",
+        "desc": "Run Exit-PSSession"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "exit"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "New-PSSession",
+    "shell": "powershell",
+    "category": "remote",
+    "description": "Creates persistent connection to local or remote computer",
+    "syntax": "New-PSSession [-ComputerName <host>]",
+    "examples": [
+      {
+        "cmd": "New-PSSession",
+        "desc": "Run New-PSSession"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "remote"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Remove-PSSession",
+    "shell": "powershell",
+    "category": "remote",
+    "description": "Closes one or more PowerShell sessions",
+    "syntax": "Remove-PSSession [-Session <session>]",
+    "examples": [
+      {
+        "cmd": "Remove-PSSession",
+        "desc": "Run Remove-PSSession"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "remote"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-PSSession",
+    "shell": "powershell",
+    "category": "remote",
+    "description": "Gets PowerShell sessions in current session",
+    "syntax": "Get-PSSession",
+    "examples": [
+      {
+        "cmd": "Get-PSSession",
+        "desc": "Run Get-PSSession"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "remote"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Set-ExecutionPolicy",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "permission",
+    "description": "Changes the user preference for the Windows PowerShell execution policy",
+    "syntax": "Set-ExecutionPolicy [-ExecutionPolicy] <string> [-Scope <string>]",
+    "examples": [
+      {
+        "cmd": "Set-ExecutionPolicy RemoteSigned -Scope CurrentUser",
+        "desc": "Allow local unsigned scripts"
+      }
+    ],
+    "related": [
+      "Get-ExecutionPolicy"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "policy",
+      "scripts",
+      "ps1",
+      "security"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-ExecutionPolicy",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "permission",
+    "description": "Gets the execution policies for the current session",
+    "syntax": "Get-ExecutionPolicy [-List]",
+    "examples": [
+      {
+        "cmd": "Get-ExecutionPolicy -List",
+        "desc": "View execution policy scopes"
+      }
+    ],
+    "related": [
+      "Set-ExecutionPolicy"
+    ],
+    "safety": "safe",
+    "tags": [
+      "policy",
+      "audit",
+      "security"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Variable",
+    "shell": "powershell",
+    "category": "variables",
+    "description": "Gets variables in current console",
+    "syntax": "Get-Variable [[-Name] <string>]",
+    "examples": [
+      {
+        "cmd": "Get-Variable",
+        "desc": "Run Get-Variable"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "var",
+      "env"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Set-Variable",
+    "shell": "powershell",
+    "category": "variables",
+    "description": "Sets value of a variable",
+    "syntax": "Set-Variable -Name <string> -Value <object>",
+    "examples": [
+      {
+        "cmd": "Set-Variable",
+        "desc": "Run Set-Variable"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "var"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Remove-Variable",
+    "shell": "powershell",
+    "category": "variables",
+    "description": "Deletes a variable and its value",
+    "syntax": "Remove-Variable -Name <string>",
+    "examples": [
+      {
+        "cmd": "Remove-Variable",
+        "desc": "Run Remove-Variable"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "var"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Clear-Variable",
+    "shell": "powershell",
+    "category": "variables",
+    "description": "Deletes value of a variable",
+    "syntax": "Clear-Variable -Name <string>",
+    "examples": [
+      {
+        "cmd": "Clear-Variable",
+        "desc": "Run Clear-Variable"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "var"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "New-Variable",
+    "shell": "powershell",
+    "category": "variables",
+    "description": "Creates a new variable",
+    "syntax": "New-Variable -Name <string> -Value <object>",
+    "examples": [
+      {
+        "cmd": "New-Variable",
+        "desc": "Run New-Variable"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "var"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-ChildItem Env:",
+    "shell": "powershell",
+    "category": "variables",
+    "description": "Gets all environment variables",
+    "syntax": "Get-ChildItem Env:",
+    "examples": [
+      {
+        "cmd": "Get-ChildItem",
+        "desc": "Run Get-ChildItem Env:"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "env",
+      "variables"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Set-Item Env:",
+    "shell": "powershell",
+    "category": "variables",
+    "description": "Sets environment variable in current session",
+    "syntax": "$env:VAR = 'value'",
+    "examples": [
+      {
+        "cmd": "$env:VAR",
+        "desc": "Run Set-Item Env:"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "env"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Write-Host",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "misc",
+    "description": "Writes customized output to a host",
+    "syntax": "Write-Host [-Object] <Object> [-ForegroundColor <ConsoleColor>]",
+    "examples": [
+      {
+        "cmd": "Write-Host 'System Online' -ForegroundColor Green",
+        "desc": "Print colored terminal message"
+      }
+    ],
+    "related": [
+      "Write-Output",
+      "echo"
+    ],
+    "safety": "safe",
+    "tags": [
+      "print",
+      "color",
+      "console"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Write-Output",
+    "aliases": [
+      "echo",
+      "write"
+    ],
+    "shell": "powershell",
+    "category": "misc",
+    "description": "Sends the specified objects to the next command in the pipeline",
+    "syntax": "Write-Output [-InputObject] <psobject[]>",
+    "examples": [
+      {
+        "cmd": "Write-Output 'Data stream' | Out-File out.txt",
+        "desc": "Pipeline output"
+      }
+    ],
+    "related": [
+      "Write-Host"
+    ],
+    "safety": "safe",
+    "tags": [
+      "stream",
+      "stdout",
+      "pipe"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Read-Host",
+    "shell": "powershell",
+    "category": "utility",
+    "description": "Reads line of input from console",
+    "syntax": "Read-Host [[-Prompt] <string>] [-AsSecureString]",
+    "examples": [
+      {
+        "cmd": "Read-Host",
+        "desc": "Run Read-Host"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "input",
+      "prompt"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "New-Object",
+    "shell": "powershell",
+    "category": "object",
+    "description": "Creates an instance of a Microsoft .NET Core or COM object",
+    "syntax": "New-Object -TypeName <type> [-ArgumentList <args>]",
+    "examples": [
+      {
+        "cmd": "New-Object",
+        "desc": "Run New-Object"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "object",
+      "net"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Invoke-Expression",
+    "shell": "powershell",
+    "category": "utility",
+    "description": "Runs commands or expressions on local computer",
+    "syntax": "Invoke-Expression [-Command] <string>",
+    "examples": [
+      {
+        "cmd": "Invoke-Expression",
+        "desc": "Run Invoke-Expression"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "iex",
+      "eval"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "New-TimeSpan",
+    "shell": "powershell",
+    "category": "utility",
+    "description": "Creates a TimeSpan object",
+    "syntax": "New-TimeSpan [-Days <int>] [-Hours <int>] [-Minutes <int>]",
+    "examples": [
+      {
+        "cmd": "New-TimeSpan",
+        "desc": "Run New-TimeSpan"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "timespan",
+      "duration"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Export-Clixml",
+    "shell": "powershell",
+    "category": "serialization",
+    "description": "Creates XML representation of object and stores in file",
+    "syntax": "Export-Clixml -Path <path> -InputObject <obj>",
+    "examples": [
+      {
+        "cmd": "Export-Clixml",
+        "desc": "Run Export-Clixml"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "xml",
+      "serialize"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Import-Clixml",
+    "shell": "powershell",
+    "category": "serialization",
+    "description": "Imports CLIXML file and creates corresponding objects",
+    "syntax": "Import-Clixml -Path <path>",
+    "examples": [
+      {
+        "cmd": "Import-Clixml",
+        "desc": "Run Import-Clixml"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "xml",
+      "deserialize"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Random",
+    "shell": "powershell",
+    "category": "utility",
+    "description": "Gets random number or selects objects randomly from collection",
+    "syntax": "Get-Random [-Minimum <int>] [-Maximum <int>]",
+    "examples": [
+      {
+        "cmd": "Get-Random",
+        "desc": "Run Get-Random"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "random"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Unique",
+    "shell": "powershell",
+    "category": "text",
+    "description": "Returns unique items from a sorted list",
+    "syntax": "Get-Unique [-InputObject <obj>]",
+    "examples": [
+      {
+        "cmd": "Get-Unique",
+        "desc": "Run Get-Unique"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "uniq"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Member",
+    "aliases": [
+      "gm"
+    ],
+    "shell": "powershell",
+    "category": "search",
+    "description": "Gets the properties and methods of objects",
+    "syntax": "Get-Member [[-Name] <string[]>] [-InputObject <psobject>]",
+    "examples": [
+      {
+        "cmd": "Get-Process | Get-Member -MemberType Property",
+        "desc": "Inspect object properties"
+      }
+    ],
+    "related": [
+      "Get-Command"
+    ],
+    "safety": "safe",
+    "tags": [
+      "reflect",
+      "properties",
+      "inspect"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Show-Command",
+    "shell": "powershell",
+    "category": "utility",
+    "description": "Creates PowerShell commands in a graphical command window",
+    "syntax": "Show-Command [[-Name] <string>]",
+    "examples": [
+      {
+        "cmd": "Show-Command",
+        "desc": "Run Show-Command"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "gui"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Start-Transcript",
+    "shell": "powershell",
+    "category": "utility",
+    "description": "Creates record of all or part of PowerShell session to text file",
+    "syntax": "Start-Transcript [[-Path] <path>]",
+    "examples": [
+      {
+        "cmd": "Start-Transcript",
+        "desc": "Run Start-Transcript"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "log",
+      "record"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Stop-Transcript",
+    "shell": "powershell",
+    "category": "utility",
+    "description": "Stops transcription recording session",
+    "syntax": "Stop-Transcript",
+    "examples": [
+      {
+        "cmd": "Stop-Transcript",
+        "desc": "Run Stop-Transcript"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "log"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Update-Help",
+    "shell": "powershell",
+    "category": "package",
+    "description": "Downloads and installs newest help files for modules",
+    "syntax": "Update-Help [-Force]",
+    "examples": [
+      {
+        "cmd": "Update-Help",
+        "desc": "Run Update-Help"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "help"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Save-Help",
+    "shell": "powershell",
+    "category": "package",
+    "description": "Downloads newest help files and saves them to specified directory",
+    "syntax": "Save-Help -DestinationPath <path>",
+    "examples": [
+      {
+        "cmd": "Save-Help",
+        "desc": "Run Save-Help"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "help"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Find-Command",
+    "shell": "powershell",
+    "category": "package",
+    "description": "Finds PowerShell commands in modules in registered repositories",
+    "syntax": "Find-Command [-Name <name>]",
+    "examples": [
+      {
+        "cmd": "Find-Command",
+        "desc": "Run Find-Command"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "search"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-WindowsOptionalFeature",
+    "shell": "powershell",
+    "category": "system",
+    "description": "Gets information about optional features in Windows",
+    "syntax": "Get-WindowsOptionalFeature -Online",
+    "examples": [
+      {
+        "cmd": "Get-WindowsOptionalFeature",
+        "desc": "Run Get-WindowsOptionalFeature"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "features"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Enable-WindowsOptionalFeature",
+    "shell": "powershell",
+    "category": "system",
+    "description": "Enables optional feature in Windows image",
+    "syntax": "Enable-WindowsOptionalFeature -Online -FeatureName <name>",
+    "examples": [
+      {
+        "cmd": "Enable-WindowsOptionalFeature",
+        "desc": "Run Enable-WindowsOptionalFeature"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "features"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Disable-WindowsOptionalFeature",
+    "shell": "powershell",
+    "category": "system",
+    "description": "Disables optional feature in Windows image",
+    "syntax": "Disable-WindowsOptionalFeature -Online -FeatureName <name>",
+    "examples": [
+      {
+        "cmd": "Disable-WindowsOptionalFeature",
+        "desc": "Run Disable-WindowsOptionalFeature"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "features"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-AppxPackage",
+    "shell": "powershell",
+    "category": "package",
+    "description": "Gets list of app packages (.appx) installed in user profile",
+    "syntax": "Get-AppxPackage [[-Name] <string>]",
+    "examples": [
+      {
+        "cmd": "Get-AppxPackage",
+        "desc": "Run Get-AppxPackage"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "appx",
+      "uwp"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Remove-AppxPackage",
+    "shell": "powershell",
+    "category": "package",
+    "description": "Removes app package (.appx) from user account",
+    "syntax": "Remove-AppxPackage -Package <package>",
+    "examples": [
+      {
+        "cmd": "Remove-AppxPackage",
+        "desc": "Run Remove-AppxPackage"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "appx"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Add-AppxPackage",
+    "shell": "powershell",
+    "category": "package",
+    "description": "Adds signed app package (.appx) to user account",
+    "syntax": "Add-AppxPackage -Path <path>",
+    "examples": [
+      {
+        "cmd": "Add-AppxPackage",
+        "desc": "Run Add-AppxPackage"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "appx"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-Printer",
+    "shell": "powershell",
+    "category": "hardware",
+    "description": "Retrieves list of printers installed on computer",
+    "syntax": "Get-Printer",
+    "examples": [
+      {
+        "cmd": "Get-Printer",
+        "desc": "Run Get-Printer"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "print",
+      "hardware"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-PrintJob",
+    "shell": "powershell",
+    "category": "hardware",
+    "description": "Retrieves print jobs for specified printer",
+    "syntax": "Get-PrintJob -PrinterName <name>",
+    "examples": [
+      {
+        "cmd": "Get-PrintJob",
+        "desc": "Run Get-PrintJob"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "print"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Stop-PrintJob",
+    "shell": "powershell",
+    "category": "hardware",
+    "description": "Cancels a print job on a printer",
+    "syntax": "Stop-PrintJob -PrinterName <name> -ID <id>",
+    "examples": [
+      {
+        "cmd": "Stop-PrintJob",
+        "desc": "Run Stop-PrintJob"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "print"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-LocalUser",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "user",
+    "description": "Gets local user accounts",
+    "syntax": "Get-LocalUser [[-Name] <string[]>]",
+    "examples": [
+      {
+        "cmd": "Get-LocalUser",
+        "desc": "List all configured local accounts"
+      }
+    ],
+    "related": [
+      "Get-LocalGroup",
+      "net user"
+    ],
+    "safety": "safe",
+    "tags": [
+      "users",
+      "accounts",
+      "admin"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "New-LocalUser",
+    "shell": "powershell",
+    "category": "security",
+    "description": "Creates local user account",
+    "syntax": "New-LocalUser -Name <name> [-Password <securestring>]",
+    "examples": [
+      {
+        "cmd": "New-LocalUser",
+        "desc": "Run New-LocalUser"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "users"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Remove-LocalUser",
+    "shell": "powershell",
+    "category": "security",
+    "description": "Deletes local user account",
+    "syntax": "Remove-LocalUser -Name <name>",
+    "examples": [
+      {
+        "cmd": "Remove-LocalUser",
+        "desc": "Run Remove-LocalUser"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "users"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-LocalGroup",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "user",
+    "description": "Gets local security groups",
+    "syntax": "Get-LocalGroup [[-Name] <string[]>]",
+    "examples": [
+      {
+        "cmd": "Get-LocalGroup Administrators",
+        "desc": "Query local Administrators group"
+      }
+    ],
+    "related": [
+      "Get-LocalUser"
+    ],
+    "safety": "safe",
+    "tags": [
+      "groups",
+      "security",
+      "roles"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Add-LocalGroupMember",
+    "shell": "powershell",
+    "category": "security",
+    "description": "Adds members to local security group",
+    "syntax": "Add-LocalGroupMember -Group <group> -Member <user>",
+    "examples": [
+      {
+        "cmd": "Add-LocalGroupMember",
+        "desc": "Run Add-LocalGroupMember"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "groups"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-BitLockerVolume",
+    "shell": "powershell",
+    "category": "security",
+    "description": "Gets information about volumes that BitLocker can protect",
+    "syntax": "Get-BitLockerVolume [-MountPoint <drive>]",
+    "examples": [
+      {
+        "cmd": "Get-BitLockerVolume",
+        "desc": "Run Get-BitLockerVolume"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "bitlocker",
+      "encryption"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-PhysicalDisk",
+    "shell": "powershell",
+    "category": "hardware",
+    "description": "Gets physical disk properties",
+    "syntax": "Get-PhysicalDisk",
+    "examples": [
+      {
+        "cmd": "Get-PhysicalDisk",
+        "desc": "Run Get-PhysicalDisk"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "disk",
+      "hardware"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-StoragePool",
+    "shell": "powershell",
+    "category": "hardware",
+    "description": "Gets storage pools on computer",
+    "syntax": "Get-StoragePool",
+    "examples": [
+      {
+        "cmd": "Get-StoragePool",
+        "desc": "Run Get-StoragePool"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "storage"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Optimize-Volume",
+    "shell": "powershell",
+    "category": "maintenance",
+    "description": "Optimizes volume performing defragmentation or trim",
+    "syntax": "Optimize-Volume -DriveLetter <char> -Defrag",
+    "examples": [
+      {
+        "cmd": "Optimize-Volume",
+        "desc": "Run Optimize-Volume"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "defrag",
+      "trim"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Repair-Volume",
+    "shell": "powershell",
+    "category": "maintenance",
+    "description": "Performs volume repairs and chkdsk tasks",
+    "syntax": "Repair-Volume -DriveLetter <char> -Scan",
+    "examples": [
+      {
+        "cmd": "Repair-Volume",
+        "desc": "Run Repair-Volume"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "chkdsk"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Format-Volume",
+    "aliases": [],
+    "shell": "powershell",
+    "category": "system",
+    "description": "Formats a volume on a partition",
+    "syntax": "Format-Volume [-DriveLetter] <char> [-FileSystem <string>]",
+    "examples": [
+      {
+        "cmd": "Format-Volume -DriveLetter E -FileSystem NTFS",
+        "desc": "Format drive E as NTFS"
+      }
+    ],
+    "related": [
+      "Clear-Disk"
+    ],
+    "safety": "destructive",
+    "tags": [
+      "format",
+      "filesystem",
+      "wipe"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Initialize-Disk",
+    "shell": "powershell",
+    "category": "maintenance",
+    "description": "Initializes a RAW disk for partitioning",
+    "syntax": "Initialize-Disk -Number <int>",
+    "examples": [
+      {
+        "cmd": "Initialize-Disk",
+        "desc": "Run Initialize-Disk"
+      }
+    ],
+    "safety": "dangerous",
+    "tags": [
+      "disk"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "New-Partition",
+    "shell": "powershell",
+    "category": "maintenance",
+    "description": "Creates a new partition on existing disk",
+    "syntax": "New-Partition -DiskNumber <int> -UseMaximumSize -AssignDriveLetter",
+    "examples": [
+      {
+        "cmd": "New-Partition",
+        "desc": "Run New-Partition"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "partition"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Remove-Partition",
+    "shell": "powershell",
+    "category": "maintenance",
+    "description": "Deletes specified partition and data",
+    "syntax": "Remove-Partition -DiskNumber <int> -PartitionNumber <int>",
+    "examples": [
+      {
+        "cmd": "Remove-Partition",
+        "desc": "Run Remove-Partition"
+      }
+    ],
+    "safety": "dangerous",
+    "tags": [
+      "partition"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Resize-Partition",
+    "shell": "powershell",
+    "category": "maintenance",
+    "description": "Resizes an existing partition",
+    "syntax": "Resize-Partition -DiskNumber <int> -PartitionNumber <int> -Size <size>",
+    "examples": [
+      {
+        "cmd": "Resize-Partition",
+        "desc": "Run Resize-Partition"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "partition"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-TroubleshootingPack",
+    "shell": "powershell",
+    "category": "diagnostic",
+    "description": "Gets troubleshooting pack from specified directory",
+    "syntax": "Get-TroubleshootingPack -Path <path>",
+    "examples": [
+      {
+        "cmd": "Get-TroubleshootingPack",
+        "desc": "Run Get-TroubleshootingPack"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "troubleshoot"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Invoke-TroubleshootingPack",
+    "shell": "powershell",
+    "category": "diagnostic",
+    "description": "Runs a troubleshooting pack non-interactively",
+    "syntax": "Invoke-TroubleshootingPack -Pack <pack>",
+    "examples": [
+      {
+        "cmd": "Invoke-TroubleshootingPack",
+        "desc": "Run Invoke-TroubleshootingPack"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "troubleshoot"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-NetNeighbor",
+    "shell": "powershell",
+    "category": "network",
+    "description": "Gets neighbor cache entries (ARP table)",
+    "syntax": "Get-NetNeighbor",
+    "examples": [
+      {
+        "cmd": "Get-NetNeighbor",
+        "desc": "Run Get-NetNeighbor"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "arp"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-SmbShare",
+    "shell": "powershell",
+    "category": "network",
+    "description": "Gets SMB shares established on computer",
+    "syntax": "Get-SmbShare",
+    "examples": [
+      {
+        "cmd": "Get-SmbShare",
+        "desc": "Run Get-SmbShare"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "smb",
+      "share"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "New-SmbShare",
+    "shell": "powershell",
+    "category": "network",
+    "description": "Creates a new SMB share",
+    "syntax": "New-SmbShare -Name <name> -Path <path> -FullAccess <user>",
+    "examples": [
+      {
+        "cmd": "New-SmbShare",
+        "desc": "Run New-SmbShare"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "smb",
+      "share"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Remove-SmbShare",
+    "shell": "powershell",
+    "category": "network",
+    "description": "Deletes an SMB share",
+    "syntax": "Remove-SmbShare -Name <name> -Force",
+    "examples": [
+      {
+        "cmd": "Remove-SmbShare",
+        "desc": "Run Remove-SmbShare"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "smb",
+      "share"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-SmbConnection",
+    "shell": "powershell",
+    "category": "network",
+    "description": "Gets SMB connections established from SMB client",
+    "syntax": "Get-SmbConnection",
+    "examples": [
+      {
+        "cmd": "Get-SmbConnection",
+        "desc": "Run Get-SmbConnection"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "smb"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Get-DnsClientCache",
+    "shell": "powershell",
+    "category": "network",
+    "description": "Retrieves contents of local DNS client cache",
+    "syntax": "Get-DnsClientCache",
+    "examples": [
+      {
+        "cmd": "Get-DnsClientCache",
+        "desc": "Run Get-DnsClientCache"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "dns"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Register-EngineEvent",
+    "shell": "powershell",
+    "category": "system",
+    "description": "Subscribes to events generated by PowerShell engine",
+    "syntax": "Register-EngineEvent -SourceIdentifier <id>",
+    "examples": [
+      {
+        "cmd": "Register-EngineEvent",
+        "desc": "Run Register-EngineEvent"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "events"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "Unregister-Event",
+    "shell": "powershell",
+    "category": "system",
+    "description": "Cancels an event subscription",
+    "syntax": "Unregister-Event -SourceIdentifier <id>",
+    "examples": [
+      {
+        "cmd": "Unregister-Event",
+        "desc": "Run Unregister-Event"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "events"
+    ],
+    "source": "core"
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "sqlite": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "${SQLITE_DB_PATH:-knowledge/agent_memory.db}"],
+      "env": {},
+      "description": "Local/External SQLite database query server"
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${ALLOWED_DOCS_DIR:-~/Documents}"],
+      "env": {},
+      "description": "Local filesystem access server for approved directories"
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "env": {},
+      "description": "Web fetch and HTML-to-markdown extraction server"
+    },
+    "custom_example": {
+      "enabled": false,
+      "server_type": "http",
+      "url": "http://localhost:8000/mcp",
+      "headers": {
+        "Authorization": "Bearer ${MCP_API_TOKEN:-default_token}"
+      },
+      "description": "Example template for custom user-defined HTTP MCP servers"
+    }
+  }
+}

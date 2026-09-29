@@ -1,0 +1,202 @@
+[
+  {
+    "device_id": "MOB_NODE_01",
+    "device_name": "Operator Primary Smartphone",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.145",
+    "is_connected": true,
+    "last_seen": "2026-08-29T05:46:50.942505+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_02",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-29T05:50:24.651302+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_03",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-29T05:56:42.289932+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_04",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-29T05:59:49.414185+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_05",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-29T06:17:44.553903+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_06",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-29T15:24:04.937304+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_07",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-30T05:05:45.136658+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_08",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-30T05:23:34.504598+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_09",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-30T05:56:35.884897+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_10",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-30T06:06:59.567748+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_11",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-30T06:50:06.242791+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_12",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-30T13:24:58.573038+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_13",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-30T13:58:44.522426+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_14",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-30T14:03:47.930068+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_15",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-30T14:19:04.105245+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_16",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-31T03:55:57.036168+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_17",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-08-31T04:06:32.120192+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_18",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-09-03T04:10:20.549061+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_19",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-09-03T04:36:36.254818+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_20",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-09-03T04:58:53.081143+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_21",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-09-03T05:04:59.804996+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_22",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-09-05T09:34:03.877907+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_23",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-09-05T09:49:04.048863+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_24",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-09-05T11:57:29.146569+00:00"
+  },
+  {
+    "device_id": "MOB_NODE_25",
+    "device_name": "Operator iPhone 16 Pro",
+    "device_type": "SMARTPHONE_IOS",
+    "ip_address": "192.168.1.188",
+    "is_connected": true,
+    "last_seen": "2026-09-14T09:52:52.874389+00:00"
+  }
+]

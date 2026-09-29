@@ -1,0 +1,1 @@
+Offline cached content for https://example.com

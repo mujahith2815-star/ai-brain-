@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>P.H.A.S.S Sphere v7.0 — 3D Holographic Web HUD</title>
+    <link rel="stylesheet" href="hud.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="hud-overlay">
+        <header class="hud-header">
+            <div class="hud-logo">⚡ P.H.A.S.S SPHERE v7.0</div>
+            <div class="hud-status"><span class="pulse-dot"></span> ZENITH OMNIPRESENCE ONLINE</div>
+        </header>
+        <div class="hud-metrics">
+            <div class="hud-card">
+                <h4>CORE FREQUENCY</h4>
+                <div class="metric-val" id="cpu-freq">4.35 GHz</div>
+                <div class="sub-label">12 Cores Active</div>
+            </div>
+            <div class="hud-card">
+                <h4>RAM LOAD</h4>
+                <div class="metric-val" id="ram-usage">31.2%</div>
+                <div class="sub-label">32 GB Unified Mesh</div>
+            </div>
+            <div class="hud-card">
+                <h4>NEURAL LOSS</h4>
+                <div class="metric-val" id="neural-loss">0.0014</div>
+                <div class="sub-label">Zero-Trust Merkle Active</div>
+            </div>
+        </div>
+        <footer class="hud-footer">
+            <div id="voice-spectrum">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            </div>
+            <p>HOLOGRAPHIC 3D SPATIAL TELEMETRY STREAM ACTIVE</p>
+        </footer>
+    </div>
+    <script src="hud.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+# Local model weights
+models/
+models/llama/
+exported_model/
+*.safetensors
+*.bin
+*.pt
+*.gguf
+
+# Virtual environment & Python cache
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Logs & temporary files
+logs/
+checkpoints/
+.doctor_write_test
+.env
+
+# Packaging & Build
+build/
+dist/
+installer/Output/
+*.egg-info/
+
+# Media & Backups
+data_backups/
+audio_cache/
+screenshots/
+backups/
+*.enc
+
+# Code dumps
+*_dump.txt
+*FULL_CODEBASE.txt

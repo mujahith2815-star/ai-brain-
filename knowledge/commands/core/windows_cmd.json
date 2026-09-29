@@ -1,0 +1,1685 @@
+[
+  {
+    "name": "dir",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Displays a list of files and subdirectories in a directory",
+    "syntax": "dir [drive:][path][filename] [/o[[:]sortorder]] [/s]",
+    "examples": [
+      {
+        "cmd": "dir /s /b *.log",
+        "desc": "List all log files recursively in bare format"
+      }
+    ],
+    "related": [
+      "Get-ChildItem",
+      "ls"
+    ],
+    "safety": "safe",
+    "tags": [
+      "list",
+      "cmd",
+      "files"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "cd",
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Displays name of or changes current directory",
+    "syntax": "cd [/d] [drive:][path]",
+    "examples": [
+      {
+        "cmd": "cd",
+        "desc": "Run cd"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "chdir",
+      "navigation"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "copy",
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Copies one or more files to another location",
+    "syntax": "copy [/v] [/n] [/y | /-y] [/b | /a] source [+ source2] [destination]",
+    "examples": [
+      {
+        "cmd": "copy",
+        "desc": "Run copy"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "cp",
+      "duplicate"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "move",
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Moves one or more files from one directory to another directory",
+    "syntax": "move [/y | /-y] [source] [destination]",
+    "examples": [
+      {
+        "cmd": "move",
+        "desc": "Run move"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "mv",
+      "relocate"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "del",
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Deletes one or more files",
+    "syntax": "del [/p] [/f] [/s] [/q] [/a:attrib] names",
+    "examples": [
+      {
+        "cmd": "del",
+        "desc": "Run del"
+      }
+    ],
+    "safety": "moderate",
+    "tags": [
+      "erase",
+      "remove",
+      "rm"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "md",
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Creates a directory",
+    "syntax": "md [drive:]path",
+    "examples": [
+      {
+        "cmd": "md",
+        "desc": "Run md"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "mkdir",
+      "create"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "rd",
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Removes (deletes) a directory",
+    "syntax": "rd [/s] [/q] [drive:]path",
+    "examples": [
+      {
+        "cmd": "rd",
+        "desc": "Run rd"
+      }
+    ],
+    "safety": "moderate",
+    "tags": [
+      "rmdir",
+      "delete"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ren",
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Renames a file or files",
+    "syntax": "ren [drive:][path]filename1 filename2",
+    "examples": [
+      {
+        "cmd": "ren",
+        "desc": "Run ren"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "rename"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "type",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Displays the contents of a text file",
+    "syntax": "type [drive:][path]filename",
+    "examples": [
+      {
+        "cmd": "type config.ini",
+        "desc": "Print contents of config.ini"
+      }
+    ],
+    "related": [
+      "Get-Content",
+      "cat"
+    ],
+    "safety": "safe",
+    "tags": [
+      "view",
+      "print",
+      "display"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "more",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "text",
+    "description": "Displays output one screen at a time",
+    "syntax": "more [filename] | command | more",
+    "examples": [
+      {
+        "cmd": "type large.txt | more",
+        "desc": "Paginate text output"
+      }
+    ],
+    "related": [
+      "Get-Content"
+    ],
+    "safety": "safe",
+    "tags": [
+      "page",
+      "view",
+      "paginate"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "tree",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Graphically displays the folder structure of a drive or path",
+    "syntax": "tree [drive:][path] [/F] [/A]",
+    "examples": [
+      {
+        "cmd": "tree /F /A",
+        "desc": "Display ASCII file hierarchy"
+      }
+    ],
+    "related": [
+      "Get-ChildItem"
+    ],
+    "safety": "safe",
+    "tags": [
+      "hierarchy",
+      "visualize",
+      "structure"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "cls",
+    "aliases": [
+      "clear"
+    ],
+    "shell": "cmd",
+    "category": "misc",
+    "description": "Clears the terminal screen buffer",
+    "syntax": "cls",
+    "examples": [
+      {
+        "cmd": "cls",
+        "desc": "Clear active console window"
+      }
+    ],
+    "related": [
+      "Clear-Host"
+    ],
+    "safety": "safe",
+    "tags": [
+      "clear",
+      "screen",
+      "terminal"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "echo",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "misc",
+    "description": "Displays messages, or turns command-echoing on or off",
+    "syntax": "echo [message]",
+    "examples": [
+      {
+        "cmd": "echo Hello Orvix",
+        "desc": "Print string to console"
+      }
+    ],
+    "related": [
+      "Write-Host"
+    ],
+    "safety": "safe",
+    "tags": [
+      "print",
+      "stdout",
+      "echo"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "attrib",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Displays, sets, or removes attributes assigned to files or directories",
+    "syntax": "attrib [+R|-R] [+A|-A] [+S|-S] [+H|-H] [drive:][path][filename]",
+    "examples": [
+      {
+        "cmd": "attrib +H secret.txt",
+        "desc": "Mark file as hidden"
+      }
+    ],
+    "related": [
+      "Get-ItemProperty",
+      "Set-ItemProperty"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "attribute",
+      "hidden",
+      "readonly"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "compact",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Displays or alters the compression of files on NTFS partitions",
+    "syntax": "compact [/C | /U] [/S[:dir]] [filename ...]",
+    "examples": [
+      {
+        "cmd": "compact /C /S:C:\\Data",
+        "desc": "Compress directory files"
+      }
+    ],
+    "related": [
+      "Compress-Archive"
+    ],
+    "safety": "safe",
+    "tags": [
+      "ntfs",
+      "compress",
+      "disk"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "cipher",
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Displays or alters the encryption of directories and files on NTFS partitions",
+    "syntax": "cipher [/e | /d] [/s:dir] [/a] [/i] [/f] [/q] [filename]",
+    "examples": [
+      {
+        "cmd": "cipher",
+        "desc": "Run cipher"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "encryption",
+      "security"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "tasklist",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "process",
+    "description": "Displays a list of currently running processes on the computer",
+    "syntax": "tasklist [/s <computer>] [/u <user>] [/m [module]] [/fo {table|list|csv}]",
+    "examples": [
+      {
+        "cmd": "tasklist /fi \"STATUS eq running\" /fo table",
+        "desc": "Display running tasks"
+      }
+    ],
+    "related": [
+      "taskkill",
+      "Get-Process"
+    ],
+    "safety": "safe",
+    "tags": [
+      "ps",
+      "processes",
+      "cmd"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "taskkill",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "process",
+    "description": "Terminates tasks by process id or image name",
+    "syntax": "taskkill [/s <computer>] { [/pid <id>] | [/im <image>] } [/f] [/t]",
+    "examples": [
+      {
+        "cmd": "taskkill /f /im node.exe /t",
+        "desc": "Force kill node process tree"
+      }
+    ],
+    "related": [
+      "tasklist",
+      "Stop-Process"
+    ],
+    "safety": "destructive",
+    "tags": [
+      "kill",
+      "terminate",
+      "tree"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "sc",
+    "shell": "cmd",
+    "category": "service",
+    "description": "Communicates with the Service Controller and installed services",
+    "syntax": "sc [server] [command] [service_name] <option1> <option2>...",
+    "examples": [
+      {
+        "cmd": "sc",
+        "desc": "Run sc"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "services",
+      "controller"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "net",
+    "shell": "cmd",
+    "category": "system",
+    "description": "Used to manage network resources, users, services, shares",
+    "syntax": "net [accounts | computer | config | continue | file | group | help | helpmsg | localgroup | name | pause | print | send | session | share | start | statistics | stop | time | use | user | view]",
+    "examples": [
+      {
+        "cmd": "net",
+        "desc": "Run net"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "network",
+      "users",
+      "shares"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "reg",
+    "shell": "cmd",
+    "category": "system",
+    "description": "Command-line registry tool for Windows",
+    "syntax": "reg [query | add | delete | copy | save | restore | load | unload | compare | export | import | flags]",
+    "examples": [
+      {
+        "cmd": "reg",
+        "desc": "Run reg"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "registry",
+      "config"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "wmic",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "system",
+    "description": "Windows Management Instrumentation Command-line",
+    "syntax": "wmic <alias> [options]",
+    "examples": [
+      {
+        "cmd": "wmic cpu get name, maxclockspeed, numberofcores",
+        "desc": "Retrieve CPU core hardware metrics"
+      }
+    ],
+    "related": [
+      "Get-CimInstance"
+    ],
+    "safety": "safe",
+    "tags": [
+      "hardware",
+      "cpu",
+      "wmi"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "schtasks",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "scheduling",
+    "description": "Enables an administrator to create, delete, query, change, run, and end scheduled tasks",
+    "syntax": "schtasks [/create | /delete | /query | /run | /end] [/tn <taskname>]",
+    "examples": [
+      {
+        "cmd": "schtasks /query /tn OrvixSphere_AutoStart /v /fo LIST",
+        "desc": "Query specific scheduled task telemetry"
+      },
+      {
+        "cmd": "schtasks /run /tn DailyBackup",
+        "desc": "Trigger task on-demand"
+      }
+    ],
+    "related": [
+      "Get-ScheduledTask",
+      "Register-ScheduledTask"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "cron",
+      "schedule",
+      "task",
+      "autostart"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "shutdown",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "power",
+    "description": "Allows you to shut down or restart local or remote computers",
+    "syntax": "shutdown [/s | /r] [/t <xxx>] [/c \"comment\"] [/a]",
+    "examples": [
+      {
+        "cmd": "shutdown /s /t 60",
+        "desc": "Schedule system shutdown in 60s"
+      }
+    ],
+    "related": [
+      "Restart-Computer",
+      "Stop-Computer"
+    ],
+    "safety": "destructive",
+    "tags": [
+      "shutdown",
+      "poweroff",
+      "reboot"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ipconfig",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "network",
+    "description": "Displays all current TCP/IP network configuration values",
+    "syntax": "ipconfig [/all] [/flushdns] [/release] [/renew]",
+    "examples": [
+      {
+        "cmd": "ipconfig /all",
+        "desc": "Full network adapter diagnostics"
+      },
+      {
+        "cmd": "ipconfig /flushdns",
+        "desc": "Purge DNS resolver cache"
+      }
+    ],
+    "related": [
+      "Get-NetIPAddress"
+    ],
+    "safety": "safe",
+    "tags": [
+      "ip",
+      "gateway",
+      "dns",
+      "adapter"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ping",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "network",
+    "description": "Verifies IP-level connectivity to another TCP/IP computer",
+    "syntax": "ping [-t] [-n <count>] [-l <size>] <target_name>",
+    "examples": [
+      {
+        "cmd": "ping -n 4 8.8.8.8",
+        "desc": "Send 4 ICMP echo packets to Google DNS"
+      }
+    ],
+    "related": [
+      "Test-NetConnection",
+      "tracert"
+    ],
+    "safety": "safe",
+    "tags": [
+      "icmp",
+      "latency",
+      "packet-loss"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "netstat",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "network",
+    "description": "Displays active TCP connections, ports on which computer is listening, and ethernet statistics",
+    "syntax": "netstat [-a] [-n] [-o] [-p <proto>]",
+    "examples": [
+      {
+        "cmd": "netstat -ano | findstr :8000",
+        "desc": "Find PID listening on port 8000"
+      }
+    ],
+    "related": [
+      "Get-NetTCPConnection"
+    ],
+    "safety": "safe",
+    "tags": [
+      "ports",
+      "connections",
+      "sockets"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "tracert",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "network",
+    "description": "Traces the route that network packets take to their destination",
+    "syntax": "tracert [-d] [-h <maximum_hops>] <target_name>",
+    "examples": [
+      {
+        "cmd": "tracert -d 1.1.1.1",
+        "desc": "Trace network hops without DNS lookup"
+      }
+    ],
+    "related": [
+      "ping"
+    ],
+    "safety": "safe",
+    "tags": [
+      "traceroute",
+      "route",
+      "latency",
+      "hops"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "pathping",
+    "shell": "cmd",
+    "category": "network",
+    "description": "Provides information about network latency and packet loss at intermediate hops",
+    "syntax": "pathping [-n] [-h maximum_hops] [-g host-list] [-p period] [-q num_queries] [-w timeout] target_name",
+    "examples": [
+      {
+        "cmd": "pathping",
+        "desc": "Run pathping"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "network",
+      "ping",
+      "diagnostics"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "nslookup",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "network",
+    "description": "Displays information for diagnosing Domain Name System infrastructure",
+    "syntax": "nslookup [-option] [hostname] [server]",
+    "examples": [
+      {
+        "cmd": "nslookup github.com",
+        "desc": "Query default DNS server"
+      }
+    ],
+    "related": [
+      "Resolve-DnsName"
+    ],
+    "safety": "safe",
+    "tags": [
+      "dns",
+      "domain",
+      "nameserver"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "curl",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "network",
+    "description": "Command line tool and library for transferring data with URLs",
+    "syntax": "curl [options] <url>",
+    "examples": [
+      {
+        "cmd": "curl -s https://icanhazip.com",
+        "desc": "Fetch public IP address"
+      }
+    ],
+    "related": [
+      "Invoke-WebRequest"
+    ],
+    "safety": "safe",
+    "tags": [
+      "http",
+      "download",
+      "fetch"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "where",
+    "shell": "cmd",
+    "category": "utility",
+    "description": "Displays the location of files that match the search pattern",
+    "syntax": "where [/r dir] [/q] [/f] [/t] pattern...",
+    "examples": [
+      {
+        "cmd": "where",
+        "desc": "Run where"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "which",
+      "find",
+      "locate"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "find",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "search",
+    "description": "Searches for a text string in a file or files",
+    "syntax": "find [/v] [/c] [/n] [/i] \"string\" [[drive:][path]filename[ ...]]",
+    "examples": [
+      {
+        "cmd": "find /i \"success\" results.txt",
+        "desc": "Case-insensitive text find"
+      }
+    ],
+    "related": [
+      "findstr",
+      "Select-String"
+    ],
+    "safety": "safe",
+    "tags": [
+      "search",
+      "text",
+      "match"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "findstr",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "search",
+    "description": "Searches for strings in files",
+    "syntax": "findstr [/s] [/i] [/r] <strings> [filename...]",
+    "examples": [
+      {
+        "cmd": "findstr /s /i /c:\"connection failed\" *.log",
+        "desc": "Search text across all logs"
+      }
+    ],
+    "related": [
+      "Select-String",
+      "find"
+    ],
+    "safety": "safe",
+    "tags": [
+      "grep",
+      "search",
+      "cmd"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "robocopy",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Robust File and Folder Copy for Windows",
+    "syntax": "robocopy <source> <destination> [<file>[ ...]] [<options>]",
+    "examples": [
+      {
+        "cmd": "robocopy C:\\src C:\\dst /MIR /MT:8",
+        "desc": "Mirror directory using 8 threads"
+      }
+    ],
+    "related": [
+      "Copy-Item",
+      "xcopy"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "sync",
+      "mirror",
+      "robust",
+      "fast-copy"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "xcopy",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Copies files and directory trees",
+    "syntax": "xcopy <source> [<destination>] [/s] [/e] [/y]",
+    "examples": [
+      {
+        "cmd": "xcopy .\\src .\\dist /E /I /Y",
+        "desc": "Copy full tree including empty folders"
+      }
+    ],
+    "related": [
+      "robocopy",
+      "Copy-Item"
+    ],
+    "safety": "safe",
+    "tags": [
+      "copy",
+      "tree",
+      "legacy"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "takeown",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "permission",
+    "description": "Enables an administrator to recover access to a file that was denied",
+    "syntax": "takeown [/s <computer>] /f <filename> [/r] [/d {y|n}]",
+    "examples": [
+      {
+        "cmd": "takeown /f C:\\LockedFolder /r /d y",
+        "desc": "Take recursive ownership"
+      }
+    ],
+    "related": [
+      "icacls",
+      "Set-Acl"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "ownership",
+      "admin",
+      "privilege"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "icacls",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "permission",
+    "description": "Displays or modifies discretionary access control lists on files/folders",
+    "syntax": "icacls <filename> [/grant[:r] <Sid:perm>[...]]",
+    "examples": [
+      {
+        "cmd": "icacls app.exe /grant Users:(RX)",
+        "desc": "Grant Read and Execute permissions"
+      }
+    ],
+    "related": [
+      "takeown",
+      "Get-Acl"
+    ],
+    "safety": "moderate",
+    "tags": [
+      "permissions",
+      "acl",
+      "security"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "systeminfo",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "system",
+    "description": "Displays detailed configuration information about a computer and its operating system",
+    "syntax": "systeminfo [/s <computer>] [/fo {TABLE|LIST|CSV}]",
+    "examples": [
+      {
+        "cmd": "systeminfo | findstr /B /C:\"OS Name\" /C:\"OS Version\"",
+        "desc": "Extract OS build"
+      }
+    ],
+    "related": [
+      "Get-ComputerInfo"
+    ],
+    "safety": "safe",
+    "tags": [
+      "specs",
+      "hardware",
+      "os",
+      "ram"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "driverquery",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "system",
+    "description": "Enables an administrator to display a list of installed device drivers",
+    "syntax": "driverquery [/v] [/fo {TABLE|LIST|CSV}]",
+    "examples": [
+      {
+        "cmd": "driverquery /fo table",
+        "desc": "List all installed kernel and device drivers"
+      }
+    ],
+    "related": [
+      "Get-CimInstance"
+    ],
+    "safety": "safe",
+    "tags": [
+      "drivers",
+      "hardware",
+      "kernel"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "gpresult",
+    "shell": "cmd",
+    "category": "system",
+    "description": "Displays Group Policy information for a remote user and computer",
+    "syntax": "gpresult [/s system [/u user [/p password]]] [/user targetusername] [/scope {user | computer}] {/r | /v | /z | [/x | /h] targetfilename}",
+    "examples": [
+      {
+        "cmd": "gpresult",
+        "desc": "Run gpresult"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "grouppolicy",
+      "gpo",
+      "policy"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "powercfg",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "power",
+    "description": "Configures power settings on Windows",
+    "syntax": "powercfg /batteryreport [/output <path>]",
+    "examples": [
+      {
+        "cmd": "powercfg /batteryreport",
+        "desc": "Generate HTML battery health report"
+      }
+    ],
+    "related": [
+      "Get-CimInstance"
+    ],
+    "safety": "safe",
+    "tags": [
+      "battery",
+      "power",
+      "energy"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "assoc",
+    "shell": "cmd",
+    "category": "system",
+    "description": "Displays or modifies file name extension associations",
+    "syntax": "assoc [.ext[=[fileType]]]",
+    "examples": [
+      {
+        "cmd": "assoc",
+        "desc": "Run assoc"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "extensions",
+      "associations"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "ftype",
+    "shell": "cmd",
+    "category": "system",
+    "description": "Displays or modifies file types used in file name extension associations",
+    "syntax": "ftype [fileType[=[openCommandString]]]",
+    "examples": [
+      {
+        "cmd": "ftype",
+        "desc": "Run ftype"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "filetypes",
+      "programs"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "hostname",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "system",
+    "description": "Displays the host name portion of the full computer name",
+    "syntax": "hostname",
+    "examples": [
+      {
+        "cmd": "hostname",
+        "desc": "Print machine hostname"
+      }
+    ],
+    "related": [
+      "whoami"
+    ],
+    "safety": "safe",
+    "tags": [
+      "name",
+      "host",
+      "machine"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "whoami",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "user",
+    "description": "Displays user, group and privileges information for the current user",
+    "syntax": "whoami [/all] [/priv]",
+    "examples": [
+      {
+        "cmd": "whoami /priv",
+        "desc": "Display enabled security privileges"
+      }
+    ],
+    "related": [
+      "Get-LocalUser"
+    ],
+    "safety": "safe",
+    "tags": [
+      "user",
+      "identity",
+      "privileges"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "set",
+    "shell": "cmd",
+    "category": "variables",
+    "description": "Displays, sets, or removes cmd.exe environment variables",
+    "syntax": "set [variable=[string]]",
+    "examples": [
+      {
+        "cmd": "set",
+        "desc": "Run set"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "env",
+      "environment"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "path",
+    "shell": "cmd",
+    "category": "variables",
+    "description": "Displays or sets a search path for executable files",
+    "syntax": "path [[drive:]path[;...]] [;]",
+    "examples": [
+      {
+        "cmd": "path",
+        "desc": "Run path"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "path",
+      "bin"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "prompt",
+    "shell": "cmd",
+    "category": "utility",
+    "description": "Changes the cmd.exe command prompt",
+    "syntax": "prompt [text]",
+    "examples": [
+      {
+        "cmd": "prompt",
+        "desc": "Run prompt"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "customization"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "title",
+    "shell": "cmd",
+    "category": "utility",
+    "description": "Sets the window title for the command prompt window",
+    "syntax": "title [string]",
+    "examples": [
+      {
+        "cmd": "title",
+        "desc": "Run title"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "window",
+      "console"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "clip",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "misc",
+    "description": "Redirects command-line output to the Windows clipboard",
+    "syntax": "<command> | clip",
+    "examples": [
+      {
+        "cmd": "dir | clip",
+        "desc": "Copy directory listing to clipboard"
+      }
+    ],
+    "related": [
+      "Set-Clipboard"
+    ],
+    "safety": "safe",
+    "tags": [
+      "clipboard",
+      "copy",
+      "cmd"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "doskey",
+    "shell": "cmd",
+    "category": "utility",
+    "description": "Recalls Windows commands, edits command lines, and creates macros",
+    "syntax": "doskey [/reinstall] [/listsize=size] [/macros] [macroname=[text]]",
+    "examples": [
+      {
+        "cmd": "doskey",
+        "desc": "Run doskey"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "macro",
+      "alias"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "diskshadow",
+    "shell": "cmd",
+    "category": "disk",
+    "description": "Tool that exposes the functionality offered by the Volume Shadow Copy Service (VSS)",
+    "syntax": "diskshadow [/s script] [/v]",
+    "examples": [
+      {
+        "cmd": "diskshadow",
+        "desc": "Run diskshadow"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "vss",
+      "shadow",
+      "backup"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "bcdedit",
+    "shell": "cmd",
+    "category": "system",
+    "description": "Command-line tool for managing Boot Configuration Data (BCD)",
+    "syntax": "bcdedit [/command] [arguments]",
+    "examples": [
+      {
+        "cmd": "bcdedit",
+        "desc": "Run bcdedit"
+      }
+    ],
+    "safety": "dangerous",
+    "tags": [
+      "boot",
+      "startup",
+      "efi"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "diskpart",
+    "shell": "cmd",
+    "category": "disk",
+    "description": "Disk management tool that enables you to manage computer storage (disks, partitions, volumes)",
+    "syntax": "diskpart [/s script]",
+    "examples": [
+      {
+        "cmd": "diskpart",
+        "desc": "Run diskpart"
+      }
+    ],
+    "safety": "dangerous",
+    "tags": [
+      "partition",
+      "format",
+      "wipe"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "chkdsk",
+    "shell": "cmd",
+    "category": "disk",
+    "description": "Checks the file system and file system metadata of a volume for logical and physical errors",
+    "syntax": "chkdsk [volume[[path]filename]]] [/f] [/v] [/r] [/x] [/i] [/c] [/l[:size]] [/b]",
+    "examples": [
+      {
+        "cmd": "chkdsk",
+        "desc": "Run chkdsk"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "disk",
+      "repair",
+      "filesystem"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "sfc",
+    "shell": "cmd",
+    "category": "system",
+    "description": "System File Checker scans the integrity of all protected system files and replaces incorrect versions",
+    "syntax": "sfc [/scannow] [/verifyonly] [/scanfile=file] [/verifyfile=file] [/offbootdir=dir /offwindir=dir]",
+    "examples": [
+      {
+        "cmd": "sfc",
+        "desc": "Run sfc"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "repair",
+      "integrity",
+      "windows"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "dism",
+    "shell": "cmd",
+    "category": "system",
+    "description": "Deployment Image Servicing and Management tool to service Windows images and components",
+    "syntax": "dism [/image:path | /online] [options] [arguments]",
+    "examples": [
+      {
+        "cmd": "dism",
+        "desc": "Run dism"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "repair",
+      "wim",
+      "windows",
+      "drivers"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "fsutil",
+    "shell": "cmd",
+    "category": "disk",
+    "description": "Performs tasks related to FAT and NTFS file systems (managing sparse files, volume dismount)",
+    "syntax": "fsutil [behavior | dirty | file | fsinfo | hardlink | objectid | quota | repair | reparsepoint | resource | sparse | tiering | transaction | usn | volume]",
+    "examples": [
+      {
+        "cmd": "fsutil",
+        "desc": "Run fsutil"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "ntfs",
+      "filesystem",
+      "storage"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "vol",
+    "shell": "cmd",
+    "category": "disk",
+    "description": "Displays disk volume label and serial number",
+    "syntax": "vol [drive:]",
+    "examples": [
+      {
+        "cmd": "vol",
+        "desc": "Run vol"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "volume",
+      "disk"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "label",
+    "shell": "cmd",
+    "category": "disk",
+    "description": "Creates, changes, or deletes disk volume label",
+    "syntax": "label [drive:][label]",
+    "examples": [
+      {
+        "cmd": "label",
+        "desc": "Run label"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "volume",
+      "disk"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "convert",
+    "shell": "cmd",
+    "category": "disk",
+    "description": "Converts FAT volumes to NTFS",
+    "syntax": "convert volume /fs:ntfs [/v] [/cvtarea:filename] [/nosecurity] [/x]",
+    "examples": [
+      {
+        "cmd": "convert",
+        "desc": "Run convert"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "filesystem"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "format",
+    "shell": "cmd",
+    "category": "disk",
+    "description": "Formats a disk for use with Windows",
+    "syntax": "format volume [/fs:file-system] [/v:label] [/q] [/a:size] [/c] [/x] [/p:passes]",
+    "examples": [
+      {
+        "cmd": "format",
+        "desc": "Run format"
+      }
+    ],
+    "safety": "destructive",
+    "tags": [
+      "wipe",
+      "format",
+      "erase"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "defrag",
+    "shell": "cmd",
+    "category": "disk",
+    "description": "Locates and consolidates fragmented files on local volumes",
+    "syntax": "defrag <volumes> | /c | /e <volumes> [/h] [/m | [/u] [/v]]",
+    "examples": [
+      {
+        "cmd": "defrag",
+        "desc": "Run defrag"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "disk",
+      "defragment",
+      "speed"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "subst",
+    "shell": "cmd",
+    "category": "filesystem",
+    "description": "Associates a path with a drive letter",
+    "syntax": "subst [drive1: [drive2:]path] [/d]",
+    "examples": [
+      {
+        "cmd": "subst",
+        "desc": "Run subst"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "virtual",
+      "drive"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "call",
+    "shell": "cmd",
+    "category": "scripting",
+    "description": "Calls one batch program from another without causing parent batch program to stop",
+    "syntax": "call [drive:][path]filename [batch-parameters]",
+    "examples": [
+      {
+        "cmd": "call",
+        "desc": "Run call"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "batch",
+      "subroutine"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "goto",
+    "shell": "cmd",
+    "category": "scripting",
+    "description": "Directs cmd.exe to a labeled line in a batch program",
+    "syntax": "goto label",
+    "examples": [
+      {
+        "cmd": "goto",
+        "desc": "Run goto"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "flow",
+      "branch"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "if",
+    "shell": "cmd",
+    "category": "scripting",
+    "description": "Performs conditional processing in batch programs",
+    "syntax": "if [not] errorlevel number command | if [not] string1==string2 command | if [/i] string1 compare-op string2 command",
+    "examples": [
+      {
+        "cmd": "if",
+        "desc": "Run if"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "condition",
+      "flow"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "for",
+    "shell": "cmd",
+    "category": "scripting",
+    "description": "Runs a specified command for each file in a set of files",
+    "syntax": "for {%variable | %%variable} in (set) do command [command-parameters]",
+    "examples": [
+      {
+        "cmd": "for",
+        "desc": "Run for"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "loop",
+      "iterate"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "pause",
+    "shell": "cmd",
+    "category": "scripting",
+    "description": "Suspends processing of a batch program and displays a prompt",
+    "syntax": "pause",
+    "examples": [
+      {
+        "cmd": "pause",
+        "desc": "Run pause"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "wait",
+      "user"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "rem",
+    "shell": "cmd",
+    "category": "scripting",
+    "description": "Records comments in a batch file or config.sys",
+    "syntax": "rem [comment]",
+    "examples": [
+      {
+        "cmd": "rem",
+        "desc": "Run rem"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "comment",
+      "note"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "shift",
+    "shell": "cmd",
+    "category": "scripting",
+    "description": "Changes the position of replaceable parameters in a batch file",
+    "syntax": "shift [/n]",
+    "examples": [
+      {
+        "cmd": "shift",
+        "desc": "Run shift"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "parameters"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "start",
+    "shell": "cmd",
+    "category": "process",
+    "description": "Starts a separate window to run a specified program or command",
+    "syntax": "start [\"title\"] [/d path] [/i] [/min] [/max] [/separate | /shared] [/low | /normal | /high | /realtime | /abovenormal | /belownormal] [/wait] [/b] [command/program] [parameters]",
+    "examples": [
+      {
+        "cmd": "start",
+        "desc": "Run start"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "launch",
+      "exec"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "color",
+    "shell": "cmd",
+    "category": "utility",
+    "description": "Sets the default console foreground and background colors",
+    "syntax": "color [attr]",
+    "examples": [
+      {
+        "cmd": "color",
+        "desc": "Run color"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "terminal",
+      "theme"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "timeout",
+    "shell": "cmd",
+    "category": "scripting",
+    "description": "Pauses the command processor for the specified number of seconds",
+    "syntax": "timeout [/t] <timeoutinseconds> [/nobreak]",
+    "examples": [
+      {
+        "cmd": "timeout",
+        "desc": "Run timeout"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "sleep",
+      "wait"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "choice",
+    "shell": "cmd",
+    "category": "scripting",
+    "description": "Prompts the user to select one item from a list of single-character choices",
+    "syntax": "choice [/c choices] [/n] [/cs] [/t timeout /d choice] [/m text]",
+    "examples": [
+      {
+        "cmd": "choice",
+        "desc": "Run choice"
+      }
+    ],
+    "safety": "safe",
+    "tags": [
+      "menu",
+      "prompt"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "setx",
+    "shell": "cmd",
+    "category": "variables",
+    "description": "Creates or modifies environment variables in user or system environment",
+    "syntax": "setx [/s system [/u [domain\\]user [/p [password]]]] <variable> <value> [/m]",
+    "examples": [
+      {
+        "cmd": "setx",
+        "desc": "Run setx"
+      }
+    ],
+    "safety": "caution",
+    "tags": [
+      "env",
+      "persistent"
+    ],
+    "source": "core"
+  },
+  {
+    "name": "CertUtil",
+    "aliases": [],
+    "shell": "cmd",
+    "category": "search",
+    "description": "Dump and display certification authority configuration and hash files",
+    "syntax": "CertUtil -hashfile <file> [<algorithm>]",
+    "examples": [
+      {
+        "cmd": "certutil -hashfile app.zip MD5",
+        "desc": "Calculate MD5 hash"
+      }
+    ],
+    "related": [
+      "Get-FileHash"
+    ],
+    "safety": "safe",
+    "tags": [
+      "hash",
+      "md5",
+      "sha256",
+      "crypto"
+    ],
+    "source": "core"
+  }
+]

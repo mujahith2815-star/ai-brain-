@@ -1,0 +1,4 @@
+Item #,Designator,Component Description,Package,Quantity,Notes / Sourcing
+1,"C1, C2",0.1uF Ceramic Capacitor 50V,Radial 2.54mm,2,Power decoupling near MCU
+2,R1,220 Ohm 1/4W Resistor,Through-Hole,1,LED current limiter
+3,D1,Status LED (Red 5mm),Through-Hole,1,"Vf=2.0V, If=20mA"

@@ -1,0 +1,13 @@
+[
+  {
+    "board": "ESP32",
+    "name": "ESP32 Dev Module (WROOM-32)",
+    "port": "COM3",
+    "vid": "10C4",
+    "pid": "EA60",
+    "description": "Silicon Labs CP210x USB to UART Bridge",
+    "toolchain": "esptool / idf",
+    "baud_rate": 115200,
+    "status": "READY"
+  }
+]

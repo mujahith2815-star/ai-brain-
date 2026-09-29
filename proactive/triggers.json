@@ -1,0 +1,55 @@
+[
+  {
+    "name": "daily_inbox_summary",
+    "type": "CRON",
+    "config": {
+      "cron": "0 9 * * *"
+    },
+    "action": "Summarize unread documents in knowledge/inbox",
+    "requires_approval": false,
+    "enabled": true
+  },
+  {
+    "name": "auto_ingest_inbox",
+    "type": "FILE_CHANGE",
+    "config": {
+      "path": "knowledge/inbox",
+      "event": "created"
+    },
+    "action": "Ingest new file into vector store",
+    "requires_approval": false,
+    "enabled": true
+  },
+  {
+    "name": "low_disk_alert",
+    "type": "CONDITION",
+    "config": {
+      "metric": "disk_free_gb",
+      "operator": "<",
+      "threshold": 5
+    },
+    "action": "Propose cleanup of old log files",
+    "requires_approval": true,
+    "enabled": true
+  },
+  {
+    "name": "stale_list_check",
+    "type": "CRON",
+    "config": {
+      "cron": "0 * * * *"
+    },
+    "action": "Check for stale shopping list items older than 7 days",
+    "requires_approval": false,
+    "enabled": true
+  },
+  {
+    "name": "daily_health_check",
+    "type": "CRON",
+    "config": {
+      "cron": "0 8 * * *"
+    },
+    "action": "Run daily health check",
+    "requires_approval": false,
+    "enabled": true
+  }
+]

@@ -1,0 +1,76 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orvix-sphere"
+version = "8.0.0"
+description = "Orvix Sphere: Autonomous Cognitive Intelligence & Physical AI Framework"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Orvix Engineering Team" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+dependencies = [
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.28.0",
+    "jinja2>=3.1.3",
+    "pydantic>=2.6.0",
+    "pydantic-settings>=2.2.0",
+    "python-dotenv>=1.0.1",
+    "python-multipart>=0.0.9",
+    "websockets>=12.0",
+    "google-generativeai>=0.8.0",
+    "requests>=2.31.0",
+    "httpx>=0.27.0",
+    "ollama>=0.1.7",
+    "mcp>=1.0.0",
+    "aiohttp>=3.9.0",
+    "anyio>=4.0.0",
+    "APScheduler>=3.10.0",
+    "watchdog>=4.0.0",
+    "psutil>=5.9.0",
+    "pyyaml>=6.0.1",
+    "rich>=13.7.0",
+    "numpy>=1.26.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+]
+
+[project.scripts]
+orvix = "phass_cli:main"
+orvix-web = "web.launcher:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = [
+    "agents*", "cli*", "clients*", "config*", "core*", "database*",
+    "diagnostics*", "gui*", "hardware*", "interface*", "jarvis*",
+    "knowledge*", "learning*", "logging*", "mcp*", "memory*",
+    "mesh*", "neural*", "nlp*", "perception*", "proactive*",
+    "robot*", "sandbox*", "security*", "sensors*", "simulation*",
+    "swarm*", "tools*", "ui*", "vision*", "voice*", "web*", "world*"
+]
+exclude = [
+    "tests*", "docs*", "scratch*", "logs*", "data_backups*",
+    "checkpoints*", "exported_model*", "dist*", "build*"
+]
+
+[tool.setuptools]
+py-modules = ["phass_cli", "orvix_cli", "auto_install", "install_phass_service"]
+
+[tool.setuptools.package-data]
+"*" = ["*.json", "*.yaml", "*.yml", "*.html", "*.css", "*.js", "*.png", "*.svg", "*.ico"]
